@@ -1,0 +1,591 @@
+// Importar librerias
+@import 'franco/style.scss';
+@import 'libraries/mixins/media-queries';
+@import 'libraries/steps/multisteps_form';
+@import 'libraries/mixins/grid';
+
+// Fuente
+//@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+/* class_helpers */
+
+.ap_container {
+    max-width: 950px;
+    margin: auto;
+    box-sizing: border-box;
+  
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+}
+  
+.ap_label {
+    color: #afbbc0;
+
+    &.ap_label--small {
+        font-size: .8rem;
+    }
+}
+  
+.ap_radio_button_wrapper {
+    padding: .5rem;
+    border: 2px solid #727c79;
+    border-radius: 5px;
+    margin-bottom: .2rem;
+}
+  
+.ap_radio_button, .ap_checkbox {
+    padding-left: 20px;
+    position: relative;
+  
+    input[type="radio"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 2px;
+        margin-left: 0;
+    }
+}
+  
+.ap_icon_info {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #555555;
+    color: #fff;
+    font-size: .8rem;
+    line-height: 15px;
+    text-align: center;
+}
+  
+.ap_m_auto {margin: auto;}
+.ap_mt_0 {margin-top: 0;}
+.ap_mt_1 {margin-top: .5rem;}
+.ap_mt_2 {margin-top: 1rem;}
+.ap_mt_3 {margin-top: 1.5rem;}
+.ap_mt_4 {margin-top: 2rem;}
+.ap_mt_5 {margin-top: 2.5rem;}
+.ap_mt_6 {margin-top: 3rem;}
+.ap_text_center {text-align: center;}
+.ap_text_end {text-align: right;}
+.ap_text_bold {font-weight: 600;}
+
+
+/* Quitar estilos base de tema liquid */
+
+a.ap_reset{
+    color: inherit;
+}
+  
+input.ap_reset, textarea.ap_reset, select.ap_reset {
+    width: 100%;
+    border-radius: inherit;
+    max-width: 100%;
+    background-color: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 2px 4px;
+    font-size: inherit;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    color: inherit;
+    line-height: 1.6;
+}
+  
+  
+/* section_align */
+  
+.ap_align_section {
+    position: relative;
+    padding-top: .3rem;
+    background-color: #fff;
+    //margin-bottom: 2rem;
+  
+    &.box_shadow {
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.15);
+    }
+}
+  
+.ap_align_section__header {
+    position: relative;
+    padding: 2rem;
+  
+    .ap_align_section__radio {
+        position: absolute;
+    }
+    
+    .ap_align_section__title h2 {
+        text-align: center;
+        font-weight: 600;
+        margin: 0;
+    }
+  
+    @include to(md){
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 1rem 0;
+  
+        .ap_align_section__radio {
+            position: static;
+            font-size: .8rem;
+        }
+      
+        .ap_align_section__title h2 {
+            text-align: right;
+            font-size: 16px;
+            margin: 0;
+        }
+    }
+}
+  
+.ap_align_section__content {
+    padding: 2rem 2rem 3rem;
+  
+    @include to(md){
+        padding: 2rem 1rem 3rem;
+    }
+}
+  
+.ap_align_section__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: .7rem 1rem;
+    background-color: #1878b9;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  
+    &.prev {
+        justify-content: space-between;
+    }
+  
+    .ap_btn_next, .ap_btn_prev {
+        background-color: transparent;  
+        border: none;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+}
+  
+.ap_align_section__card-selectable {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    outline: 1px solid #67757c;
+    position: relative;
+  
+    & .ap_as_cs__radio{
+        position: absolute;
+        top: 13px;
+        left: 13px;
+    }
+  
+    & .ap_as_cs__info{
+        position: absolute;
+        top: 13px;
+        right: 13px;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+  
+    & .ap_as_cs__content{
+        display: block;
+        padding: 1rem;
+    }
+  
+    & .ap_as_cs__header{
+        margin-top: 1rem;
+        margin-bottom: .5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+    
+        @include to(md){
+            font-size: 15px;
+        }
+    }
+  
+    & .ap_as_cs__image{
+        width: 100px;
+        height: 100px;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        outline: 1px solid #ccc;
+        border-radius: 50%;
+        margin: auto;
+    
+        img{
+            max-width: 100%;
+        }
+    }
+}
+  
+  
+/* aling sections */
+  
+.ap_welcome-aligner {
+  
+    .ap_align_section__content {
+        @include grid(div, 3 4 5, 15px);
+        @include to(sm){grid-template-columns: repeat(2, 1fr);}
+    
+        .ap_as_wa__content {
+            display: block;
+            padding: 1rem;
+        }
+    
+        .ap_as_wa__amount {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            margin: auto;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+    }
+  
+    .ap_align_section__image {
+        padding: 0rem 2rem 3rem;
+    
+        .ap_as_image__title{
+            text-align: center;
+            color: #ea3844;
+        }
+    
+        .ap_as_image__image {
+            width: 180px;
+            margin: auto;
+            margin-top: 1rem;
+    
+            img {width: 100%;}
+        }
+    }
+}
+  
+  
+.ap_case-type .ap_align_section__content{
+    @include grid(div, 1 2, 15px);
+}
+  
+  
+.ap_plan-type .ap_align_section__content {
+    @include grid(div, 1 3, 15px);
+}
+  
+  
+.ap_case-preferences .ap_align_section__content {
+  
+    .ap_st__table {
+        font-size: .9rem;
+        
+        td {
+            vertical-align: top;
+            min-width: 140px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        div {
+            font-size: .8rem;
+        }
+        
+        .tb_row_required span.ap_required {
+            color: red;
+        }
+        
+        .tb_as_items-radio {
+            display: flex;
+            flex-direction: column;
+    
+            > div input[type='radio'] {
+                margin-top: 4px;
+            }
+        }
+    
+        .tb_as__input {
+            input[type='text'], input[type='number'] {
+                width: 100%;
+            }
+        
+            &.tb_as__input--small {
+                width: 50px;
+            }
+        }
+  
+        @include from(sm){
+            .tb_as_items-radio {
+                flex-direction: row;
+            }
+        
+            .tb_as__radio {
+                width: 167px;
+                max-width: 167px;
+                margin-bottom: .2rem;
+            }
+        }
+    }
+}
+  
+  
+.ap_select-tooth .ap_align_section__content {
+  
+    @include from(md){
+        display: flex;
+    
+        & > div:nth-child(1) {
+            width: 250px;
+            padding-right: 1.5rem;
+        }
+        
+        & > div:nth-child(2) {
+            flex-grow: 1;
+            padding-left: 1rem;
+            border-left: 1px solid rgba(33, 37, 41, .15);
+        }
+    }
+  
+    & .st_impression_type {
+  
+        .st_impression_type__title h5{
+            font-size: 1rem;
+            text-align: center;
+        }
+    
+        .st_impression_type__select select {
+            width: 100%;
+            margin-top: .1rem;
+        }
+    
+        .st_impression_type__options_radio {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+    
+            > div {
+                width: 50%;
+                margin-bottom: 1rem;
+            }
+        }
+  
+        .st_impression_type__textarea textarea {
+            width: 100%;
+            margin-top: .1rem;
+        }
+    }
+  
+    & .st_select_tooth {
+  
+        & .st_restriction_move {
+            margin-top: 2rem;
+  
+            .st_restriction_move__title h5 {
+                margin: 0;
+                margin-bottom: .5rem;
+                font-size: 1rem;
+        
+                span { font-size: .8rem;}
+            }
+  
+            .st_restriction_move__options_radio > div {
+                margin-bottom: .4rem;
+            }
+  
+            .st_rm_sc_teeth, .st_rm_sic_teeth {
+                margin-top: 1.1rem;
+            }
+  
+            .st_rm_sc_teeth__title, .st_rm_sic_teeth__title {
+                font-size: .9rem;
+                color: #eb3b27;
+                border-bottom: 1px solid #eb3b27;
+                display: inline-block;
+            }
+  
+            .st_rm_sc_teeth__content, .st_rm_sic_teeth__content{
+                margin-top: .5rem;
+            }
+  
+            @include from(md){
+                margin-top: 0;
+        
+                .st_restriction_move__options_radio{
+                    display: flex;
+                    
+                    > div {width: 50%;}
+                }
+        
+                .st_rm_sc_teeth__content, .st_rm_sic_teeth__content {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+            }
+        }
+    }
+  
+    .st_attachment {
+        margin-top: 1.2rem;
+    
+        .st_attachment__title h5 {
+            margin: 0;
+            margin-bottom: .5rem;
+            font-size: 1rem;
+    
+            span { font-size: .8rem;}
+        }
+    
+        .st_attachment__content {
+            margin-top: .5rem;
+        }
+    
+        @include from(md){
+            .st_attachment__content {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+    }
+  
+    .st_teeth_list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+  
+        &:nth-child(2){
+            border-bottom: 1px dashed #67757c;
+        }
+  
+        @include from(md){
+            width: 50%;
+    
+            &:nth-child(1), &:nth-child(1){
+                border-bottom: 1px dashed #67757c;
+            }
+    
+            &:nth-child(1), &:nth-child(3){
+                border-right: 1px dashed #67757c;
+            }
+        }
+  
+        li { 
+            list-style: none;
+            margin: 3px 1px;
+    
+            &:first-child {
+                margin-left: 10px !important;
+            }
+    
+            &:last-child {
+                margin-right: 10px !important;
+            } 
+        }
+    }
+  
+    .ap_check_tooth {
+        input { display: none;}
+    
+        label {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            font-size: .8rem;
+            border-radius: 50%;
+        }
+  
+        &.checked {
+    
+            label {
+                background-color: red;
+                color: #fff;
+            }
+        }
+  
+    }
+}
+  
+  
+.ap_image-selection .ap_align_section__content {
+    font-size: .8rem;
+  
+    .is_sc_photos__options,
+    .is_sc_radiographs__options {
+        @include from(sm){
+            display: flex;
+            flex-wrap: wrap;
+            
+            .ap_radio_button_wrapper {
+                margin-right: .5rem;
+            }
+        }
+    }
+    
+    .is_sc_photos__intra-oral,
+    .is_sc_photos__extra-oral,
+    .is_sc_radiographs__radiograph {
+        margin-top: 1.2rem;
+    
+        .is_sc_title {
+            margin-top: .5rem;
+            margin-bottom: .5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+  
+        .is_sc_image__grid {
+            @include grid(div, 2 3 5, 15px);
+        }
+  
+        .is_sc_image_card__title {
+            font-weight: 600;
+        }
+  
+        .is_sc_image_card__content {
+            border: 2px dashed #727c79;
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.12);
+            min-height: 180px;
+        }
+    }
+}
+  
+  
+.ap_case-response {
+  
+    .ap_cr__logo {
+        padding: 2rem;
+    
+        .ap_cr_logo__image {
+            margin: auto;
+            max-width: 80%;
+
+            img {width: 100%;}
+
+            @include from(sm){
+                width: 250px;
+            }
+        }
+    }
+    
+    @include from(md){
+        table.f_table {
+            border: none;
+            tr td {
+                border: none !important;
+            }
+    
+            td:first-child {
+                text-align: right;
+                min-width: 200px !important;
+            }
+        } 
+    }
+}

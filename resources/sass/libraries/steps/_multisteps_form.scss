@@ -1,0 +1,142 @@
+$step_number_back : #A9A9A9;
+$step_number_color : #fff;
+$step_number_current_back : #FF0000;
+$step_number_current_color : #fff;
+$step_number_previous_back : #32CD32;
+$step_number_previous_color : #fff;
+$step_label_color : #A9A9A9;
+
+.ap_steps_indicator {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    list-style: none;
+    padding-top: 60px !important;
+    margin: 0;
+
+    .ap_step__tab {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        text-align: center;
+        //pointer-events: none;
+
+        > a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        &:before {
+            content: '';
+            background-color: #e6e6e6;
+            position: absolute;
+            top: -18px;
+            left: calc(50% + 18px);
+            width: calc(100% - 36px);
+            height: 1px;
+        }
+
+        &:last-child:before {
+            display: none;
+        }
+
+        &.ap_current_step .ap_step__number{
+            background-color: $step_number_current_back;
+            color: $step_number_current_color;
+        }
+
+        &.ap_previous_step .ap_step__number{
+            background-color: $step_number_previous_back;
+            color: $step_number_previous_color;
+            //pointer-events: auto;
+        }
+    }
+
+    .ap_step__label {
+        display: none;
+    }
+
+    .ap_step__number {
+        position: absolute;
+        top: -36px;
+        left: calc(50% - 18px);
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 50%;
+        background-color: $step_number_back;
+        color: $step_number_color;
+        font-weight: 600;
+        transition: all 0.2s linear 0s;
+    }
+
+    @include from(md){
+
+        .ap_step__tab {
+
+            &:before {
+                top: -25px;
+                left: calc(50% + 25px);
+                width: calc(100% - 50px);
+                height: 1px;
+            }
+        }
+
+        .ap_step__label {
+            display: inline-block;
+            text-align: center;
+            text-transform: uppercase;
+            color: $step_label_color;
+            font-weight: 700;
+            padding-top: .7rem;
+        }
+
+        .ap_step__number {
+            top: -50px;
+            left: calc(50% - 25px);
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+        }
+    }
+
+    &.ap_steps_2 .ap_step__tab {width: 50%;}
+    &.ap_steps_3 .ap_step__tab {width: 33.3333%;}
+    &.ap_steps_4 .ap_step__tab {width: 25%;}
+    &.ap_steps_5 .ap_step__tab {width: 20%;}
+    &.ap_steps_6 .ap_step__tab {width: 16.6666%;}
+}
+
+
+.ap_steps_content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    .ap_step__panel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+
+        &.ap_current_step {
+            position: static;
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+        }
+    }
+
+    &.ap_box_shadow {
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.15);
+    }
+}
