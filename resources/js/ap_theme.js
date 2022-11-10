@@ -3,7 +3,7 @@ import '../sass/ap_theme.scss';
 
 // Import JS
 import f_modal from "./franco/components/modal";
-require("./libraries/multistepsForm");
+import MultistepsForm from "./libraries/multistepsForm";
 
 /**
  * Add modal to window
@@ -20,11 +20,47 @@ require("./libraries/multistepsForm");
 })(window);
 
 
-// var ap_list_case_type = document.querySelectorAll(".ap_card_selectable");
+/**==========================================================================================
+ * Init multisteps
+ ============================================================================================*/
 
-// ap_list_case_type.forEach(function(element){
-//   element.addEventListener("click", function(e){
-//     var ap_ct_radio = e.target.querySelector("input.ap_card_selectable__radio");
-//     ap_ct_radio.checked = true;
-//   });
-// });
+var configurationSteps = {
+    newCase : {
+        steps : ["caseType", "casePreferences", "selectTooth", "uploadFiles", "finish"]
+    },
+    otherCase : {
+        steps : ["caseType","details", "finish"],
+        functionSteps : ["caseType","details", "finish"]
+    }
+}
+
+var stepsAlingOptions = new MultistepsForm(
+    document.querySelector(".ap_steps_content[data-steps='main-panels']"),
+    document.querySelector(".ap_steps_indicator[data-steps='main-indicators']")
+);
+
+
+var stepsAlingOptions1 = new MultistepsForm(
+    document.querySelector("[data-steps='align-panels']")
+);
+
+
+/**==========================================================================================
+ * Events next step
+ ============================================================================================*/
+
+ /**
+  * Aling step 1
+  */
+var alingStep1 = document.querySelector("[data-steps='align-panels'] .ap_step__btn_next");
+alingStep1.addEventListener("click", function(event){
+    if (_default) {stepsAlingOptions1.nextPanel(event)} 
+});
+
+/**==========================================================================================
+ * Functions for validations steps
+ ============================================================================================*/
+
+ function _default(){
+    return true;
+ }

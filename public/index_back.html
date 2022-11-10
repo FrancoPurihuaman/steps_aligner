@@ -32,7 +32,7 @@
     <div class="ap_container" style="margin-bottom: 2rem;">
 
         <div class="ap_mt_3">
-            <ul class="ap_steps_indicator ap_steps_6" data-steps="main-indicators">
+            <ul class="ap_steps_indicator ap_steps_6">
                 <li class="ap_step__tab ap_current_step">
                     <a>
                         <div class="ap_step__label">CASE TYPE</div>
@@ -72,108 +72,218 @@
             </ul>
         </div>
         
-        <div class="ap_steps_content ap_box_shadow ap_mt_5" data-steps="main-panels">
-            
+        <div class="ap_steps_content ap_box_shadow ap_mt_5">
             <section class="ap_step__panel ap_current_step">
-                <div class="ap_steps_content" data-steps="align-panels">
-                    <section class="ap_step__panel ap_current_step">
-                        <div class="ap_align_section ap_case-type">
-                            <div class="ap_align_section__header">
-                                <div class="ap_align_section__title">
-                                    <h2>Case Type</h2>
-                                </div>
-                            </div>
-                            <div class="ap_align_section__content">
-                                <div class="ap_align_section__item">
-                                    <div class="ap_align_section__card-selectable">
-                                        <input class="ap_as_cs__radio" id="ap_ct_aligner" type="radio" name="case-type" value="0" />
-                                        <label for="ap_ct_aligner" class="ap_as_cs__content">
-                                            <div class="ap_as_cs__image">
-                                                <img src="./img/dental.jpg"/>
-                                            </div>
-                                            <div class="ap_as_cs__header">Aligner</div>
-                                        </label>
+                <div class="ap_align_section ap_welcome-aligner">
+                    <div class="ap_align_section__content">
+                        <div class="ap_align_section__item">
+                            <div class="ap_align_section__card-selectable">
+                                <a class="ap_as_wa__content ap_reset">
+                                    <div class="ap_as_wa__amount">
+                                        <span>0</span>
                                     </div>
-                                </div>
-                                <div class="ap_align_section__item">
-                                    <div class="ap_align_section__card-selectable">
-                                        <input class="ap_as_cs__radio" id="ap_ct_retainer_only" type="radio" name="case-type" value="0" />
-                                        <label for="ap_ct_retainer_only" class="ap_as_cs__content">
-                                            <div class="ap_as_cs__image">
-                                                <img src="./img/dental.jpg"/>
-                                            </div>
-                                            <div class="ap_as_cs__header">Retainer Only</div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ap_align_section__footer">
-                                <button class="ap_step__btn_next" data-step="1-1">
-                                    NEXT <span style='font-size:20px;'>&#8594;</span>
-                                </button>
+                                    <div class="ap_as_wa__header">Submitted</div>
+                                </a>
                             </div>
                         </div>
-                    </section>
-
-                    <section class="ap_step__panel">
-                        <div class="ap_align_section ap_plan-type">
-                            <div class="ap_align_section__header">
-                                <div class="ap_align_section__radio">
-                                    <input type="radio" id="ap_pt_type_selected" name="plan-type-selected" checked />
-                                    <label for="ap_plan_type_selected">Align</label>
-                                </div>
-                                <div class="ap_align_section__title">
-                                    <h2>Plan Type</h2>
-                                </div>
-                            </div>
-                            <div class="ap_align_section__content">
-                                <div class="ap_align_section__item">
-                                    <div class="ap_align_section__card-selectable">
-                                        <input class="ap_as_cs__radio" id="ap_pt_new_case" type="radio" name="plan-type" value="0" />
-                                        <label for="ap_pt_new_case" class="ap_as_cs__content">
-                                            <div class="ap_as_cs__image">
-                                                <img src="./img/dental.jpg"/>
-                                            </div>
-                                            <div class="ap_as_cs__header">New Case</div>
-                                        </label>
+                        <div class="ap_align_section__item">
+                            <div class="ap_align_section__card-selectable">
+                                <a class="ap_as_wa__content ap_reset">
+                                    <div class="ap_as_wa__amount">
+                                        <span>0</span>
                                     </div>
-                                </div>
-                                <div class="ap_align_section__item">
-                                    <div class="ap_align_section__card-selectable">
-                                        <input class="ap_as_cs__radio" id="ap_ct_mid_correction" type="radio" name="plan-type" value="0" />
-                                        <div class="ap_as_cs__info" id="ap_pt_new_case" type="radio" name="plan-type" value="0">
-                                            <span class="ap_icon_info" id="btnMidcourseCorrectionInfo">&#8505;</span>
-                                        </div>
-                                        <label for="ap_ct_mid_correction" class="ap_as_cs__content">
-                                            <div class="ap_as_cs__image">
-                                                <img src="./img/dental.jpg"/>
-                                            </div>
-                                            <div class="ap_as_cs__header">Midcourse Correction</div>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="ap_align_section__item">
-                                    <div class="ap_align_section__card-selectable">
-                                        <input class="ap_as_cs__radio" id="ap_ct_refinements" type="radio" name="plan-type" value="0" />
-                                        <div class="ap_as_cs__info" id="ap_pt_new_case" type="radio" name="plan-type" value="0">
-                                            <span class="ap_icon_info" id="btnRefinements">&#8505;</span>
-                                        </div>
-                                        <label for="ap_ct_refinements" class="ap_as_cs__content">
-                                            <div class="ap_as_cs__image">
-                                                <img src="./img/dental.jpg"/>
-                                            </div>
-                                            <div class="ap_as_cs__header">Refinements</div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ap_align_section__footer prev">
-                                <button class="ap_step__btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
-                                <button class="ap_step__btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
+                                    <div class="ap_as_wa__header">Under Inspection</div>
+                                </a>
                             </div>
                         </div>
-                    </section>
+                        <div class="ap_align_section__item">
+                            <div class="ap_align_section__card-selectable">
+                                <a class="ap_as_wa__content ap_reset">
+                                    <div class="ap_as_wa__amount">
+                                        <span>0</span>
+                                    </div>
+                                    <div class="ap_as_wa__header">Pending case records</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ap_align_section__item">
+                            <div class="ap_align_section__card-selectable">
+                                <a class="ap_as_wa__content ap_reset">
+                                    <div class="ap_as_wa__amount">
+                                        <span>0</span>
+                                    </div>
+                                    <div class="ap_as_wa__header">Virtual setup in progress</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ap_align_section__item">
+                            <div class="ap_align_section__card-selectable">
+                                <a class="ap_as_wa__content ap_reset">
+                                    <div class="ap_as_wa__amount">
+                                        <span>0</span>
+                                    </div>
+                                    <div class="ap_as_wa__header">Approve virtual setup</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ap_align_section__item">
+                            <div class="ap_align_section__card-selectable">
+                                <a class="ap_as_wa__content ap_reset">
+                                    <div class="ap_as_wa__amount">
+                                        <span>0</span>
+                                    </div>
+                                    <div class="ap_as_wa__header">Aligner fabrication in progress</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ap_align_section__item">
+                            <div class="ap_align_section__card-selectable">
+                                <a class="ap_as_wa__content ap_reset">
+                                    <div class="ap_as_wa__amount">
+                                        <span>0</span>
+                                    </div>
+                                    <div class="ap_as_wa__header">Ongoing case</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ap_align_section__item">
+                            <div class="ap_align_section__card-selectable">
+                                <a class="ap_as_wa__content ap_reset">
+                                    <div class="ap_as_wa__amount">
+                                        <span>0</span>
+                                    </div>
+                                    <div class="ap_as_wa__header">Delivered</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ap_align_section__item">
+                            <div class="ap_align_section__card-selectable">
+                                <a class="ap_as_wa__content ap_reset">
+                                    <div class="ap_as_wa__amount">
+                                        <span>0</span>
+                                    </div>
+                                    <div class="ap_as_wa__header">Retainers</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ap_align_section__item">
+                            <div class="ap_align_section__card-selectable">
+                                <a class="ap_as_wa__content ap_reset">
+                                    <div class="ap_as_wa__amount">
+                                        <span>0</span>
+                                    </div>
+                                    <div class="ap_as_wa__header">Cancelled</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ap_align_section__image">
+                        <div class="ap_as_image__title">
+                            Welcome To The Illusion Aligners
+                        </div>
+                        <div class="ap_as_image__image">
+                            <img src="./img/dental.jpg" alt="">
+                        </div>
+                    </div>
                 </div>
+            </section>
+
+
+            <section class="ap_step__panel">
+            <div class="ap_align_section ap_case-type">
+                <div class="ap_align_section__header">
+                    <div class="ap_align_section__title">
+                        <h2>Case Type</h2>
+                    </div>
+                </div>
+                <div class="ap_align_section__content">
+                    <div class="ap_align_section__item">
+                        <div class="ap_align_section__card-selectable">
+                            <input class="ap_as_cs__radio" id="ap_ct_aligner" type="radio" name="case-type" value="0" />
+                            <label for="ap_ct_aligner" class="ap_as_cs__content">
+                                <div class="ap_as_cs__image">
+                                    <img src="./img/dental.jpg"/>
+                                </div>
+                                <div class="ap_as_cs__header">Aligner</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="ap_align_section__item">
+                        <div class="ap_align_section__card-selectable">
+                            <input class="ap_as_cs__radio" id="ap_ct_retainer_only" type="radio" name="case-type" value="0" />
+                            <label for="ap_ct_retainer_only" class="ap_as_cs__content">
+                                <div class="ap_as_cs__image">
+                                    <img src="./img/dental.jpg"/>
+                                </div>
+                                <div class="ap_as_cs__header">Retainer Only</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ap_align_section__footer">
+                    <button class="ap_btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
+                </div>
+            </div>
+            </section>
+        
+        
+            <section class="ap_step__panel">
+            <div class="ap_align_section ap_plan-type">
+                <div class="ap_align_section__header">
+                    <div class="ap_align_section__radio">
+                        <input type="radio" id="ap_pt_type_selected" name="plan-type-selected" checked />
+                        <label for="ap_plan_type_selected">Align</label>
+                    </div>
+                    <div class="ap_align_section__title">
+                        <h2>Plan Type</h2>
+                    </div>
+                </div>
+                <div class="ap_align_section__content">
+                    <div class="ap_align_section__item">
+                        <div class="ap_align_section__card-selectable">
+                            <input class="ap_as_cs__radio" id="ap_pt_new_case" type="radio" name="plan-type" value="0" />
+                            <label for="ap_pt_new_case" class="ap_as_cs__content">
+                                <div class="ap_as_cs__image">
+                                    <img src="./img/dental.jpg"/>
+                                </div>
+                                <div class="ap_as_cs__header">New Case</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="ap_align_section__item">
+                        <div class="ap_align_section__card-selectable">
+                            <input class="ap_as_cs__radio" id="ap_ct_mid_correction" type="radio" name="plan-type" value="0" />
+                            <div class="ap_as_cs__info" id="ap_pt_new_case" type="radio" name="plan-type" value="0">
+                                <span class="ap_icon_info" id="btnMidcourseCorrectionInfo">&#8505;</span>
+                            </div>
+                            <label for="ap_ct_mid_correction" class="ap_as_cs__content">
+                                <div class="ap_as_cs__image">
+                                    <img src="./img/dental.jpg"/>
+                                </div>
+                                <div class="ap_as_cs__header">Midcourse Correction</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="ap_align_section__item">
+                        <div class="ap_align_section__card-selectable">
+                            <input class="ap_as_cs__radio" id="ap_ct_refinements" type="radio" name="plan-type" value="0" />
+                            <div class="ap_as_cs__info" id="ap_pt_new_case" type="radio" name="plan-type" value="0">
+                                <span class="ap_icon_info" id="btnRefinements">&#8505;</span>
+                            </div>
+                            <label for="ap_ct_refinements" class="ap_as_cs__content">
+                                <div class="ap_as_cs__image">
+                                    <img src="./img/dental.jpg"/>
+                                </div>
+                                <div class="ap_as_cs__header">Refinements</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ap_align_section__footer prev">
+                <button class="ap_btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
+                <button class="ap_btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
+                </div>
+            </div>
             </section>
         
 
@@ -434,8 +544,8 @@
                         </div>
                     </div>
                     <div class="ap_align_section__footer prev">
-                        <button class="ap_step__btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
-                        <button class="ap_step__btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
+                        <button class="ap_btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
+                        <button class="ap_btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
                     </div>
                 </div>
             </section>
@@ -1037,8 +1147,8 @@
 
                     </div>
                     <div class="ap_align_section__footer prev">
-                        <button class="ap_step__btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
-                        <button class="ap_step__btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
+                        <button class="ap_btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
+                        <button class="ap_btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
                     </div>
                 </div>
             </section>
@@ -1189,8 +1299,8 @@
                         </div>
                     </div>
                     <div class="ap_align_section__footer prev">
-                        <button class="ap_step__btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
-                        <button class="ap_step__btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
+                        <button class="ap_btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
+                        <button class="ap_btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
                     </div>
                 </div>
             </section>
@@ -1238,8 +1348,8 @@
                         </div>
                     </div>
                     <div class="ap_align_section__footer prev">
-                        <button class="ap_step__btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
-                        <button class="ap_step__btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
+                        <button class="ap_btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
+                        <button class="ap_btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
                     </div>
                 </div>
             </section>
@@ -1260,8 +1370,8 @@
                         </div>
                     </div>
                     <div class="ap_align_section__footer prev">
-                        <button class="ap_step__btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
-                        <button class="ap_step__btn_next">SUBMIT <span style='font-size:20px;'>&#8594;</span></button>
+                        <button class="ap_btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
+                        <button class="ap_btn_next">SUBMIT <span style='font-size:20px;'>&#8594;</span></button>
                     </div>
                 </div>
             </section>
