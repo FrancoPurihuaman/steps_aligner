@@ -24,16 +24,6 @@ import MultistepsForm from "./libraries/multistepsForm";
  * Init multisteps
  ============================================================================================*/
 
-var configurationSteps = {
-    newCase : {
-        steps : ["caseType", "casePreferences", "selectTooth", "uploadFiles", "finish"]
-    },
-    otherCase : {
-        steps : ["caseType","details", "finish"],
-        functionSteps : ["caseType","details", "finish"]
-    }
-}
-
 var stepsAlingOptions = new MultistepsForm(
     document.querySelector(".ap_steps_content[data-steps='main-panels']"),
     document.querySelector(".ap_steps_indicator[data-steps='main-indicators']")
@@ -43,6 +33,50 @@ var stepsAlingOptions = new MultistepsForm(
 var stepsAlingOptions1 = new MultistepsForm(
     document.querySelector("[data-steps='align-panels']")
 );
+
+/**
+ * Function for render steps
+ *
+ * @param {string} stepsToRender | Steps to render
+ */
+function renderStepsAgain(stepsToRender){
+    var panelsContainer = document.querySelector(".ap_steps_content[data-steps='main-panels']");
+    var tabsContainer = document.querySelector(".ap_steps_indicator[data-steps='main-indicators']");
+
+    var panels = panelsContainer.querySelectorAll(":scope > [data-step-include]");
+    panels.forEach(function(panel){
+        var _dataset = panel.dataset.stepInclude;
+        if(_dataset.includes(stepsToRender)){
+            panel.classList.add("ap_step__panel");
+        }else{
+            panel.classList.remove("ap_step__panel");
+            panel.classList.add("ap_hide");
+        }
+        
+    });
+
+    var tabs = tabsContainer.querySelectorAll(":scope > [data-step-include]");
+    tabs.forEach(function(tab){
+        var _dataset = tab.dataset.stepInclude;
+        if(_dataset.includes(stepsToRender)){
+            tab.classList.add("ap_step__tab");
+        }else{
+            tab.classList.remove("ap_step__tab");
+            tab.classList.add("ap_hide");
+        }
+        
+    });
+    var activeTabs = tabsContainer.querySelectorAll(".ap_step__tab");
+    var lastTab = activeTabs[activeTabs.length - 1];
+    lastTab.classList.add("lastTab");
+
+    stepsAlingOptions = new MultistepsForm(
+        document.querySelector(".ap_steps_content[data-steps='main-panels']"),
+        document.querySelector(".ap_steps_indicator[data-steps='main-indicators']")
+    );
+}
+
+renderStepsAgain("ref");
 
 
 /**==========================================================================================
@@ -58,7 +92,7 @@ alingStep1.addEventListener("click", function(event){
 });
 
 /**==========================================================================================
- * Functions for validations steps
+ * Functions validations steps
  ============================================================================================*/
 
  function _default(){

@@ -37,7 +37,7 @@ $step_label_color : #A9A9A9;
             height: 1px;
         }
 
-        &:last-child:before {
+        &:last-child:before, &.lastTab:before {
             display: none;
         }
 

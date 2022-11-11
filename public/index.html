@@ -33,40 +33,46 @@
 
         <div class="ap_mt_3">
             <ul class="ap_steps_indicator ap_steps_6" data-steps="main-indicators">
-                <li class="ap_step__tab ap_current_step">
+                <li class="ap_step__tab ap_current_step" data-step-include="new-c ret-only mid-co refi">
                     <a>
                         <div class="ap_step__label">CASE TYPE</div>
                         <div class="ap_step__number">1</div>
                     </a>
                 </li>
-                <li class="ap_step__tab">
+                <li class="ap_step__tab" data-step-include="ret-only mid-co refi">
                     <a>
-                        <div class="ap_step__label">PATIENT DETAILS</div>
+                        <div class="ap_step__label">DETAILS</div>
                         <div class="ap_step__number">2</div>
                     </a>
                 </li>
-                <li class="ap_step__tab">
+                <li class="ap_step__tab" data-step-include="ret-only mid-co refi">
                     <a>
-                        <div class="ap_step__label">CASE PREFERENCES</div>
+                        <div class="ap_step__label">INSTRUCTIONS</div>
                         <div class="ap_step__number">3</div>
                     </a>
                 </li>
-                <li class="ap_step__tab">
+                <li class="ap_step__tab" data-step-include="new-c">
+                    <a>
+                        <div class="ap_step__label">CASE PREFERENCES</div>
+                        <div class="ap_step__number">2</div>
+                    </a>
+                </li>
+                <li class="ap_step__tab" data-step-include="new-c">
                     <a>
                         <div class="ap_step__label">SELECT TOOTH</div>
+                        <div class="ap_step__number">3</div>
+                    </a>
+                </li>
+                <li class="ap_step__tab" data-step-include="new-c">
+                    <a>
+                        <div class="ap_step__label">UPLOAD FILES</div>
                         <div class="ap_step__number">4</div>
                     </a>
                 </li>
-                <li class="ap_step__tab">
+                <li class="ap_step__tab" data-step-include="new-c">
                     <a>
-                        <div class="ap_step__label">UPLOAD FILES</div>
+                        <div class="ap_step__label">INSTRUCTIONS</div>
                         <div class="ap_step__number">5</div>
-                    </a>
-                </li>
-                <li class="ap_step__tab">
-                    <a>
-                        <div class="ap_step__label">FINISH</div>
-                        <div class="ap_step__number">6</div>
                     </a>
                 </li>
             </ul>
@@ -74,7 +80,7 @@
         
         <div class="ap_steps_content ap_box_shadow ap_mt_5" data-steps="main-panels">
             
-            <section class="ap_step__panel ap_current_step">
+            <section class="ap_step__panel ap_current_step" data-step-include="new-c ret-only mid-co refi">
                 <div class="ap_steps_content" data-steps="align-panels">
                     <section class="ap_step__panel ap_current_step">
                         <div class="ap_align_section ap_case-type">
@@ -172,12 +178,61 @@
                                 <button class="ap_step__btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
                             </div>
                         </div>
+
+                        <!-- Modales-->
+                        <div class="f_modal" id="modalMidcourseCorrectionInfo">
+                            <div class="f_modal__content medium">
+                                <div class="f_modal__header">
+                                    <span class="f_modal__title">Midcourse Correction</span>
+                                    <button type="button" class="f_modal__close" data-dismis="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="f_modal__body">
+                                    <div style="padding: .3rem 1rem .8">
+                                        Midcourse correction is the option to order new aligners during treatment, if clinical result
+                                        have deviated to such an extent that the aligners no longer fit. For Mid-course corrections and/or
+                                        refinements. we offer free aligners up to 20% of your case total. For example, for 20 aligner case ,
+                                        your are eligible for up to 4 free aligners. Any Midcourse correction or refinements aligners
+                                        in excess of your free aligner allotment will be $19 per aligner, and no discounts are applicable.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="f_modal" id="modalRefinements">
+                            <div class="f_modal__content medium">
+                                <div class="f_modal__header">
+                                    <span class="f_modal__title">Refinements</span>
+                                    <button type="button" class="f_modal__close" data-dismis="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="f_modal__body">
+                                    <div style="padding: .3rem 1rem .8">
+                                        Refinements refer to extra trays given to patients who aren’t progressing in accordance
+                                        with their treatment plan. Refinements will add a couple of extra months to your treatment.
+                                        For mid-course corrections and/or refinements, we offer free aligners up to 20% of your case total.
+                                        For example, for a 20 aligner case, you are eligible for up to 4 free aligners. Any mid-course
+                                        correction or refinement aligners in excess of your free aligner allotment will be $19
+                                        per aligner, and no discounts are applicable. 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </section>
-        
 
-            <section class="ap_step__panel">
+            <section class="ap_step__panel" data-step-include="refi">
+
+            </section>
+
+            <section class="ap_step__panel" data-step-include="ret-only mid-co">
+
+            </section>
+
+            <section class="ap_step__panel" data-step-include="new-c">
                 <div class="ap_align_section ap_case-preferences">
                     <div class="ap_align_section__header">
                         <div class="ap_align_section__title">
@@ -440,8 +495,7 @@
                 </div>
             </section>
 
-
-            <section class="ap_step__panel">
+            <section class="ap_step__panel" data-step-include="new-c">
                 <div class="ap_align_section ap_select-tooth">
                     <div class="ap_align_section__content">
                         <div class="st_impression_type">
@@ -1042,9 +1096,8 @@
                     </div>
                 </div>
             </section>
-            
 
-            <section class="ap_step__panel">
+            <section class="ap_step__panel" data-step-include="new-c">
                 <div class="ap_align_section ap_image-selection">
                     <div class="ap_align_section__content">
                         <div class="is_sc_photos">
@@ -1184,8 +1237,10 @@
                             </div>
                         </div>
                         <div class="is_sc_information">
-                            <div class="is_sc_information__note"></div>
-                            <div class="is_sc_information__table"></div>
+                            <div class="is_sc_information__note">
+                                <div class=""><span>Note</span></div>
+                                <button class="btn" id="btnISCaseReference">Click</button>
+                            </div>
                         </div>
                     </div>
                     <div class="ap_align_section__footer prev">
@@ -1193,59 +1248,66 @@
                         <button class="ap_step__btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
                     </div>
                 </div>
-            </section>
 
-
-            <section class="ap_step__panel">
-                <div class="ap_align_section ap_case-response">
-                    <div class="ap_cr__logo">
-                        <div class="ap_cr_logo__image">
-                            <img src="./img/logo.2.png" alt="">
+                <!-- Modales-->
+                <div class="f_modal" id="modalISCaseReference">
+                    <div class="f_modal__content medium">
+                        <div class="f_modal__header">
+                            <span class="f_modal__title">Note</span>
+                            <button type="button" class="f_modal__close" data-dismis="close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <div class="ap_text_center ap_mt_1">
-                            <a href="mailto:support@dentalree.com" 
-                                style="color: inherit; text-decoration: none; font-size: 1rem; font-weight: 600;">
-                                support@dentalree.com
-                            </a>
+                        <div class="f_modal__body">
+                            <div style="padding: .3rem 1rem .8">
+                                <div class="ap_align_section ap_case-response">
+                                    <div class="ap_cr__logo">
+                                        <div class="ap_cr_logo__image">
+                                            <img src="./img/logo.2.png" alt="">
+                                        </div>
+                                        <div class="ap_text_center ap_mt_1">
+                                            <a href="mailto:support@dentalree.com" 
+                                                style="color: inherit; text-decoration: none; font-size: 1rem; font-weight: 600;">
+                                                support@dentalree.com
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ap_align_section__content">
+                                        <div class="f_overflow_scroll-x">
+                                            <table class="f_table f_table--list-item">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><div class="ap_text_bold">CASE NUMBER:</div></td>
+                                                        <td><div></div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="ap_text_bold">CUSTOMER NUMBER:</div></td>
+                                                        <td><div></div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="ap_text_bold">CITY:</div></td>
+                                                        <td><div></div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="ap_text_bold">STATE:</div></td>
+                                                        <td><div></div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="ap_text_bold">ZIPCODE:</div></td>
+                                                        <td><div></div></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="ap_align_section__content">
-                        <div class="f_overflow_scroll-x">
-                            <table class="f_table f_table--list-item">
-                                <tbody>
-                                    <tr>
-                                        <td><div class="ap_text_bold">CASE NUMBER:</div></td>
-                                        <td><div></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="ap_text_bold">CUSTOMER NUMBER:</div></td>
-                                        <td><div></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="ap_text_bold">CITY:</div></td>
-                                        <td><div></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="ap_text_bold">STATE:</div></td>
-                                        <td><div></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="ap_text_bold">ZIPCODE:</div></td>
-                                        <td><div></div></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="ap_align_section__footer prev">
-                        <button class="ap_step__btn_prev"><span style='font-size:20px;'>&#8592;</span> PREVIOUS</button>
-                        <button class="ap_step__btn_next">NEXT <span style='font-size:20px;'>&#8594;</span></button>
                     </div>
                 </div>
             </section>
 
-
-            <section class="ap_step__panel">
+            <section class="ap_step__panel" data-step-include="new-c ret-only mid-co refi">
                 <div class="ap_align_section">
                     <div class="ap_align_section__header">
                         <div class="ap_align_section__title">
@@ -1267,64 +1329,7 @@
             </section>
         
         </div>
-
-
-        <!-- <div class="dropzone" id="dropzone">
-            <div class="dz-default dz-message">
-                <img src="img/dental.jpg" alt="">
-            </div>
-        </div> -->
     </div>
-
-    <!-- Modales-->
-        
-    <div class="f_modal" id="modalMidcourseCorrectionInfo">
-        <div class="f_modal__content medium">
-            <div class="f_modal__header">
-                <span class="f_modal__title">Midcourse Correction</span>
-                <button type="button" class="f_modal__close" data-dismis="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="f_modal__body">
-                <div style="padding: .3rem 1rem .8">
-                    Midcourse correction is the option to order new aligners during treatment, if clinical result
-                    have deviated to such an extent that the aligners no longer fit. For Mid-course corrections and/or
-                    refinements. we offer free aligners up to 20% of your case total. For example, for 20 aligner case ,
-                    your are eligible for up to 4 free aligners. Any Midcourse correction or refinements aligners
-                    in excess of your free aligner allotment will be $19 per aligner, and no discounts are applicable.
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="f_modal" id="modalRefinements">
-        <div class="f_modal__content medium">
-            <div class="f_modal__header">
-                <span class="f_modal__title">Refinements</span>
-                <button type="button" class="f_modal__close" data-dismis="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="f_modal__body">
-                <div style="padding: .3rem 1rem .8">
-                    Refinements refer to extra trays given to patients who aren’t progressing in accordance
-                    with their treatment plan. Refinements will add a couple of extra months to your treatment.
-                    For mid-course corrections and/or refinements, we offer free aligners up to 20% of your case total.
-                    For example, for a 20 aligner case, you are eligible for up to 4 free aligners. Any mid-course
-                    correction or refinement aligners in excess of your free aligner allotment will be $19
-                    per aligner, and no discounts are applicable. 
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- <div class="dropzone" id="dropzone">
-        <div class="dz-default dz-message">
-            <img src="img/dental.jpg" alt="">
-        </div>
-    </div> -->
 
     <script src="./js/dropzone.min.js"></script>
     <script src="./js/ap_theme.js"></script>
@@ -1340,35 +1345,10 @@
             modal: "modalRefinements"
         });
 
-        // Dropzone.autoDiscover = false;
-        // window.onload = function () {
-
-        //     function ap_dropzone(idDropzone, inputName){
-        //         var myDropzone = new Dropzone(idDropzone, {
-        //             url: "/",
-        //             autoQueue: false,
-        //             addRemoveLinks: true,
-        //             maxFiles: 1,
-        //             clickable: idDropzone,
-        //             init: function () {
-        //                 this.on("maxfilesexceeded", function (file) {
-        //                     this.removeAllFiles();
-        //                     this.addFile(file);
-        //                 });
-        //             }
-        //         });
-        //         myDropzone.on("addedfile", file => {
-        //             console.log(file.name);
-        //         });
-        //         myDropzone.on("maxfilesexceeded", file => {
-        //             console.log(file);
-        //         });
-
-        //         return myDropzone;
-        //     }
-
-        //     var myDropzone = ap_dropzone("#dropzone", "#name");
-        // }
+        f_modal.init({
+            btnShow: "btnISCaseReference",
+            modal: "modalISCaseReference"
+        });
         
     </script>
 </body>
