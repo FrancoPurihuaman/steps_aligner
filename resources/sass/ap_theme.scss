@@ -74,9 +74,11 @@
 .ap_mt_4 {margin-top: 2rem;}
 .ap_mt_5 {margin-top: 2.5rem;}
 .ap_mt_6 {margin-top: 3rem;}
+
 .ap_text_center {text-align: center;}
 .ap_text_end {text-align: right;}
 .ap_text_bold {font-weight: 600;}
+.ap_text_danger {color: red;}
 
 
 /* Quitar estilos base de tema liquid */
@@ -535,7 +537,8 @@ input.ap_reset, textarea.ap_reset, select.ap_reset {
     
     .is_sc_photos__intra-oral,
     .is_sc_photos__extra-oral,
-    .is_sc_radiographs__radiograph {
+    .is_sc_radiographs__radiograph,
+    .is_sc_stl-files {
         margin-top: 1.2rem;
     
         .is_sc_title {
@@ -557,6 +560,36 @@ input.ap_reset, textarea.ap_reset, select.ap_reset {
             border: 2px dashed #727c79;
             box-shadow: 1px 1px 5px rgba(0,0,0,0.12);
             min-height: 180px;
+        }
+    }
+
+    .is_sc_information {
+        color: red;
+        margin-top: 2rem;
+        font-size: .95rem;
+        font-style: italic;
+
+        .is_sc_information__note {
+            display: flex;
+        }
+
+        .is_sc_in__icon {
+            width: 80px;
+            width: 80px;
+            line-height: 80px;
+            text-align: center;
+            border: 2px solid red;
+            border-radius: 50%;
+        }
+
+        .is_sc_in_description {
+            text-align: center;
+            margin-top: .5rem;
+            margin-left: 1.5rem;
+        }
+
+        .is_sc_in__note-description {
+            margin-top: .4rem;
         }
     }
 }
@@ -593,3 +626,63 @@ input.ap_reset, textarea.ap_reset, select.ap_reset {
         } 
     }
 }
+
+.ap_details_ret-only .ap_align_section__content,
+.ap_details_mid-correction .ap_align_section__content,
+.ap_details_refinement .ap_align_section__content {
+
+    .ro_d__options-radio,
+    .dmc_d__options-radio,
+    .dr_d__options-radio {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+
+        > div {
+            width: 50%;
+            margin-bottom: 1rem;
+        }
+    }
+    
+    .ro_upload-files__content,
+    .dmc_upload-files__content,
+    .dr_upload-files__content {
+        border: 2px dashed #727c79;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.12);
+        min-height: 200px;
+    }
+
+    .ro_d__retainer-extent {
+        border: 1px solid $colorline;
+        padding: .5rem;
+        margin-bottom: .8rem;
+
+        input { 
+            width: 50px;
+            padding: .1rem;
+            line-height: 16px;
+        }
+    }
+
+    @include from(md){
+        display: flex;
+    
+        & > div:nth-child(1) {
+            width: 300px;
+            padding-right: 1.5rem;
+        }
+        
+        & > div:nth-child(2) {
+            flex-grow: 1;
+            padding-left: 1rem;
+            border-left: 1px solid rgba(33, 37, 41, .15);
+        }
+
+        .ro_upload-files__content,
+        .dmc_upload-files__content,
+        .dr_upload-files__content {
+            min-height: 250px;
+        }
+    }
+}
+

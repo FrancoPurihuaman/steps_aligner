@@ -76,7 +76,7 @@ function renderStepsAgain(stepsToRender){
     );
 }
 
-renderStepsAgain("ref");
+renderStepsAgain("new-c");
 
 
 /**==========================================================================================
