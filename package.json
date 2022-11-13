@@ -32,7 +32,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.11.2",
-    "sweetalert2": "^10.13.0"
+    "@babel/runtime": "^7.11.2"
   }
 }

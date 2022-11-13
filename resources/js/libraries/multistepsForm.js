@@ -71,17 +71,24 @@
      * Go to next panel
      * 
      * @param {event} e | Triggered event
+     * @param {number} _index | Step number
      */
-    nextPanel(e) {
-        const eventTarget = e.target;
+    nextPanel(e, _index = null) {
+        if(_index == null){
+            const eventTarget = e.target;
 
-        // check if 'next' button was clicked
-        if (!(eventTarget.classList.contains(`${this.configuraions.classForButtonNext}`))){return;}
-        const activePanel = this.findParent(eventTarget, `${this.configuraions.classForPanel}`);
-        let activePanelNum = Array.from(this.configuraions.panels).indexOf(activePanel);
-        activePanelNum++;
-        this.setActiveTab(activePanelNum);
-        this.setActivePanel(activePanelNum);
+            // check if 'next' button was clicked
+            if (!(eventTarget.classList.contains(`${this.configuraions.classForButtonNext}`))){return;}
+            const activePanel = this.findParent(eventTarget, `${this.configuraions.classForPanel}`);
+            let activePanelNum = Array.from(this.configuraions.panels).indexOf(activePanel);
+            activePanelNum++;
+            this.setActiveTab(activePanelNum);
+            this.setActivePanel(activePanelNum);
+
+        }else{
+            this.setActiveTab(_index);
+            this.setActivePanel(_index);
+        }
     }
 
 
