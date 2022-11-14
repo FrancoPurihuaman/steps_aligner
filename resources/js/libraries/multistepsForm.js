@@ -44,6 +44,8 @@
             indexActivePanel--;
             this.setActiveTab(indexActivePanel);
             this.setActivePanel(indexActivePanel);
+
+            window.scrollTo(0, 0);
         });
 
 
@@ -61,6 +63,8 @@
                     const indexStepClicked = Array.from(this.configuraions.tabs).indexOf(tab);
                     this.setActiveTab(indexStepClicked);
                     this.setActivePanel(indexStepClicked);
+
+                    window.scrollTo(0, 0);
                 }else{return;}
             });
         }
@@ -89,6 +93,8 @@
             this.setActiveTab(_index);
             this.setActivePanel(_index);
         }
+
+        window.scrollTo(0, 0);
     }
 
 

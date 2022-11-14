@@ -85,7 +85,7 @@ renderStepsAgain("mid-co");
 
 
 /**==========================================================================================
- * Events next step
+ * Configuration step - case type
  ============================================================================================*/
 
 /**
@@ -111,6 +111,22 @@ caseTypeBtn.addEventListener("click", function(event){
         
     }
 });
+
+
+function caseTypeValidation(formData){
+    var success = false;
+
+    if(formData.casetype != null){
+        console.log(formData);
+        success = true;
+    }
+
+    return success;
+}
+
+/**==========================================================================================
+ * Configuration step - plan type
+ ============================================================================================*/
 
 /**
  * Align - plan type - event next panel
@@ -138,6 +154,22 @@ planTypeBtn.addEventListener("click", function(event){
 });
 
 
+function planTypeValidation(formData){
+    var success = false;
+    
+    if(formData.plantype != null){
+        console.log(formData);
+        success = true;
+    }
+
+    return success;
+}
+
+
+/**==========================================================================================
+ * Configuration step - retainer only
+ ============================================================================================*/
+
 /**
  * Align - retainer only - event next panel
  */
@@ -153,6 +185,22 @@ retainerOnlyBtn.addEventListener("click", function(event){
     }
 });
 
+
+function retainerOnlyValidation(formData){
+    var success = false;
+    
+    if(formData != null){
+        console.log(formData);
+        success = true;
+    }
+
+    return success;
+}
+
+
+/**==========================================================================================
+ * Configuration step - midcourse correction
+ ============================================================================================*/
 
 /**
  * Align - midcourse correction - event next panel
@@ -170,6 +218,22 @@ midcourseCorrectionBtn.addEventListener("click", function(event){
 });
 
 
+function midcourseCorrectionValidation(formData){
+    var success = false;
+    
+    if(formData != null){
+        console.log(formData);
+        success = true;
+    }
+
+    return success;
+}
+
+
+/**==========================================================================================
+ * Configuration step - refinements
+ ============================================================================================*/
+
 /**
  * Align - refinements - event next panel
  */
@@ -185,6 +249,22 @@ refinementsBtn.addEventListener("click", function(event){
     }
 });
 
+
+function refinementsValidation(formData){
+    var success = false;
+    
+    if(formData != null){
+        console.log(formData);
+        success = true;
+    }
+
+    return success;
+}
+
+
+/**==========================================================================================
+ * Configuration step - case preferences
+ ============================================================================================*/
 
 /**
  * Align - case preferences - event next panel
@@ -202,6 +282,21 @@ casePreferencesBtn.addEventListener("click", function(event){
 });
 
 
+function casePreferencesValidation(formData){
+    var success = false;
+    
+    if(formData != null){
+        console.log(formData);
+        success = true;
+    }
+
+    return success;
+}
+
+/**==========================================================================================
+ * Configuration step - select tooh
+ ============================================================================================*/
+
 /**
  * Align - select tooh - event next panel
  */
@@ -217,6 +312,22 @@ selectToohBtn.addEventListener("click", function(event){
     }
 });
 
+
+function selectToohValidation(formData){
+    var success = false;
+    
+    if(formData != null){
+        console.log(formData);
+        success = true;
+    }
+
+    return success;
+}
+
+
+/**==========================================================================================
+ * Configuration step - upload files
+ ============================================================================================*/
 
 /**
  * Align - upload files - event next panel
@@ -234,102 +345,6 @@ uploadFilesBtn.addEventListener("click", function(event){
 });
 
 
-/**
- * Align - special instructions - event next panel
- */
-var specialInstructionsForm = document.querySelector("#specialInstructions");
-specialInstructionsForm.addEventListener("submit", function(event){event.preventDefault()});
-
-var specialInstructionsBtn = specialInstructionsForm.querySelector(".ap_step__btn_next");
-specialInstructionsBtn.addEventListener("click", function(event){
-    var formData = formSerialize(specialInstructionsForm, {hash: true});
-    
-    if(uploadFilesValidation(formData)){
-        console.log("exit");
-    }
-});
-
-/**==========================================================================================
- * Functions validations steps
- ============================================================================================*/
-
-function caseTypeValidation(formData){
-    var success = false;
-
-    if(formData.casetype != null){
-        console.log(formData);
-        success = true;
-    }
-
-    return success;
-}
-
-function planTypeValidation(formData){
-    var success = false;
-    
-    if(formData.plantype != null){
-        console.log(formData);
-        success = true;
-    }
-
-    return success;
-}
-
-function retainerOnlyValidation(formData){
-    var success = false;
-    
-    if(formData != null){
-        console.log(formData);
-        success = true;
-    }
-
-    return success;
-}
-
-function midcourseCorrectionValidation(formData){
-    var success = false;
-    
-    if(formData != null){
-        console.log(formData);
-        success = true;
-    }
-
-    return success;
-}
-
-function refinementsValidation(formData){
-    var success = false;
-    
-    if(formData != null){
-        console.log(formData);
-        success = true;
-    }
-
-    return success;
-}
-
-function casePreferencesValidation(formData){
-    var success = false;
-    
-    if(formData != null){
-        console.log(formData);
-        success = true;
-    }
-
-    return success;
-}
-
-function selectToohValidation(formData){
-    var success = false;
-    
-    if(formData != null){
-        console.log(formData);
-        success = true;
-    }
-
-    return success;
-}
-
 function uploadFilesValidation(formData){
     var success = false;
     
@@ -340,6 +355,27 @@ function uploadFilesValidation(formData){
 
     return success;
 }
+
+
+/**==========================================================================================
+ * Configuration step - special instructions
+ ============================================================================================*/
+
+/**
+ * Align - special instructions - event next panel
+ */
+var specialInstructionsForm = document.querySelector("#specialInstructions");
+specialInstructionsForm.addEventListener("submit", function(event){event.preventDefault()});
+
+var specialInstructionsBtn = specialInstructionsForm.querySelector(".ap_step__btn_next");
+specialInstructionsBtn.addEventListener("click", function(event){
+    var formData = formSerialize(specialInstructionsForm, {hash: true});
+    
+    if(specialInstructionsValidation(formData)){
+        console.log("exit");
+    }
+});
+
 
 function specialInstructionsValidation(formData){
     var success = false;
