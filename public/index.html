@@ -470,22 +470,22 @@
                                 <table class="f_table ap_st__table">
                                     <tbody>
                                         <tr class="tb_row_required">
-                                            <td><strong>To be Treated<span class="ap_required"> *</span></strong></td>
+                                            <td><strong>Arch To be Treated<span class="ap_required"> *</span></strong></td>
                                             <td>
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_at_upper">
-                                                            <input type="radio" name="cp_arch_treated" id="cp_at_upper">Upper
+                                                            <input type="radio" name="ArchID" id="cp_at_upper" value="1">Upper
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_at_lower">
-                                                            <input type="radio" name="cp_arch_treated" id="cp_at_lower">Lower
+                                                            <input type="radio" name="ArchID" id="cp_at_lower" value="2">Lower
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_at_both">
-                                                            <input type="radio" name="cp_arch_treated" id="cp_at_both">Both
+                                                            <input type="radio" name="ArchID" id="cp_at_both" value="3">Both
                                                         </label>
                                                     </div>
                                                 </div>
@@ -497,12 +497,12 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ac_anterior">
-                                                            <input type="radio" name="cp_arch_correction" id="cp_ac_anterior">Anterior
+                                                            <input type="radio" name="ArchCollectionID" id="cp_ac_anterior" value="1">Anterior
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ac_full">
-                                                            <input type="radio" name="cp_arch_correction" id="cp_ac_full">Full
+                                                            <input type="radio" name="ArchCollectionID" id="cp_ac_full" value="2">Full
                                                         </label>
                                                     </div>
                                                 </div>
@@ -514,17 +514,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovj_maintain">
-                                                            <input type="radio" name="cp_overjet" id="cp_ovj_maintain">Maintain
+                                                            <input type="radio" name="OverjetID" id="cp_ovj_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovj_increase">
-                                                            <input type="radio" name="cp_overjet" id="cp_ovj_increase">Increase
+                                                            <input type="radio" name="OverjetID" id="cp_ovj_increase" value="2">Increase
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovj_decrease">
-                                                            <input type="radio" name="cp_overjet" id="cp_ovj_decrease">Decrease
+                                                            <input type="radio" name="OverjetID" id="cp_ovj_decrease" value="3">Decrease
                                                         </label>
                                                     </div>
                                                 </div>
@@ -536,17 +536,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovb_maintain">
-                                                            <input type="radio" name="cp_overbite" id="cp_ovb_maintain">Maintain
+                                                            <input type="radio" name="OverbiteID" id="cp_ovb_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovb_increase">
-                                                            <input type="radio" name="cp_overbite" id="cp_ovb_increase">Increase
+                                                            <input type="radio" name="OverbiteID" id="cp_ovb_increase" value="2">Increase
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovb_decrease">
-                                                            <input type="radio" name="cp_overbite" id="cp_ovb_decrease">Decrease
+                                                            <input type="radio" name="OverbiteID" id="cp_ovb_decrease" value="3">Decrease
                                                         </label>
                                                     </div>
                                                 </div>
@@ -558,12 +558,12 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_midline_maintain">
-                                                            <input type="radio" name="cp_midline" id="cp_midline_maintain">Maintain
+                                                            <input type="radio" name="MidlineID" id="cp_midline_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_midline_improve">
-                                                            <input type="radio" name="cp_midline" id="cp_midline_improve">Improve
+                                                            <input type="radio" name="MidlineID" id="cp_midline_improve" value="2">Improve
                                                         </label>
                                                     </div>
                                                 </div>
@@ -575,17 +575,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_cr_maintain">
-                                                            <input type="radio" name="cp_canine_relation" id="cp_cr_maintain">Maintain
+                                                            <input type="radio" name="CaninerelationID" id="cp_cr_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_cr_improve">
-                                                            <input type="radio" name="cp_canine_relation" id="cp_cr_improve">Improve
+                                                            <input type="radio" name="CaninerelationID" id="cp_cr_improve" value="2">Improve
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_cr_none">
-                                                            <input type="radio" name="cp_canine_relation" id="cp_cr_none">None
+                                                            <input type="radio" name="CaninerelationID" id="cp_cr_none" value="3">None
                                                         </label>
                                                     </div>
                                                 </div>
@@ -597,17 +597,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_mr_maintain">
-                                                            <input type="radio" name="cp_molar_relation" id="cp_mr_maintain">Maintain
+                                                            <input type="radio" name="molar-relation" id="cp_mr_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_mr_improve">
-                                                            <input type="radio" name="cp_molar_relation" id="cp_mr_improve">Improve
+                                                            <input type="radio" name="molar-relation" id="cp_mr_improve" value="2">Improve
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_mr_none">
-                                                            <input type="radio" name="cp_molar_relation" id="cp_mr_none">None
+                                                            <input type="radio" name="molar-relation" id="cp_mr_none" value="3">None
                                                         </label>
                                                     </div>
                                                 </div>
@@ -619,31 +619,31 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_closeallspaces">
-                                                            <input type="radio" name="cp_space_alterations" id="cp_sa_closeallspaces">
+                                                            <input type="radio" name="space_alteration" id="cp_sa_closeallspaces" value="close-all-apaces">
                                                             Close all spaces
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_createspacefor">
-                                                            <input type="radio" name="cp_space_alterations" id="cp_sa_createspacefor">
+                                                            <input type="radio" name="space_alteration" id="cp_sa_createspacefor" value="create-space-to">
                                                             Create space for
                                                         </label>
                                                         <div class="tb_as__input tb_as__input--small ap_hide">
-                                                            <input type="number" name="cp_sa_createspacefor_text" id="cp_space_alterations_text" class="ap_reset">
+                                                            <input type="number" name="create_space_to" id="cp_sa_createspacefor_num" class="ap_reset" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_leavespacedistalto">
-                                                            <input type="radio" name="cp_space_alterations" id="cp_sa_leavespacedistalto">
+                                                            <input type="radio" name="space_alteration" id="cp_sa_leavespacedistalto" value="leave-space-distal-to">
                                                             Leave space distal to
                                                         </label>
                                                         <div class="tb_as__input tb_as__input--small ap_hide">
-                                                            <input type="number" name="cp_sa_leavespacedistalto_text" id="cp_space_alterations_text" class="ap_reset">
+                                                            <input type="number" name="leave_space_distal_to" id="cp_sa_leavespacedistalto_num" class="ap_reset" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_none">
-                                                            <input type="radio" name="cp_space_alterations" id="cp_sa_none">None
+                                                            <input type="radio" name="space_alteration" id="cp_sa_none" value="___">None
                                                         </label>
                                                     </div>
                                                 </div>
@@ -655,56 +655,56 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sgp_ipr">
-                                                            <input type="radio" name="cp_space_gaining_pref" id="cp_sgp_ipr">IPR
+                                                            <input type="radio" name="SpaceGainingID___" id="cp_sgp_ipr" value="0">IPR
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sgp_extraction">
-                                                            <input type="radio" name="cp_space_gaining_pref" id="cp_sgp_extraction">Extraction
+                                                            <input type="radio" name="SpaceGainingID___" id="cp_sgp_extraction" value="1">Extraction
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sgp_expansion">
-                                                            <input type="radio" name="cp_space_gaining_pref" id="cp_sgp_expansion">Expansion
+                                                            <input type="radio" name="SpaceGainingID___" id="cp_sgp_expansion" value="2">Expansion
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sgp_none">
-                                                            <input type="radio" name="cp_space_gaining_pref" id="cp_sgp_none">None
+                                                            <input type="radio" name="SpaceGainingID___" id="cp_sgp_none" value="3">None
                                                         </label>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Upper<span class="ap_required"> *</span></strong></td>
+                                            <td><strong>Upper<span class="ap_text_danger ap_hide" id="cp_row_span_req_upper"> *</span></strong></td>
                                             <td>
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_upper_anterior">
-                                                            <input type="radio" name="cp_upper" id="cp_upper_anterior">Anterior
+                                                            <input type="radio" name="cp_upper---" id="cp_upper_anterior" value="0">Anterior
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_upper_posterior">
-                                                            <input type="radio" name="cp_upper" id="cp_upper_posterior">Posterior
+                                                            <input type="radio" name="cp_upper---" id="cp_upper_posterior" value="1">Posterior
                                                         </label>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Lower<span class="ap_required"> *</span></strong></td>
+                                            <td><strong>Lower<span class="ap_text_danger ap_hide" id="cp_row_span_req_lower"> *</span></strong></td>
                                             <td>
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_lower_anterior">
-                                                            <input type="radio" name="cp_lower" id="cp_lower_anterior">Anterior
+                                                            <input type="radio" name="cp_lower___" id="cp_lower_anterior" value="0">Anterior
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_lower_posterior">
-                                                            <input type="radio" name="cp_lower" id="cp_lower_posterior">Posterior
+                                                            <input type="radio" name="cp_lower___" id="cp_lower_posterior" value="1">Posterior
                                                         </label>
                                                     </div>
                                                 </div>
@@ -723,7 +723,7 @@
             </section>
 
             <section class="ap_step__panel" data-step-include="new-c">
-                <form action="#" id="selectTooh">
+                <form action="#" id="selectTooth">
                     <div class="ap_align_section ap_select-tooth">
                         <div class="ap_align_section__content">
                             <div class="st_impression_type">
@@ -731,8 +731,9 @@
                                     <h5>Impresion Type</h5>
                                 </div>
                                 <div class="st_impression_type__select ap_mt_2">
-                                    <span class="ap_label ap_label--small">Imprssion Type</span>
+                                    <span class="ap_label ap_label--small">Imprssion Type</span><span class="ap_text_danger"> *</span>
                                     <select name="st_impression_type" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display: none;">Select Imprssion Type</option>
                                         <option value="digital_scan">Digital Scans</option>
                                         <option value="physical_impressions">Physical Impressions</option>
                                     </select>
@@ -788,42 +789,42 @@
                                         <div class="st_rm_sc_teeth__title">Select Crown</div>
                                         <div class="st_rm_sc_teeth__content">
                                             <ul class="st_teeth_list">
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_8">
                                                         <input type="checkbox" name="st_sc_tooth_tl_8" id="st_sc_tooth_tl_8">8
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_7">
                                                         <input type="checkbox" name="st_sc_tooth_tl_7" id="st_sc_tooth_tl_7">7
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_6">
                                                         <input type="checkbox" name="st_sc_tooth_tl_6" id="st_sc_tooth_tl_6">6
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_5">
                                                         <input type="checkbox" name="st_sc_tooth_tl_5" id="st_sc_tooth_tl_5">5
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_4">
                                                         <input type="checkbox" name="st_sc_tooth_tl_4" id="st_sc_tooth_tl_4">4
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_3">
                                                         <input type="checkbox" name="st_sc_tooth_tl_3" id="st_sc_tooth_tl_3">3
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_2">
                                                         <input type="checkbox" name="st_sc_tooth_tl_2" id="st_sc_tooth_tl_2">2
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_1">
                                                         <input type="checkbox" name="st_sc_tooth_tl_1" id="st_sc_tooth_tl_1">1
                                                     </label>
@@ -1148,42 +1149,42 @@
                                         <ul class="st_teeth_list">
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_8">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_8" id="st_sc_tooth_tl_8">8
+                                                    <input type="checkbox" name="st_a_tooth_tl_8" id="st_a_tooth_tl_8">8
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_7">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_7" id="st_sc_tooth_tl_7">7
+                                                    <input type="checkbox" name="st_a_tooth_tl_7" id="st_a_tooth_tl_7">7
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_6">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_6" id="st_sc_tooth_tl_6">6
+                                                    <input type="checkbox" name="st_a_tooth_tl_6" id="st_a_tooth_tl_6">6
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_5">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_5" id="st_sc_tooth_tl_5">5
+                                                    <input type="checkbox" name="st_a_tooth_tl_5" id="st_a_tooth_tl_5">5
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_4">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_4" id="st_sc_tooth_tl_4">4
+                                                    <input type="checkbox" name="st_a_tooth_tl_4" id="st_a_tooth_tl_4">4
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_3">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_3" id="st_sc_tooth_tl_3">3
+                                                    <input type="checkbox" name="st_a_tooth_tl_3" id="st_a_tooth_tl_3">3
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_2">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_2" id="st_sc_tooth_tl_2">2
+                                                    <input type="checkbox" name="st_a_tooth_tl_2" id="st_a_tooth_tl_2">2
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_1">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_1" id="st_sc_tooth_tl_1">1
+                                                    <input type="checkbox" name="st_a_tooth_tl_1" id="st_a_tooth_tl_1">1
                                                 </label>
                                             </li>
                                         </ul>
@@ -1466,7 +1467,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="is_sc_stl-files ap_mt_5">
+                            <div class="is_sc_stl-files ap_mt_5" id="is_sc_stl_files" style="display: none;">
                                 <div class="is_sc_stlfiles__files">
                                     <div class="is_sc_title">STL Files</div>
                                     <div class="is_sc_stlfiles__content">
@@ -1481,7 +1482,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="is_sc_information">
+                            <div class="is_sc_information" id="is_sc_information">
                                 <div class="is_sc_information__note">
                                     <div class="is_sc_in__icon"><strong>NOTE</strong></div>
                                     <div class="is_sc_in_description">
