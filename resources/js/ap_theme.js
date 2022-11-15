@@ -281,7 +281,9 @@ casePreferencesBtn.addEventListener("click", function(event){
     }
 });
 
-
+/**
+ * Function for validation form case preferences
+ */
 function casePreferencesValidation(formData){
     var success = false;
     
@@ -293,14 +295,85 @@ function casePreferencesValidation(formData){
     return success;
 }
 
+
+/**
+ * Events to set lower and upper as required
+ */
+var cp_at_upper = document.querySelector("#cp_at_upper");
+var cp_at_lower = document.querySelector("#cp_at_lower");
+var cp_at_both = document.querySelector("#cp_at_both");
+var cp_sgp_ipr = document.querySelector("#cp_sgp_ipr");
+
+cp_at_upper.addEventListener("change", function(){ requiredLowerAndUperCP();});
+cp_at_lower.addEventListener("change", function(){ requiredLowerAndUperCP();});
+cp_at_both.addEventListener("change", function(){ requiredLowerAndUperCP();});
+
+document.querySelectorAll('#casePreferences input[name="SpaceGainingID___"]').forEach(element => {
+    element.addEventListener("change", function(){ requiredLowerAndUperCP();});
+});
+
+function requiredLowerAndUperCP(){
+    var cp_row_span_req_upper = document.querySelector("#cp_row_span_req_upper");
+    var cp_row_span_req_lower = document.querySelector("#cp_row_span_req_lower");
+
+    if(cp_sgp_ipr.checked){
+        if(cp_at_upper.checked){
+            cp_row_span_req_upper.classList.remove("ap_hide");
+            cp_row_span_req_lower.classList.add("ap_hide");
+        }else if(cp_at_lower.checked){
+            cp_row_span_req_upper.classList.add("ap_hide");
+            cp_row_span_req_lower.classList.remove("ap_hide");
+        }else if(cp_at_both.checked){
+            cp_row_span_req_upper.classList.remove("ap_hide");
+            cp_row_span_req_lower.classList.remove("ap_hide");
+        }
+    }else{
+        cp_row_span_req_upper.classList.add("ap_hide");
+        cp_row_span_req_lower.classList.add("ap_hide");
+    }
+}
+
+/**
+ * Events to set space number as required
+ */
+var cp_sa_createspacefor = document.querySelector("#cp_sa_createspacefor");
+var cp_sa_leavespacedistalto = document.querySelector("#cp_sa_leavespacedistalto");
+
+document.querySelectorAll('#casePreferences input[name="space_alteration"]').forEach(element => {
+    element.addEventListener("change", function(){ requiredSpaceCP();});
+});
+
+function requiredSpaceCP(){
+    var cp_sa_createspacefor_num = document.querySelector("#cp_sa_createspacefor_num");
+    var cp_sa_leavespacedistalto_num = document.querySelector("#cp_sa_leavespacedistalto_num");
+
+    if(cp_sa_createspacefor.checked){
+        cp_sa_createspacefor_num.disabled = false;
+        cp_sa_createspacefor_num.parentNode.classList.remove("ap_hide");
+        cp_sa_leavespacedistalto_num.disabled = true;
+        cp_sa_leavespacedistalto_num.parentNode.classList.add("ap_hide");
+
+    }else if(cp_sa_leavespacedistalto.checked){
+        cp_sa_leavespacedistalto_num.disabled = false;
+        cp_sa_leavespacedistalto_num.parentNode.classList.remove("ap_hide");
+        cp_sa_createspacefor_num.disabled = true;
+        cp_sa_createspacefor_num.parentNode.classList.add("ap_hide");
+    }else{
+        cp_sa_createspacefor_num.disabled = false;
+        cp_sa_createspacefor_num.parentNode.classList.add("ap_hide");
+        cp_sa_leavespacedistalto_num.disabled = false;
+        cp_sa_leavespacedistalto_num.parentNode.classList.add("ap_hide");
+    }
+}
+
 /**==========================================================================================
- * Configuration step - select tooh
+ * Configuration step - select tooth
  ============================================================================================*/
 
 /**
- * Align - select tooh - event next panel
+ * Align - select tooth - event next panel
  */
-var selectToohForm = document.querySelector("#selectTooh");
+var selectToohForm = document.querySelector("#selectTooth");
 selectToohForm.addEventListener("submit", function(event){event.preventDefault()});
 
 var selectToohBtn = selectToohForm.querySelector(".ap_step__btn_next");
@@ -312,7 +385,9 @@ selectToohBtn.addEventListener("click", function(event){
     }
 });
 
-
+/**
+ * Function for validation form select tooh
+ */
 function selectToohValidation(formData){
     var success = false;
     
@@ -323,6 +398,22 @@ function selectToohValidation(formData){
 
     return success;
 }
+
+/**
+ * Events to select tooh
+ */
+document.querySelectorAll('#selectTooth .ap_check_tooth input[type="checkbox"]').forEach(input => {
+    input.addEventListener("change", function(event){setToohSelected(event.target)});
+});
+
+function setToohSelected(input){
+    if(input.checked){
+        input.parentNode.parentNode.classList.add("checked");
+    }else{
+        input.parentNode.parentNode.classList.remove("checked");
+    }
+}
+
 
 
 /**==========================================================================================
@@ -344,7 +435,9 @@ uploadFilesBtn.addEventListener("click", function(event){
     }
 });
 
-
+/**
+ * Function for validation form upload files
+ */
 function uploadFilesValidation(formData){
     var success = false;
     
@@ -355,6 +448,21 @@ function uploadFilesValidation(formData){
 
     return success;
 }
+
+/**
+ * Event to show or hide STL Files
+ */
+var impressionTypeST = document.querySelector('#selectTooth select[name="st_impression_type"]');
+impressionTypeST.addEventListener("change", function(event){
+    if(impressionTypeST.value == "digital_scan"){
+        document.querySelector('#is_sc_stl_files').style.display = "none";
+        document.querySelector('#is_sc_information').style.display = "block";
+    }else{
+        document.querySelector('#is_sc_stl_files').style.display = "block";
+        document.querySelector('#is_sc_information').style.display = "none";
+    }
+});
+
 
 
 /**==========================================================================================
