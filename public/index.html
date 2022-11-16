@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <div class="ap_container" style="margin-bottom: 2rem;">
+    <div class="ap_container" id="ap_main_container" style="margin-bottom: 2rem;">
 
         <div class="ap_mt_3">
             <ul class="ap_steps_indicator ap_steps_3" data-steps="main-indicators">
@@ -222,42 +222,44 @@
                                     <div class="ap_label ap_label--small">Arch to be treated 
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="ro_d__arch" class="f_input-box--flat" style="margin-top: 5px;">
-                                        <option value="upper">Upper</option>
-                                        <option value="lower">Lower</option>
-                                        <option value="both_arches">Both Arches</option>
+                                    <select name="ro_d_arch" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display:none">Select Arch to be treated</option>
+                                        <option value="1">Upper</option>
+                                        <option value="2">Lower</option>
+                                        <option value="3">Both Arches</option>
                                     </select>
                                 </div>
                                 <div class="ro_details__select ap_mt_2">
                                     <div class="ap_label ap_label--small">Delivery date
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <input type="date" name="ro_d_delivery-date" id="ro_d__delivery-date"
+                                    <input type="date" name="ro_d_delivery_date" id="ro_d__delivery_date"
                                         class="f_input-box--flat">
                                 </div>
                                 <div class="ro_details__select ap_mt_2">
-                                    <div class="ap_label ap_label--small">Imprssion Type
+                                    <div class="ap_label ap_label--small">Impression Type
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="ro_d__impression-type" class="f_input-box--flat" style="margin-top: 5px;">
-                                        <option value="digital_scan">Digital Scans</option>
-                                        <option value="physical_impressions">Physical Impressions</option>
+                                    <select name="ro_d_impression_type" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display: none;">Select Impression Type</option>
+                                        <option value="D">Digital Scans</option>
+                                        <option value="P">Physical Impressions</option>
                                     </select>
                                 </div>
                                 <div class="ro_d__options-radio">
                                     <div class="ap_radio_button ro_d_or__radio">
                                         <label for="ro_d_or__upper">
-                                            <input type="radio" name="ro_d_or__upper" id="ro_d_or__upper">Upper
+                                            <input type="radio" name="ro_d_location" id="ro_d_or__upper">Upper
                                         </label>
                                     </div>
                                     <div class="ap_radio_button ro_d_or__radio">
                                         <label for="ro_d_or__lower">
-                                            <input type="radio" name="ro_d_or__radio" id="ro_d_or__lower">Lower
+                                            <input type="radio" name="ro_d_location" id="ro_d_or__lower">Lower
                                         </label>
                                     </div>
                                     <div class="ap_radio_button ro_d_or__radio">
                                         <label for="ro_d_or__both">
-                                            <input type="radio" name="ro_d_or__radio" id="ro_d_or__both">Upper & Lower
+                                            <input type="radio" name="ro_d_location" id="ro_d_or__both">Upper & Lower
                                         </label>
                                     </div>
                                 </div>
@@ -268,17 +270,17 @@
                                     <div class="ro_d__retainer-extent">
                                         <div class="ro_d_re__upper">
                                             Upper retainer from
-                                            <input type="text" name="ro_d_re_upper_from" id="ro_d_re_upper_form">
+                                            <input type="number" name="ro_d_re_upper_from" id="ro_d_re_upper_form">
                                             to
-                                            <input type="text" name="ro_d_re_upper_to" id="ro_d_re_upper_to">
+                                            <input type="number" name="ro_d_re_upper_to" id="ro_d_re_upper_to">
                                         </div>
                                     </div>
                                     <div class="ro_d__retainer-extent">
                                         <div class="ro_d_re__lower">
                                             Lower retainer from
-                                            <input type="text" name="ro_d_re_lower_from" id="ro_d_re_lower_form">
+                                            <input type="number" name="ro_d_re_lower_from" id="ro_d_re_lower_form">
                                             to
-                                            <input type="text" name="ro_d_re_lower_to" id="ro_d_re_lower_to">
+                                            <input type="number" name="ro_d_re_lower_to" id="ro_d_re_lower_to">
                                         </div>
                                     </div>
                                 </div>
@@ -324,35 +326,37 @@
                                     <div class="ap_label ap_label--small">Arch to be treated 
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="dmc_d__arch" class="f_input-box--flat" style="margin-top: 5px;">
-                                        <option value="upper">Upper</option>
-                                        <option value="lower">Lower</option>
-                                        <option value="both_arches">Both Arches</option>
+                                    <select name="dmc_d_arch" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display: none;">Select Arch to be treated </option>
+                                        <option value="1">Upper</option>
+                                        <option value="2">Lower</option>
+                                        <option value="3">Both Arches</option>
                                     </select>
                                 </div>
                                 <div class="dmc_details__select ap_mt_2">
-                                    <div class="ap_label ap_label--small">Imprssion Type
+                                    <div class="ap_label ap_label--small">Impression Type
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="dmc_d__impression-type" class="f_input-box--flat" style="margin-top: 5px;">
-                                        <option value="digital_scan">Digital Scans</option>
-                                        <option value="physical_impressions">Physical Impressions</option>
+                                    <select name="dmc_d_impression_type" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display: none;">Select Impression Type</option>
+                                        <option value="D">Digital Scans</option>
+                                        <option value="P">Physical Impressions</option>
                                     </select>
                                 </div>
                                 <div class="dmc_d__options-radio">
                                     <div class="ap_radio_button dmc_d_or__radio">
                                         <label for="dmc_d_or__upper">
-                                            <input type="radio" name="dmc_d_or__upper" id="dmc_d_or__upper">Upper
+                                            <input type="radio" name="dmc_d_or_upper" id="dmc_d_or__upper">Upper
                                         </label>
                                     </div>
                                     <div class="ap_radio_button dmc_d_or__radio">
                                         <label for="dmc_d_or__lower">
-                                            <input type="radio" name="dmc_d_or__radio" id="dmc_d_or__lower">Lower
+                                            <input type="radio" name="dmc_d_or_radio" id="dmc_d_or__lower">Lower
                                         </label>
                                     </div>
                                     <div class="ap_radio_button dmc_d_or__radio">
                                         <label for="dmc_d_or__both">
-                                            <input type="radio" name="dmc_d_or__radio" id="dmc_d_or__both">Upper & Lower
+                                            <input type="radio" name="dmc_d_or_radio" id="dmc_d_or__both">Upper & Lower
                                         </label>
                                     </div>
                                 </div>
@@ -395,22 +399,24 @@
                         <div class="ap_align_section__content">
                             <div class="dr_details">
                                 <div class="dr_details__select ap_mt_2">
-                                    <div class="ap_label ap_label--small">Arch to be treated 
+                                    <div class="ap_label ap_label--small">Arch to be treated
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="dr_d__arch" class="f_input-box--flat" style="margin-top: 5px;">
-                                        <option value="upper">Upper</option>
-                                        <option value="lower">Lower</option>
-                                        <option value="both_arches">Both Arches</option>
+                                    <select name="dr_d_arch" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display: none;">Select Arch to be treated</option>
+                                        <option value="1">Upper</option>
+                                        <option value="2">Lower</option>
+                                        <option value="3">Both Arches</option>
                                     </select>
                                 </div>
                                 <div class="dr_details__select ap_mt_2">
-                                    <div class="ap_label ap_label--small">Imprssion Type
+                                    <div class="ap_label ap_label--small">Impression Type
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="dr_d__impression-type" class="f_input-box--flat" style="margin-top: 5px;">
-                                        <option value="digital_scan">Digital Scans</option>
-                                        <option value="physical_impressions">Physical Impressions</option>
+                                    <select name="dr_d_impression_type" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display: none;">Select Impression Type</option>
+                                        <option value="D">Digital Scans</option>
+                                        <option value="P">Physical Impressions</option>
                                     </select>
                                 </div>
                                 <div class="dr_d__options-radio">
@@ -475,17 +481,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_at_upper">
-                                                            <input type="radio" name="ArchID" id="cp_at_upper" value="1">Upper
+                                                            <input type="radio" name="cp_arch_treated" id="cp_at_upper" value="1">Upper
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_at_lower">
-                                                            <input type="radio" name="ArchID" id="cp_at_lower" value="2">Lower
+                                                            <input type="radio" name="cp_arch_treated" id="cp_at_lower" value="2">Lower
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_at_both">
-                                                            <input type="radio" name="ArchID" id="cp_at_both" value="3">Both
+                                                            <input type="radio" name="cp_arch_treated" id="cp_at_both" value="3">Both
                                                         </label>
                                                     </div>
                                                 </div>
@@ -497,12 +503,12 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ac_anterior">
-                                                            <input type="radio" name="ArchCollectionID" id="cp_ac_anterior" value="1">Anterior
+                                                            <input type="radio" name="cp_arch_correction" id="cp_ac_anterior" value="1">Anterior
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ac_full">
-                                                            <input type="radio" name="ArchCollectionID" id="cp_ac_full" value="2">Full
+                                                            <input type="radio" name="cp_arch_correction" id="cp_ac_full" value="2">Full
                                                         </label>
                                                     </div>
                                                 </div>
@@ -514,17 +520,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovj_maintain">
-                                                            <input type="radio" name="OverjetID" id="cp_ovj_maintain" value="1">Maintain
+                                                            <input type="radio" name="cp_overject" id="cp_ovj_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovj_increase">
-                                                            <input type="radio" name="OverjetID" id="cp_ovj_increase" value="2">Increase
+                                                            <input type="radio" name="cp_overject" id="cp_ovj_increase" value="2">Increase
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovj_decrease">
-                                                            <input type="radio" name="OverjetID" id="cp_ovj_decrease" value="3">Decrease
+                                                            <input type="radio" name="cp_overject" id="cp_ovj_decrease" value="3">Decrease
                                                         </label>
                                                     </div>
                                                 </div>
@@ -536,17 +542,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovb_maintain">
-                                                            <input type="radio" name="OverbiteID" id="cp_ovb_maintain" value="1">Maintain
+                                                            <input type="radio" name="cp_overbite" id="cp_ovb_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovb_increase">
-                                                            <input type="radio" name="OverbiteID" id="cp_ovb_increase" value="2">Increase
+                                                            <input type="radio" name="cp_overbite" id="cp_ovb_increase" value="2">Increase
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovb_decrease">
-                                                            <input type="radio" name="OverbiteID" id="cp_ovb_decrease" value="3">Decrease
+                                                            <input type="radio" name="cp_overbite" id="cp_ovb_decrease" value="3">Decrease
                                                         </label>
                                                     </div>
                                                 </div>
@@ -558,12 +564,12 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_midline_maintain">
-                                                            <input type="radio" name="MidlineID" id="cp_midline_maintain" value="1">Maintain
+                                                            <input type="radio" name="cp_medline" id="cp_midline_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_midline_improve">
-                                                            <input type="radio" name="MidlineID" id="cp_midline_improve" value="2">Improve
+                                                            <input type="radio" name="cp_medline" id="cp_midline_improve" value="2">Improve
                                                         </label>
                                                     </div>
                                                 </div>
@@ -575,17 +581,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_cr_maintain">
-                                                            <input type="radio" name="CaninerelationID" id="cp_cr_maintain" value="1">Maintain
+                                                            <input type="radio" name="cp_canine_relation" id="cp_cr_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_cr_improve">
-                                                            <input type="radio" name="CaninerelationID" id="cp_cr_improve" value="2">Improve
+                                                            <input type="radio" name="cp_canine_relation" id="cp_cr_improve" value="2">Improve
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_cr_none">
-                                                            <input type="radio" name="CaninerelationID" id="cp_cr_none" value="3">None
+                                                            <input type="radio" name="cp_canine_relation" id="cp_cr_none" value="3">None
                                                         </label>
                                                     </div>
                                                 </div>
@@ -597,17 +603,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_mr_maintain">
-                                                            <input type="radio" name="molar-relation" id="cp_mr_maintain" value="1">Maintain
+                                                            <input type="radio" name="cp_molar_relation" id="cp_mr_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_mr_improve">
-                                                            <input type="radio" name="molar-relation" id="cp_mr_improve" value="2">Improve
+                                                            <input type="radio" name="cp_molar_relation" id="cp_mr_improve" value="2">Improve
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_mr_none">
-                                                            <input type="radio" name="molar-relation" id="cp_mr_none" value="3">None
+                                                            <input type="radio" name="cp_molar_relation" id="cp_mr_none" value="3">None
                                                         </label>
                                                     </div>
                                                 </div>
@@ -619,31 +625,31 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_closeallspaces">
-                                                            <input type="radio" name="space_alteration" id="cp_sa_closeallspaces" value="close-all-apaces">
+                                                            <input type="radio" name="cp_space_alteration" id="cp_sa_closeallspaces" value="close-all-apaces">
                                                             Close all spaces
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_createspacefor">
-                                                            <input type="radio" name="space_alteration" id="cp_sa_createspacefor" value="create-space-to">
+                                                            <input type="radio" name="cp_space_alteration" id="cp_sa_createspacefor" value="create-space-to">
                                                             Create space for
                                                         </label>
                                                         <div class="tb_as__input tb_as__input--small ap_hide">
-                                                            <input type="number" name="create_space_to" id="cp_sa_createspacefor_num" class="ap_reset" disabled>
+                                                            <input type="number" name="cp_create_space_to" id="cp_sa_createspacefor_num" class="ap_reset" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_leavespacedistalto">
-                                                            <input type="radio" name="space_alteration" id="cp_sa_leavespacedistalto" value="leave-space-distal-to">
+                                                            <input type="radio" name="cp_space_alteration" id="cp_sa_leavespacedistalto" value="leave-space-distal-to">
                                                             Leave space distal to
                                                         </label>
                                                         <div class="tb_as__input tb_as__input--small ap_hide">
-                                                            <input type="number" name="leave_space_distal_to" id="cp_sa_leavespacedistalto_num" class="ap_reset" disabled>
+                                                            <input type="number" name="cp_leave_space_distal_to" id="cp_sa_leavespacedistalto_num" class="ap_reset" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_none">
-                                                            <input type="radio" name="space_alteration" id="cp_sa_none" value="___">None
+                                                            <input type="radio" name="cp_space_alteration" id="cp_sa_none" value="___">None
                                                         </label>
                                                     </div>
                                                 </div>
@@ -655,22 +661,22 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sgp_ipr">
-                                                            <input type="radio" name="SpaceGainingID___" id="cp_sgp_ipr" value="0">IPR
+                                                            <input type="radio" name="cp_sgp" id="cp_sgp_ipr" value="0">IPR
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sgp_extraction">
-                                                            <input type="radio" name="SpaceGainingID___" id="cp_sgp_extraction" value="1">Extraction
+                                                            <input type="radio" name="cp_sgp" id="cp_sgp_extraction" value="1">Extraction
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sgp_expansion">
-                                                            <input type="radio" name="SpaceGainingID___" id="cp_sgp_expansion" value="2">Expansion
+                                                            <input type="radio" name="cp_sgp" id="cp_sgp_expansion" value="2">Expansion
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sgp_none">
-                                                            <input type="radio" name="SpaceGainingID___" id="cp_sgp_none" value="3">None
+                                                            <input type="radio" name="cp_sgp" id="cp_sgp_none" value="3">None
                                                         </label>
                                                     </div>
                                                 </div>
@@ -682,12 +688,12 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_upper_anterior">
-                                                            <input type="radio" name="cp_upper---" id="cp_upper_anterior" value="0">Anterior
+                                                            <input type="radio" name="cp_location_upper" id="cp_upper_anterior" value="0">Anterior
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_upper_posterior">
-                                                            <input type="radio" name="cp_upper---" id="cp_upper_posterior" value="1">Posterior
+                                                            <input type="radio" name="cp_location_upper" id="cp_upper_posterior" value="1">Posterior
                                                         </label>
                                                     </div>
                                                 </div>
@@ -699,12 +705,12 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_lower_anterior">
-                                                            <input type="radio" name="cp_lower___" id="cp_lower_anterior" value="0">Anterior
+                                                            <input type="radio" name="cp_location_lower" id="cp_lower_anterior" value="0">Anterior
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_lower_posterior">
-                                                            <input type="radio" name="cp_lower___" id="cp_lower_posterior" value="1">Posterior
+                                                            <input type="radio" name="cp_location_lower" id="cp_lower_posterior" value="1">Posterior
                                                         </label>
                                                     </div>
                                                 </div>
@@ -774,7 +780,7 @@
                                     <div class="st_restriction_move__options_radio">
                                         <div class="ap_radio_button">
                                             <label for="st_rm_rb_none_mat">
-                                                <input type="radio" name="st_rm_type" id="st_rm_rb_none_mat">
+                                                <input type="radio" name="st_rm_type" id="st_rm_rb_none_mat" checked>
                                                 None (move all teeth)
                                             </label>
                                         </div>
@@ -1336,21 +1342,21 @@
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
-                                                <input type="radio" name="is_sc_photos_options" />Upload Photos Now
+                                                <input type="radio" name="is_photos_options" value="now" checked/>Upload Photos Now
                                             </label>
                                         </div>
                                     </div>
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
-                                                <input type="radio" name="is_sc_photos_options" />Upload Photos Later
+                                                <input type="radio" name="is_photos_options" value="later"/>Upload Photos Later
                                             </label>
                                         </div>
                                     </div>
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
-                                                <input type="radio" name="is_sc_photos_options" />Consent (proceed case without photos)
+                                                <input type="radio" name="is_photos_options" value="witout-photos" />Consent (proceed case without photos)
                                             </label>
                                         </div>
                                     </div>
@@ -1361,31 +1367,31 @@
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Left occlusion</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_io_left_occlusion"></div>
                                             </div>
                                         </div>
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Front occlusion</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_io_front_occlusion"></div>
                                             </div>
                                         </div>
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Right occlusion</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_io_right_occlusion"></div>
                                             </div>
                                         </div>
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Maxillary occlusal</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_io_maxillary_occlusal"></div>
                                             </div>
                                         </div>
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Mandibular occlusal</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_io_madibular_occlusal"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -1396,19 +1402,19 @@
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Profile</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_eo_profile"></div>
                                             </div>
                                         </div>
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Frontal</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_eo_frontal"></div>
                                             </div>
                                         </div>
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Frontal dynamic(smile)</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_eo_frontal_dynamic"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -1419,21 +1425,21 @@
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
-                                                <input type="radio" name="is_sc_photos_options" />Upload Photos Now
+                                                <input type="radio" name="is_radiographs_options" value="now" checked/>Upload Radiographs Now
                                             </label>
                                         </div>
                                     </div>
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
-                                                <input type="radio" name="is_sc_photos_options" />Upload Photos Later
+                                                <input type="radio" name="is_radiographs_options" value="later"/>Upload Radiographs Later
                                             </label>
                                         </div>
                                     </div>
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
-                                                <input type="radio" name="is_sc_photos_options" />Consent (proceed case without photos)
+                                                <input type="radio" name="is_radiographs_options" value="without-radiographs"/>Consent (proceed case without radiographs)
                                             </label>
                                         </div>
                                     </div>
@@ -1445,13 +1451,13 @@
                                             <div class="ap_align_section__item">
                                                 <div class="is_sc_image__card">
                                                     <div class="is_sc_image_card__title">OPG<span>*</span></div>
-                                                    <div class="is_sc_image_card__content"></div>
+                                                    <div class="is_sc_image_card__content dropzone" id="uf_radiographs_opg"></div>
                                                 </div>
                                             </div>
                                             <div class="ap_align_section__item">
                                                 <div class="is_sc_image__card">
                                                     <div class="is_sc_image_card__title">Lateral Cephalogram</div>
-                                                    <div class="is_sc_image_card__content"></div>
+                                                    <div class="is_sc_image_card__content dropzone" id="uf_radiographs_lateral_ceph"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1461,7 +1467,7 @@
                                                     Upload Any other records (CBCT,etc)
                                                     <small>(Max. 10 files are allowed to Upload)</small>
                                                 </div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_radiograps_other_records"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -1476,7 +1482,7 @@
                                                 <div class="is_sc_image_card__title">
                                                     <small>(Max. 10 files are allowed to Upload)</small>
                                                 </div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_stl_files"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -1606,6 +1612,51 @@
             btnShow: "btnISCaseReference",
             modal: "modalISCaseReference"
         });
+
+
+        Dropzone.autoDiscover = false;
+        window.onload = function () {
+            
+            function ap_dropzone(idDropzone, _maxFiles = 1){
+                var oDropzone = new Dropzone(idDropzone, {
+                    url: "/",
+                    autoQueue: false,
+                    addRemoveLinks: true,
+                    maxFiles: _maxFiles,
+                    // clickable: "idDropzone",
+                    init: function () {
+                        this.on("maxfilesexceeded", function (file) {
+                            this.removeAllFiles();
+                            this.addFile(file);
+                        });
+                    }
+                });
+                oDropzone.on("addedfile", file => {
+                    console.log(file.name);
+                });
+                oDropzone.on("maxfilesexceeded", file => {
+                    console.log(file);
+                });
+
+                return oDropzone;
+            }
+
+            var oD_f_io_left_occlusion = ap_dropzone("#uf_io_left_occlusion");
+            var oD_uf_io_front_occlusion = ap_dropzone("#uf_io_front_occlusion");
+            var oD_uf_io_right_occlusion = ap_dropzone("#uf_io_right_occlusion");
+            var oD_uf_io_maxillary_occlusal = ap_dropzone("#uf_io_maxillary_occlusal");
+            var oD_uf_io_madibular_occlusal = ap_dropzone("#uf_io_madibular_occlusal");
+
+            var oD_uf_eo_profile = ap_dropzone("#uf_eo_profile");
+            var oD_uf_eo_frontal = ap_dropzone("#uf_eo_frontal");
+            var oD_uf_eo_frontal_dynamic = ap_dropzone("#uf_eo_frontal_dynamic");
+
+            var oD_uf_radiographs_opg = ap_dropzone("#uf_radiographs_opg");
+            var oD_uf_radiographs_lateral_ceph = ap_dropzone("#uf_radiographs_lateral_ceph");
+            var oD_uf_radiograps_other_records = ap_dropzone("#uf_radiograps_other_records");
+
+            var oD_uf_stl_files = ap_dropzone("#uf_stl_files");
+        }
         
     </script>
 </body>

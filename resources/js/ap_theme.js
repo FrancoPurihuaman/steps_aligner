@@ -6,7 +6,7 @@ import f_modal from "./franco/components/modal";
 import f_alert from "./franco/components/alert";
 import MultistepsForm from "./libraries/multistepsForm";
 import formSerialize from "./libraries/formSerialize";
-import { createCase, caseDetails, correctRequestName } from "./requestPayload";
+import { createCase, caseDetails, correctRequestName } from "./requestStructure";
 
 /**
  * Add modal to window
@@ -81,7 +81,7 @@ function renderStepsAgain(stepsToRender){
     );
 }
 
-renderStepsAgain("mid-co");
+renderStepsAgain("ret-only");
 
 
 /**==========================================================================================
@@ -99,6 +99,8 @@ caseTypeBtn.addEventListener("click", function(event){
     var formData = formSerialize(caseTypeForm, {hash: true});
 
     if(caseTypeValidation(formData)){
+        createCase.casetype = formData.casetype;
+
         switch(formData.casetype){
             case "1":
                 stepsCaseTypeOptions.nextPanel(event);
@@ -117,8 +119,14 @@ function caseTypeValidation(formData){
     var success = false;
 
     if(formData.casetype != null){
-        console.log(formData);
-        success = true;
+        switch(formData.casetype){
+            case "1":
+            case "2":
+                success = true;
+                break;
+            default:
+                success = false;
+        }
     }
 
     return success;
@@ -139,6 +147,8 @@ planTypeBtn.addEventListener("click", function(event){
     var formData = formSerialize(planTypeForm, {hash: true});
 
     if(planTypeValidation(formData)){
+        createCase.plantype = formData.plantype;console.log(createCase);
+
         switch(formData.plantype){
             case "1":
                 renderStepsAgain("new-c");
@@ -158,8 +168,15 @@ function planTypeValidation(formData){
     var success = false;
     
     if(formData.plantype != null){
-        console.log(formData);
-        success = true;
+        switch(formData.plantype){
+            case "1":
+            case "2":
+            case "3":
+                success = true;
+                break;
+            default:
+                success = false;
+        }
     }
 
     return success;
@@ -187,11 +204,31 @@ retainerOnlyBtn.addEventListener("click", function(event){
 
 
 function retainerOnlyValidation(formData){
-    var success = false;
+    var success = true; console.log(formData);
     
     if(formData != null){
-        console.log(formData);
-        success = true;
+        if(formData.ro_d_arch == -1){
+            success = false;
+            f_alert.generate({type: "danger", message: "Arch to be treated is required!"});
+        }if(success && !(formData.ro_d_delivery_date)){
+            success = false;
+            f_alert.generate({type: "danger", message: "Delivery date is required!"});
+        }if(success && formData.ro_d_impression_type == -1){
+            success = false;
+            f_alert.generate({type: "danger", message: "Impression Type is required!"});
+        }if(success && !formData.ro_d_re_upper_from){
+            success = false;
+            f_alert.generate({type: "danger", message: "Retainer extent is required!"});
+        }if(success && !formData.ro_d_re_upper_to){
+            success = false;
+            f_alert.generate({type: "danger", message: "Retainer extent is required!"});
+        }if(success && !formData.ro_d_re_lower_from){
+            success = false;
+            f_alert.generate({type: "danger", message: "Retainer extent is required!"});
+        }if(success && !formData.ro_d_re_lower_to){
+            success = false;
+            f_alert.generate({type: "danger", message: "Retainer extent is required!"});
+        }
     }
 
     return success;
@@ -219,11 +256,16 @@ midcourseCorrectionBtn.addEventListener("click", function(event){
 
 
 function midcourseCorrectionValidation(formData){
-    var success = false;
+    var success = true;
     
     if(formData != null){
-        console.log(formData);
-        success = true;
+        if(formData.dmc_d_arch == -1){
+            success = false;
+            f_alert.generate({type: "danger", message: "Arch to be treated is required!"});
+        }if(success && formData.dmc_d_impression_type == -1){
+            success = false;
+            f_alert.generate({type: "danger", message: "Imprssion Type is required!"});
+        }
     }
 
     return success;
@@ -251,11 +293,16 @@ refinementsBtn.addEventListener("click", function(event){
 
 
 function refinementsValidation(formData){
-    var success = false;
+    var success = true;
     
     if(formData != null){
-        console.log(formData);
-        success = true;
+        if(formData.dr_d_arch == -1){
+            success = false;
+            f_alert.generate({type: "danger", message: "Arch to be treated is required!"});
+        }if(success && formData.dr_d_impression_type == -1){
+            success = false;
+            f_alert.generate({type: "danger", message: "Imprssion Type is required!"});
+        }
     }
 
     return success;
@@ -284,12 +331,41 @@ casePreferencesBtn.addEventListener("click", function(event){
 /**
  * Function for validation form case preferences
  */
-function casePreferencesValidation(formData){
-    var success = false;
+function casePreferencesValidation(formData){console.log(formData);
+    var success = true;
     
     if(formData != null){
-        console.log(formData);
-        success = true;
+        if(!(formData.cp_arch_treated)){
+            success = false;
+            f_alert.generate({type: "danger", message: "Arch To be Treated is required!"});
+        }if(success && !(formData.cp_arch_correction)){
+            success = false;
+            f_alert.generate({type: "danger", message: "Arch Correction is required!"});
+        }if(success && !(formData.cp_overject)){
+            success = false;
+            f_alert.generate({type: "danger", message: "Overject is required!"});
+        }if(success && !(formData.cp_overbite)){
+            success = false;
+            f_alert.generate({type: "danger", message: "Overbite is required!"});
+        }if(success && !(formData.cp_medline)){
+            success = false;
+            f_alert.generate({type: "danger", message: "Medline is required!"});
+        }if(success && (formData.cp_space_alteration == "create-space-to" && !formData.cp_create_space_to)){
+            success = false;
+            f_alert.generate({type: "danger", message: "Pleace Provide Create space for"});
+        }if(success && (formData.cp_space_alteration == "leave-space-distal-to" && !formData.cp_leave_space_distal_to)){
+            success = false;
+            f_alert.generate({type: "danger", message: "Pleace Provide Leave space distal to"});
+        }if(success && (formData.cp_sgp == 0 && formData.cp_arch_treated == 1 && !formData.cp_location_upper)){
+            success = false;
+            f_alert.generate({type: "danger", message: "Please Select Upper Values"});
+        }if(success && (formData.cp_sgp == 0 && formData.cp_arch_treated == 2 && !formData.cp_location_lower)){
+            success = false;
+            f_alert.generate({type: "danger", message: "Please Select Lower Values"});
+        }if(success && (formData.cp_sgp == 0  && formData.cp_arch_treated == 3 && (!formData.cp_location_upper || !formData.cp_location_lower))){
+            success = false;
+            f_alert.generate({type: "danger", message: "Please select values for both Upper and Lower"});
+        }
     }
 
     return success;
@@ -308,7 +384,7 @@ cp_at_upper.addEventListener("change", function(){ requiredLowerAndUperCP();});
 cp_at_lower.addEventListener("change", function(){ requiredLowerAndUperCP();});
 cp_at_both.addEventListener("change", function(){ requiredLowerAndUperCP();});
 
-document.querySelectorAll('#casePreferences input[name="SpaceGainingID___"]').forEach(element => {
+document.querySelectorAll('#casePreferences input[name="cp_sgp"]').forEach(element => {
     element.addEventListener("change", function(){ requiredLowerAndUperCP();});
 });
 
@@ -339,7 +415,7 @@ function requiredLowerAndUperCP(){
 var cp_sa_createspacefor = document.querySelector("#cp_sa_createspacefor");
 var cp_sa_leavespacedistalto = document.querySelector("#cp_sa_leavespacedistalto");
 
-document.querySelectorAll('#casePreferences input[name="space_alteration"]').forEach(element => {
+document.querySelectorAll('#casePreferences input[name="cp_space_alteration"]').forEach(element => {
     element.addEventListener("change", function(){ requiredSpaceCP();});
 });
 
@@ -366,6 +442,7 @@ function requiredSpaceCP(){
     }
 }
 
+
 /**==========================================================================================
  * Configuration step - select tooth
  ============================================================================================*/
@@ -386,21 +463,23 @@ selectToohBtn.addEventListener("click", function(event){
 });
 
 /**
- * Function for validation form select tooh
+ * Function for validation form select tooth
  */
 function selectToohValidation(formData){
-    var success = false;
+    var success = true;
     
     if(formData != null){
-        console.log(formData);
-        success = true;
+        if(formData.st_impression_type == -1){
+            success = false;
+            f_alert.generate({type: "danger", message: "Imprssion Type is required!"});
+        }
     }
 
     return success;
 }
 
 /**
- * Events to select tooh
+ * Events to select tooth
  */
 document.querySelectorAll('#selectTooth .ap_check_tooth input[type="checkbox"]').forEach(input => {
     input.addEventListener("change", function(event){setToohSelected(event.target)});
@@ -413,6 +492,24 @@ function setToohSelected(input){
         input.parentNode.parentNode.classList.remove("checked");
     }
 }
+
+/**
+ * Event to select teeth all
+ */
+
+document.querySelector("#st_a_select_all").addEventListener("change", function(event){
+    if(event.target.checked){
+        document.querySelectorAll('#selectTooth .st_attachment .ap_check_tooth input[type="checkbox"]').forEach(input => {
+            input.checked = true;
+            input.parentNode.parentNode.classList.add("checked");
+        });
+    }else{
+        document.querySelectorAll('#selectTooth .st_attachment .ap_check_tooth input[type="checkbox"]').forEach(input => {
+            input.checked = false;
+            input.parentNode.parentNode.classList.remove("checked");
+        });
+    }
+});
 
 
 

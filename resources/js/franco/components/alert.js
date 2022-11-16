@@ -67,7 +67,7 @@ f_alert.generate = ({
     if(autoremove === true){
         setTimeout(function(){
         	if(alertContainer.contains(alert)){alertContainer.removeChild(alert)};
-        },5000);
+        },3000);
     }
 
 	// Agregar alerta al contenedor de alertas
@@ -130,7 +130,7 @@ f_alert.convert = ({
 	    if(autoremove === true){
 	        setTimeout(function(){
 				if(alertContainer.contains(alertNew)){alertContainer.removeChild(alertNew);}
-			},8000);
+			},5000);
 	    }
 
 		// Agregar alerta al contenedor de alertas
