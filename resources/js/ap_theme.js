@@ -331,7 +331,7 @@ casePreferencesBtn.addEventListener("click", function(event){
 /**
  * Function for validation form case preferences
  */
-function casePreferencesValidation(formData){console.log(formData);
+function casePreferencesValidation(formData){
     var success = true;
     
     if(formData != null){
@@ -442,7 +442,6 @@ function requiredSpaceCP(){
     }
 }
 
-
 /**==========================================================================================
  * Configuration step - select tooth
  ============================================================================================*/
@@ -496,7 +495,6 @@ function setToohSelected(input){
 /**
  * Event to select teeth all
  */
-
 document.querySelector("#st_a_select_all").addEventListener("change", function(event){
     if(event.target.checked){
         document.querySelectorAll('#selectTooth .st_attachment .ap_check_tooth input[type="checkbox"]').forEach(input => {
@@ -510,7 +508,6 @@ document.querySelector("#st_a_select_all").addEventListener("change", function(e
         });
     }
 });
-
 
 
 /**==========================================================================================
