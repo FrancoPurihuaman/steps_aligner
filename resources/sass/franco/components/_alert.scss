@@ -11,8 +11,9 @@
 .f_alert-container{
     width: 95%;
     max-width: 25rem;
-    position: absolute;
+    position: fixed;
     right: 5px;
+    z-index: 50;
 }
 
 .f_alert{

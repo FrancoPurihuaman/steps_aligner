@@ -22,6 +22,20 @@ import { createCase, caseDetails, correctRequestName } from "./requestStructure"
     }
 })(window);
 
+/**
+ * Add alert to window
+ *
+ * @param {*}
+ */
+ (function (window) {
+    const _init = (params) => {
+        f_alert.generate(params);
+    }
+    window.f_alert = {
+        init: _init
+    }
+})(window);
+
 
 /**==========================================================================================
  * Init multisteps

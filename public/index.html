@@ -120,7 +120,7 @@
                                             <input class="ap_as_cs__radio" id="ap_pt_new_case" type="radio" name="plantype" value="1" />
                                             <label for="ap_pt_new_case" class="ap_as_cs__content">
                                                 <div class="ap_as_cs__image">
-                                                    <img src="./img/dental.jpg"/>
+                                                    <img src="./img/new-case.jpg"/>
                                                 </div>
                                                 <div class="ap_as_cs__header">New Case</div>
                                             </label>
@@ -148,7 +148,7 @@
                                             </div>
                                             <label for="ap_ct_refinements" class="ap_as_cs__content">
                                                 <div class="ap_as_cs__image">
-                                                    <img src="./img/dental.jpg"/>
+                                                    <img src="./img/refinements.jpg"/>
                                                 </div>
                                                 <div class="ap_as_cs__header">Refinements</div>
                                             </label>
@@ -1623,19 +1623,21 @@
                     autoQueue: false,
                     addRemoveLinks: true,
                     maxFiles: _maxFiles,
-                    // clickable: "idDropzone",
+                    clickable: true,
+                    acceptedFiles: "image/png,image/jpeg",
                     init: function () {
-                        this.on("maxfilesexceeded", function (file) {
-                            this.removeAllFiles();
-                            this.addFile(file);
-                        });
+                        if(_maxFiles == 1){
+                            this.on("maxfilesexceeded", function (file) {
+                                this.removeAllFiles();
+                                this.addFile(file);
+                            });
+                        }else{
+                            this.on("maxfilesexceeded", function (file) {
+                                this.removeFile(file);
+                                f_alert.init({type: "danger", message: "maximum limit reached!"});
+                            });
+                        }
                     }
-                });
-                oDropzone.on("addedfile", file => {
-                    console.log(file.name);
-                });
-                oDropzone.on("maxfilesexceeded", file => {
-                    console.log(file);
                 });
 
                 return oDropzone;
@@ -1655,7 +1657,7 @@
             var oD_uf_radiographs_lateral_ceph = ap_dropzone("#uf_radiographs_lateral_ceph");
             var oD_uf_radiograps_other_records = ap_dropzone("#uf_radiograps_other_records");
 
-            var oD_uf_stl_files = ap_dropzone("#uf_stl_files");
+            var oD_uf_stl_files = ap_dropzone("#uf_stl_files", 10);
         }
         
     </script>
