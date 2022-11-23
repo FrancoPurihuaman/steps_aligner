@@ -1338,7 +1338,7 @@
                     <div class="ap_align_section ap_image-selection">
                         <div class="ap_align_section__content">
                             <div class="is_sc_photos">
-                                <div class="is_sc_photos__options">
+                                <div class="is_sc_photos__options" id="is_sc_photos_options">
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
@@ -1362,7 +1362,9 @@
                                     </div>
                                 </div>
                                 <div class="is_sc_photos__intra-oral">
-                                    <div class="is_sc_title">Intra Oral<span>*</span></div>
+                                    <div class="is_sc_title" id="is_sc_io_title">Intra Oral
+                                        <span class="ap_required ap_text_danger">*</span>
+                                    </div>
                                     <div class="is_sc_image__grid">
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
@@ -1397,7 +1399,9 @@
                                     </div>
                                 </div>
                                 <div class="is_sc_photos__extra-oral">
-                                    <div class="is_sc_title">Extra Oral<span>*</span></div>
+                                    <div class="is_sc_title" id="is_sc_eo_title">Extra Oral
+                                        <span class="ap_required ap_text_danger">*</span>
+                                    </div>
                                     <div class="is_sc_image__grid">
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
@@ -1421,7 +1425,7 @@
                                 </div>
                             </div>
                             <div class="is_sc_radiographs ap_mt_5">
-                                <div class="is_sc_radiographs__options">
+                                <div class="is_sc_radiographs__options" id="is_sc_radiographs">
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
@@ -1445,12 +1449,14 @@
                                     </div>
                                 </div>
                                 <div class="is_sc_radiographs__radiograph">
-                                    <div class="is_sc_title">Radiographs<span>*</span></div>
+                                    <div class="is_sc_title">Radiographs</div>
                                     <div class="is_sc_radiographs__content">
                                         <div class="is_sc_image__grid">
                                             <div class="ap_align_section__item">
                                                 <div class="is_sc_image__card">
-                                                    <div class="is_sc_image_card__title">OPG<span>*</span></div>
+                                                    <div class="is_sc_image_card__title" id="is_sc_radiographs_opg">OPG
+                                                        <span class="ap_required ap_text_danger">*</span>
+                                                    </div>
                                                     <div class="is_sc_image_card__content dropzone" id="uf_radiographs_opg"></div>
                                                 </div>
                                             </div>

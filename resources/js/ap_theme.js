@@ -572,6 +572,32 @@ impressionTypeST.addEventListener("change", function(event){
 });
 
 
+/**
+ * Event show or hide required fiels
+ */
+document.querySelectorAll("#is_sc_photos_options input[name='is_photos_options']").forEach(function(input){
+    input.addEventListener("change", function(event){
+        if(event.target.value == "now"){
+            document.querySelector("#is_sc_io_title .ap_required").classList.remove("ap_hide");
+            document.querySelector("#is_sc_eo_title .ap_required").classList.remove("ap_hide");
+        }else{
+            document.querySelector("#is_sc_io_title .ap_required").classList.add("ap_hide");
+            document.querySelector("#is_sc_eo_title .ap_required").classList.add("ap_hide");
+        }
+    });
+});
+
+document.querySelectorAll("#is_sc_radiographs input[name='is_radiographs_options']").forEach(function(input){
+    input.addEventListener("change", function(event){
+        if(event.target.value == "now"){
+            document.querySelector("#is_sc_radiographs_opg .ap_required").classList.remove("ap_hide");
+        }else{
+            document.querySelector("#is_sc_radiographs_opg .ap_required").classList.add("ap_hide");
+        }
+    });
+});
+
+
 
 /**==========================================================================================
  * Configuration step - special instructions
