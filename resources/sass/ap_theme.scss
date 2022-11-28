@@ -8,6 +8,9 @@
 //@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 
+// vars
+$ap_color_theme : #1878b9;
+
 /* class_helpers */
 
 .ap_container {
@@ -161,7 +164,7 @@ input.ap_reset, textarea.ap_reset, select.ap_reset {
     display: flex;
     justify-content: flex-end;
     padding: .7rem 1rem;
-    background-color: #1878b9;
+    background-color: $ap_color_theme;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
   
@@ -575,11 +578,12 @@ input.ap_reset, textarea.ap_reset, select.ap_reset {
 
         .is_sc_in__icon {
             width: 80px;
-            width: 80px;
+            height: 80px;
             line-height: 80px;
             text-align: center;
             border: 2px solid red;
             border-radius: 50%;
+            flex-shrink: 0;
         }
 
         .is_sc_in_description {
@@ -670,6 +674,7 @@ input.ap_reset, textarea.ap_reset, select.ap_reset {
         & > div:nth-child(1) {
             width: 300px;
             padding-right: 1.5rem;
+            flex-shrink: 0;
         }
         
         & > div:nth-child(2) {
@@ -686,3 +691,57 @@ input.ap_reset, textarea.ap_reset, select.ap_reset {
     }
 }
 
+
+/* Aligner Resume */
+
+.aligner-resume {
+    .ar_title {
+        padding: .4rem;
+        background-color: $ap_color_theme;
+        color: #fff;
+        font-weight: 600;
+        border-radius: 2px;
+    }
+
+    .ar_content {
+        padding: 1rem .5rem;
+        display: flex;
+        flex-wrap: wrap;
+
+        > p {
+            width: 50%;
+            margin-bottom: .5rem;
+        }
+    }
+
+    .ar_fotter {
+        text-align: center;
+        padding: .5rem;
+
+        button {
+            background-color: $ap_color_theme;
+            
+            &:hover {
+                background-color: darken($ap_color_theme, 10%);
+            }
+        }
+    }
+}
+
+
+/* Dropzone*/
+
+.dropzone:not(.multiple) {
+    text-align: center;
+
+    .dz-message img {
+        width: 90%;
+        max-width: 200px;
+        margin: auto;
+    }
+}
+
+.dropzone.multiple {
+    min-height: 80px;
+    padding-bottom: 100px;
+}
