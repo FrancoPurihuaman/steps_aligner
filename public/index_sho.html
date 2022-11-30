@@ -10,7 +10,7 @@
       {{ page.content }}
     </div>
 
-    <div class="ap_container" style="margin-bottom: 2rem;">
+    <div class="ap_container" id="ap_main_container" style="margin-bottom: 2rem;">
 
         <div class="ap_mt_3">
             <ul class="ap_steps_indicator ap_steps_3" data-steps="main-indicators">
@@ -172,7 +172,7 @@
                                     </button>
                                 </div>
                                 <div class="f_modal__body">
-                                    <div style="padding: .3rem 1rem .8">
+                                    <div style="padding: .3rem 1rem .8rem">
                                         Midcourse correction is the option to order new aligners during treatment, if clinical result
                                         have deviated to such an extent that the aligners no longer fit. For Mid-course corrections and/or
                                         refinements. we offer free aligners up to 20% of your case total. For example, for 20 aligner case ,
@@ -192,7 +192,7 @@
                                     </button>
                                 </div>
                                 <div class="f_modal__body">
-                                    <div style="padding: .3rem 1rem .8">
+                                    <div style="padding: .3rem 1rem .8rem">
                                         Refinements refer to extra trays given to patients who aren’t progressing in accordance
                                         with their treatment plan. Refinements will add a couple of extra months to your treatment.
                                         For mid-course corrections and/or refinements, we offer free aligners up to 20% of your case total.
@@ -222,42 +222,44 @@
                                     <div class="ap_label ap_label--small">Arch to be treated 
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="ro_d__arch" class="f_input-box--flat" style="margin-top: 5px;">
-                                        <option value="upper">Upper</option>
-                                        <option value="lower">Lower</option>
-                                        <option value="both_arches">Both Arches</option>
+                                    <select name="ro_d_arch" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display:none">Select Arch to be treated</option>
+                                        <option value="1">Upper</option>
+                                        <option value="2">Lower</option>
+                                        <option value="3">Both Arches</option>
                                     </select>
                                 </div>
                                 <div class="ro_details__select ap_mt_2">
                                     <div class="ap_label ap_label--small">Delivery date
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <input type="date" name="ro_d_delivery-date" id="ro_d__delivery-date"
+                                    <input type="date" name="ro_d_delivery_date" id="ro_d__delivery_date"
                                         class="f_input-box--flat">
                                 </div>
                                 <div class="ro_details__select ap_mt_2">
-                                    <div class="ap_label ap_label--small">Imprssion Type
+                                    <div class="ap_label ap_label--small">Impression Type
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="ro_d__impression-type" class="f_input-box--flat" style="margin-top: 5px;">
-                                        <option value="digital_scan">Digital Scans</option>
-                                        <option value="physical_impressions">Physical Impressions</option>
+                                    <select name="ro_d_impression_type" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display: none;">Select Impression Type</option>
+                                        <option value="D">Digital Scans</option>
+                                        <option value="P">Physical Impressions</option>
                                     </select>
                                 </div>
                                 <div class="ro_d__options-radio">
                                     <div class="ap_radio_button ro_d_or__radio">
                                         <label for="ro_d_or__upper">
-                                            <input type="radio" name="ro_d_or__upper" id="ro_d_or__upper">Upper
+                                            <input type="radio" name="ro_d_location" id="ro_d_or__upper">Upper
                                         </label>
                                     </div>
                                     <div class="ap_radio_button ro_d_or__radio">
                                         <label for="ro_d_or__lower">
-                                            <input type="radio" name="ro_d_or__radio" id="ro_d_or__lower">Lower
+                                            <input type="radio" name="ro_d_location" id="ro_d_or__lower">Lower
                                         </label>
                                     </div>
                                     <div class="ap_radio_button ro_d_or__radio">
                                         <label for="ro_d_or__both">
-                                            <input type="radio" name="ro_d_or__radio" id="ro_d_or__both">Upper & Lower
+                                            <input type="radio" name="ro_d_location" id="ro_d_or__both">Upper & Lower
                                         </label>
                                     </div>
                                 </div>
@@ -268,17 +270,17 @@
                                     <div class="ro_d__retainer-extent">
                                         <div class="ro_d_re__upper">
                                             Upper retainer from
-                                            <input type="text" name="ro_d_re_upper_from" id="ro_d_re_upper_form">
+                                            <input type="number" name="ro_d_re_upper_from" id="ro_d_re_upper_form">
                                             to
-                                            <input type="text" name="ro_d_re_upper_to" id="ro_d_re_upper_to">
+                                            <input type="number" name="ro_d_re_upper_to" id="ro_d_re_upper_to">
                                         </div>
                                     </div>
                                     <div class="ro_d__retainer-extent">
                                         <div class="ro_d_re__lower">
                                             Lower retainer from
-                                            <input type="text" name="ro_d_re_lower_from" id="ro_d_re_lower_form">
+                                            <input type="number" name="ro_d_re_lower_from" id="ro_d_re_lower_form">
                                             to
-                                            <input type="text" name="ro_d_re_lower_to" id="ro_d_re_lower_to">
+                                            <input type="number" name="ro_d_re_lower_to" id="ro_d_re_lower_to">
                                         </div>
                                     </div>
                                 </div>
@@ -296,7 +298,7 @@
                                         (Max. 10 files are allowed to Upload)
                                     </h5>
                                 </div>
-                                <div class="ro_upload-files__content">
+                                <div class="ro_upload-files__content dropzone multiple" id="files_retainer_only">
 
                                 </div>
                             </div>
@@ -324,35 +326,37 @@
                                     <div class="ap_label ap_label--small">Arch to be treated 
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="dmc_d__arch" class="f_input-box--flat" style="margin-top: 5px;">
-                                        <option value="upper">Upper</option>
-                                        <option value="lower">Lower</option>
-                                        <option value="both_arches">Both Arches</option>
+                                    <select name="dmc_d_arch" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display: none;">Select Arch to be treated </option>
+                                        <option value="1">Upper</option>
+                                        <option value="2">Lower</option>
+                                        <option value="3">Both Arches</option>
                                     </select>
                                 </div>
                                 <div class="dmc_details__select ap_mt_2">
-                                    <div class="ap_label ap_label--small">Imprssion Type
+                                    <div class="ap_label ap_label--small">Impression Type
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="dmc_d__impression-type" class="f_input-box--flat" style="margin-top: 5px;">
-                                        <option value="digital_scan">Digital Scans</option>
-                                        <option value="physical_impressions">Physical Impressions</option>
+                                    <select name="dmc_d_impression_type" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display: none;">Select Impression Type</option>
+                                        <option value="D">Digital Scans</option>
+                                        <option value="P">Physical Impressions</option>
                                     </select>
                                 </div>
                                 <div class="dmc_d__options-radio">
                                     <div class="ap_radio_button dmc_d_or__radio">
                                         <label for="dmc_d_or__upper">
-                                            <input type="radio" name="dmc_d_or__upper" id="dmc_d_or__upper">Upper
+                                            <input type="radio" name="dmc_d_or_upper" id="dmc_d_or__upper">Upper
                                         </label>
                                     </div>
                                     <div class="ap_radio_button dmc_d_or__radio">
                                         <label for="dmc_d_or__lower">
-                                            <input type="radio" name="dmc_d_or__radio" id="dmc_d_or__lower">Lower
+                                            <input type="radio" name="dmc_d_or_radio" id="dmc_d_or__lower">Lower
                                         </label>
                                     </div>
                                     <div class="ap_radio_button dmc_d_or__radio">
                                         <label for="dmc_d_or__both">
-                                            <input type="radio" name="dmc_d_or__radio" id="dmc_d_or__both">Upper & Lower
+                                            <input type="radio" name="dmc_d_or_radio" id="dmc_d_or__both">Upper & Lower
                                         </label>
                                     </div>
                                 </div>
@@ -370,9 +374,7 @@
                                         (Max. 10 files are allowed to Upload)
                                     </h5>
                                 </div>
-                                <div class="dmc_upload-files__content">
-
-                                </div>
+                                <div class="dmc_upload-files__content dropzone multiple" id="files_midcourse_correction"></div>
                             </div>
                         </div>
                         <div class="ap_align_section__footer prev">
@@ -395,22 +397,24 @@
                         <div class="ap_align_section__content">
                             <div class="dr_details">
                                 <div class="dr_details__select ap_mt_2">
-                                    <div class="ap_label ap_label--small">Arch to be treated 
+                                    <div class="ap_label ap_label--small">Arch to be treated
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="dr_d__arch" class="f_input-box--flat" style="margin-top: 5px;">
-                                        <option value="upper">Upper</option>
-                                        <option value="lower">Lower</option>
-                                        <option value="both_arches">Both Arches</option>
+                                    <select name="dr_d_arch" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display: none;">Select Arch to be treated</option>
+                                        <option value="1">Upper</option>
+                                        <option value="2">Lower</option>
+                                        <option value="3">Both Arches</option>
                                     </select>
                                 </div>
                                 <div class="dr_details__select ap_mt_2">
-                                    <div class="ap_label ap_label--small">Imprssion Type
+                                    <div class="ap_label ap_label--small">Impression Type
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="dr_d__impression-type" class="f_input-box--flat" style="margin-top: 5px;">
-                                        <option value="digital_scan">Digital Scans</option>
-                                        <option value="physical_impressions">Physical Impressions</option>
+                                    <select name="dr_d_impression_type" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display: none;">Select Impression Type</option>
+                                        <option value="D">Digital Scans</option>
+                                        <option value="P">Physical Impressions</option>
                                     </select>
                                 </div>
                                 <div class="dr_d__options-radio">
@@ -444,9 +448,7 @@
                                         (Max. 10 files are allowed to Upload)
                                     </h5>
                                 </div>
-                                <div class="dr_upload-files__content">
-
-                                </div>
+                                <div class="dr_upload-files__content dropzone multiple" id="files_refinements"></div>
                             </div>
                         </div>
                         <div class="ap_align_section__footer prev">
@@ -470,22 +472,22 @@
                                 <table class="f_table ap_st__table">
                                     <tbody>
                                         <tr class="tb_row_required">
-                                            <td><strong>To be Treated<span class="ap_required"> *</span></strong></td>
+                                            <td><strong>Arch To be Treated<span class="ap_required"> *</span></strong></td>
                                             <td>
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_at_upper">
-                                                            <input type="radio" name="cp_arch_treated" id="cp_at_upper">Upper
+                                                            <input type="radio" name="cp_arch_treated" id="cp_at_upper" value="1">Upper
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_at_lower">
-                                                            <input type="radio" name="cp_arch_treated" id="cp_at_lower">Lower
+                                                            <input type="radio" name="cp_arch_treated" id="cp_at_lower" value="2">Lower
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_at_both">
-                                                            <input type="radio" name="cp_arch_treated" id="cp_at_both">Both
+                                                            <input type="radio" name="cp_arch_treated" id="cp_at_both" value="3">Both
                                                         </label>
                                                     </div>
                                                 </div>
@@ -497,12 +499,12 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ac_anterior">
-                                                            <input type="radio" name="cp_arch_correction" id="cp_ac_anterior">Anterior
+                                                            <input type="radio" name="cp_arch_correction" id="cp_ac_anterior" value="1">Anterior
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ac_full">
-                                                            <input type="radio" name="cp_arch_correction" id="cp_ac_full">Full
+                                                            <input type="radio" name="cp_arch_correction" id="cp_ac_full" value="2">Full
                                                         </label>
                                                     </div>
                                                 </div>
@@ -514,17 +516,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovj_maintain">
-                                                            <input type="radio" name="cp_overjet" id="cp_ovj_maintain">Maintain
+                                                            <input type="radio" name="cp_overject" id="cp_ovj_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovj_increase">
-                                                            <input type="radio" name="cp_overjet" id="cp_ovj_increase">Increase
+                                                            <input type="radio" name="cp_overject" id="cp_ovj_increase" value="2">Increase
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovj_decrease">
-                                                            <input type="radio" name="cp_overjet" id="cp_ovj_decrease">Decrease
+                                                            <input type="radio" name="cp_overject" id="cp_ovj_decrease" value="3">Decrease
                                                         </label>
                                                     </div>
                                                 </div>
@@ -536,17 +538,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovb_maintain">
-                                                            <input type="radio" name="cp_overbite" id="cp_ovb_maintain">Maintain
+                                                            <input type="radio" name="cp_overbite" id="cp_ovb_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovb_increase">
-                                                            <input type="radio" name="cp_overbite" id="cp_ovb_increase">Increase
+                                                            <input type="radio" name="cp_overbite" id="cp_ovb_increase" value="2">Increase
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_ovb_decrease">
-                                                            <input type="radio" name="cp_overbite" id="cp_ovb_decrease">Decrease
+                                                            <input type="radio" name="cp_overbite" id="cp_ovb_decrease" value="3">Decrease
                                                         </label>
                                                     </div>
                                                 </div>
@@ -558,12 +560,12 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_midline_maintain">
-                                                            <input type="radio" name="cp_midline" id="cp_midline_maintain">Maintain
+                                                            <input type="radio" name="cp_medline" id="cp_midline_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_midline_improve">
-                                                            <input type="radio" name="cp_midline" id="cp_midline_improve">Improve
+                                                            <input type="radio" name="cp_medline" id="cp_midline_improve" value="2">Improve
                                                         </label>
                                                     </div>
                                                 </div>
@@ -575,17 +577,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_cr_maintain">
-                                                            <input type="radio" name="cp_canine_relation" id="cp_cr_maintain">Maintain
+                                                            <input type="radio" name="cp_canine_relation" id="cp_cr_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_cr_improve">
-                                                            <input type="radio" name="cp_canine_relation" id="cp_cr_improve">Improve
+                                                            <input type="radio" name="cp_canine_relation" id="cp_cr_improve" value="2">Improve
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_cr_none">
-                                                            <input type="radio" name="cp_canine_relation" id="cp_cr_none">None
+                                                            <input type="radio" name="cp_canine_relation" id="cp_cr_none" value="3">None
                                                         </label>
                                                     </div>
                                                 </div>
@@ -597,17 +599,17 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_mr_maintain">
-                                                            <input type="radio" name="cp_molar_relation" id="cp_mr_maintain">Maintain
+                                                            <input type="radio" name="cp_molar_relation" id="cp_mr_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_mr_improve">
-                                                            <input type="radio" name="cp_molar_relation" id="cp_mr_improve">Improve
+                                                            <input type="radio" name="cp_molar_relation" id="cp_mr_improve" value="2">Improve
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_mr_none">
-                                                            <input type="radio" name="cp_molar_relation" id="cp_mr_none">None
+                                                            <input type="radio" name="cp_molar_relation" id="cp_mr_none" value="3">None
                                                         </label>
                                                     </div>
                                                 </div>
@@ -619,31 +621,31 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_closeallspaces">
-                                                            <input type="radio" name="cp_space_alterations" id="cp_sa_closeallspaces">
+                                                            <input type="radio" name="cp_space_alteration" id="cp_sa_closeallspaces" value="close-all-apaces">
                                                             Close all spaces
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_createspacefor">
-                                                            <input type="radio" name="cp_space_alterations" id="cp_sa_createspacefor">
+                                                            <input type="radio" name="cp_space_alteration" id="cp_sa_createspacefor" value="create-space-to">
                                                             Create space for
                                                         </label>
-                                                        <div class="tb_as__input tb_as__input--small">
-                                                            <input type="number" name="cp_sa_createspacefor_text" id="cp_space_alterations_text" class="ap_reset">
+                                                        <div class="tb_as__input tb_as__input--small ap_hide">
+                                                            <input type="number" name="cp_create_space_to" id="cp_sa_createspacefor_num" class="ap_reset" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_leavespacedistalto">
-                                                            <input type="radio" name="cp_space_alterations" id="cp_sa_leavespacedistalto">
+                                                            <input type="radio" name="cp_space_alteration" id="cp_sa_leavespacedistalto" value="leave-space-distal-to">
                                                             Leave space distal to
                                                         </label>
-                                                        <div class="tb_as__input tb_as__input--small">
-                                                            <input type="number" name="cp_sa_leavespacedistalto_text" id="cp_space_alterations_text" class="ap_reset">
+                                                        <div class="tb_as__input tb_as__input--small ap_hide">
+                                                            <input type="number" name="cp_leave_space_distal_to" id="cp_sa_leavespacedistalto_num" class="ap_reset" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_none">
-                                                            <input type="radio" name="cp_space_alterations" id="cp_sa_none">None
+                                                            <input type="radio" name="cp_space_alteration" id="cp_sa_none" value="___">None
                                                         </label>
                                                     </div>
                                                 </div>
@@ -655,56 +657,56 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sgp_ipr">
-                                                            <input type="radio" name="cp_space_gaining_pref" id="cp_sgp_ipr">IPR
+                                                            <input type="radio" name="cp_sgp" id="cp_sgp_ipr" value="0">IPR
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sgp_extraction">
-                                                            <input type="radio" name="cp_space_gaining_pref" id="cp_sgp_extraction">Extraction
+                                                            <input type="radio" name="cp_sgp" id="cp_sgp_extraction" value="1">Extraction
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sgp_expansion">
-                                                            <input type="radio" name="cp_space_gaining_pref" id="cp_sgp_expansion">Expansion
+                                                            <input type="radio" name="cp_sgp" id="cp_sgp_expansion" value="2">Expansion
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sgp_none">
-                                                            <input type="radio" name="cp_space_gaining_pref" id="cp_sgp_none">None
+                                                            <input type="radio" name="cp_sgp" id="cp_sgp_none" value="3">None
                                                         </label>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Upper<span class="ap_required"> *</span></strong></td>
+                                            <td><strong>Upper<span class="ap_text_danger ap_hide" id="cp_row_span_req_upper"> *</span></strong></td>
                                             <td>
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_upper_anterior">
-                                                            <input type="radio" name="cp_upper" id="cp_upper_anterior">Anterior
+                                                            <input type="radio" name="cp_location_upper" id="cp_upper_anterior" value="0">Anterior
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_upper_posterior">
-                                                            <input type="radio" name="cp_upper" id="cp_upper_posterior">Posterior
+                                                            <input type="radio" name="cp_location_upper" id="cp_upper_posterior" value="1">Posterior
                                                         </label>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Lower<span class="ap_required"> *</span></strong></td>
+                                            <td><strong>Lower<span class="ap_text_danger ap_hide" id="cp_row_span_req_lower"> *</span></strong></td>
                                             <td>
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_lower_anterior">
-                                                            <input type="radio" name="cp_lower" id="cp_lower_anterior">Anterior
+                                                            <input type="radio" name="cp_location_lower" id="cp_lower_anterior" value="0">Anterior
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_lower_posterior">
-                                                            <input type="radio" name="cp_lower" id="cp_lower_posterior">Posterior
+                                                            <input type="radio" name="cp_location_lower" id="cp_lower_posterior" value="1">Posterior
                                                         </label>
                                                     </div>
                                                 </div>
@@ -723,7 +725,7 @@
             </section>
 
             <section class="ap_step__panel" data-step-include="new-c">
-                <form action="#" id="selectTooh">
+                <form action="#" id="selectTooth">
                     <div class="ap_align_section ap_select-tooth">
                         <div class="ap_align_section__content">
                             <div class="st_impression_type">
@@ -731,8 +733,9 @@
                                     <h5>Impresion Type</h5>
                                 </div>
                                 <div class="st_impression_type__select ap_mt_2">
-                                    <span class="ap_label ap_label--small">Imprssion Type</span>
+                                    <span class="ap_label ap_label--small">Imprssion Type</span><span class="ap_text_danger"> *</span>
                                     <select name="st_impression_type" class="f_input-box--flat" style="margin-top: 5px;">
+                                        <option value="-1" style="display: none;">Select Imprssion Type</option>
                                         <option value="digital_scan">Digital Scans</option>
                                         <option value="physical_impressions">Physical Impressions</option>
                                     </select>
@@ -773,7 +776,7 @@
                                     <div class="st_restriction_move__options_radio">
                                         <div class="ap_radio_button">
                                             <label for="st_rm_rb_none_mat">
-                                                <input type="radio" name="st_rm_type" id="st_rm_rb_none_mat">
+                                                <input type="radio" name="st_rm_type" id="st_rm_rb_none_mat" checked>
                                                 None (move all teeth)
                                             </label>
                                         </div>
@@ -788,42 +791,42 @@
                                         <div class="st_rm_sc_teeth__title">Select Crown</div>
                                         <div class="st_rm_sc_teeth__content">
                                             <ul class="st_teeth_list">
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_8">
                                                         <input type="checkbox" name="st_sc_tooth_tl_8" id="st_sc_tooth_tl_8">8
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_7">
                                                         <input type="checkbox" name="st_sc_tooth_tl_7" id="st_sc_tooth_tl_7">7
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_6">
                                                         <input type="checkbox" name="st_sc_tooth_tl_6" id="st_sc_tooth_tl_6">6
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_5">
                                                         <input type="checkbox" name="st_sc_tooth_tl_5" id="st_sc_tooth_tl_5">5
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_4">
                                                         <input type="checkbox" name="st_sc_tooth_tl_4" id="st_sc_tooth_tl_4">4
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_3">
                                                         <input type="checkbox" name="st_sc_tooth_tl_3" id="st_sc_tooth_tl_3">3
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_2">
                                                         <input type="checkbox" name="st_sc_tooth_tl_2" id="st_sc_tooth_tl_2">2
                                                     </label>
                                                 </li>
-                                                <li class="ap_check_tooth checked">
+                                                <li class="ap_check_tooth">
                                                     <label for="st_sc_tooth_tl_1">
                                                         <input type="checkbox" name="st_sc_tooth_tl_1" id="st_sc_tooth_tl_1">1
                                                     </label>
@@ -1148,42 +1151,42 @@
                                         <ul class="st_teeth_list">
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_8">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_8" id="st_sc_tooth_tl_8">8
+                                                    <input type="checkbox" name="st_a_tooth_tl_8" id="st_a_tooth_tl_8">8
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_7">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_7" id="st_sc_tooth_tl_7">7
+                                                    <input type="checkbox" name="st_a_tooth_tl_7" id="st_a_tooth_tl_7">7
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_6">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_6" id="st_sc_tooth_tl_6">6
+                                                    <input type="checkbox" name="st_a_tooth_tl_6" id="st_a_tooth_tl_6">6
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_5">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_5" id="st_sc_tooth_tl_5">5
+                                                    <input type="checkbox" name="st_a_tooth_tl_5" id="st_a_tooth_tl_5">5
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_4">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_4" id="st_sc_tooth_tl_4">4
+                                                    <input type="checkbox" name="st_a_tooth_tl_4" id="st_a_tooth_tl_4">4
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_3">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_3" id="st_sc_tooth_tl_3">3
+                                                    <input type="checkbox" name="st_a_tooth_tl_3" id="st_a_tooth_tl_3">3
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_2">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_2" id="st_sc_tooth_tl_2">2
+                                                    <input type="checkbox" name="st_a_tooth_tl_2" id="st_a_tooth_tl_2">2
                                                 </label>
                                             </li>
                                             <li class="ap_check_tooth">
                                                 <label for="st_a_tooth_tl_1">
-                                                    <input type="checkbox" name="st_sc_tooth_tl_1" id="st_sc_tooth_tl_1">1
+                                                    <input type="checkbox" name="st_a_tooth_tl_1" id="st_a_tooth_tl_1">1
                                                 </label>
                                             </li>
                                         </ul>
@@ -1331,126 +1334,182 @@
                     <div class="ap_align_section ap_image-selection">
                         <div class="ap_align_section__content">
                             <div class="is_sc_photos">
-                                <div class="is_sc_photos__options">
+                                <div class="is_sc_photos__options" id="is_sc_photos_options">
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
-                                                <input type="radio" name="is_sc_photos_options" />Upload Photos Now
+                                                <input type="radio" name="is_photos_options" value="now" checked/>Upload Photos Now
                                             </label>
                                         </div>
                                     </div>
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
-                                                <input type="radio" name="is_sc_photos_options" />Upload Photos Later
+                                                <input type="radio" name="is_photos_options" value="later"/>Upload Photos Later
                                             </label>
                                         </div>
                                     </div>
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
-                                                <input type="radio" name="is_sc_photos_options" />Consent (proceed case without photos)
+                                                <input type="radio" name="is_photos_options" value="witout-photos" />Consent (proceed case without photos)
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="is_sc_photos__intra-oral">
-                                    <div class="is_sc_title">Intra Oral<span>*</span></div>
+                                    <div class="is_sc_title" id="is_sc_io_title">Intra Oral
+                                        <span class="ap_required ap_text_danger">*</span>
+                                    </div>
                                     <div class="is_sc_image__grid">
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Left occlusion</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_io_left_occlusion">
+                                                    <div class="dz-message">
+                                                        <img src="{{'1.jpg' | file_img_url }}">
+                                                        <p>Drop files here to upload</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Front occlusion</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_io_front_occlusion">
+                                                    <div class="dz-message">
+                                                        <img src="{{'2.jpg' | file_img_url }}">
+                                                        <p>Drop files here to upload</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Right occlusion</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_io_right_occlusion">
+                                                    <div class="dz-message">
+                                                        <img src="{{'3.jpg' | file_img_url }}">
+                                                        <p>Drop files here to upload</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Maxillary occlusal</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_io_maxillary_occlusal">
+                                                    <div class="dz-message">
+                                                        <img src="{{'4.jpg' | file_img_url }}">
+                                                        <p>Drop files here to upload</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Mandibular occlusal</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_io_madibular_occlusal">
+                                                    <div class="dz-message">
+                                                        <img src="{{'5.jpg' | file_img_url }}">
+                                                        <p>Drop files here to upload</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="is_sc_photos__extra-oral">
-                                    <div class="is_sc_title">Extra Oral<span>*</span></div>
+                                    <div class="is_sc_title" id="is_sc_eo_title">Extra Oral
+                                        <span class="ap_required ap_text_danger">*</span>
+                                    </div>
                                     <div class="is_sc_image__grid">
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Profile</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_eo_profile">
+                                                    <div class="dz-message">
+                                                        <img src="{{'6.jpg' | file_img_url }}">
+                                                        <p>Drop files here to upload</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Frontal</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_eo_frontal">
+                                                    <div class="dz-message">
+                                                        <img src="{{'7.jpg' | file_img_url }}">
+                                                        <p>Drop files here to upload</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="ap_align_section__item">
                                             <div class="is_sc_image__card">
                                                 <div class="is_sc_image_card__title">Frontal dynamic(smile)</div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone" id="uf_eo_frontal_dynamic">
+                                                    <div class="dz-message">
+                                                        <img src="{{'8.jpg' | file_img_url }}">
+                                                        <p>Drop files here to upload</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="is_sc_radiographs ap_mt_5">
-                                <div class="is_sc_radiographs__options">
+                                <div class="is_sc_radiographs__options" id="is_sc_radiographs">
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
-                                                <input type="radio" name="is_sc_photos_options" />Upload Photos Now
+                                                <input type="radio" name="is_radiographs_options" value="now" checked/>Upload Radiographs Now
                                             </label>
                                         </div>
                                     </div>
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
-                                                <input type="radio" name="is_sc_photos_options" />Upload Photos Later
+                                                <input type="radio" name="is_radiographs_options" value="later"/>Upload Radiographs Later
                                             </label>
                                         </div>
                                     </div>
                                     <div class="ap_radio_button_wrapper">
                                         <div class="ap_radio_button">
                                             <label>
-                                                <input type="radio" name="is_sc_photos_options" />Consent (proceed case without photos)
+                                                <input type="radio" name="is_radiographs_options" value="without-radiographs"/>Consent (proceed case without radiographs)
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="is_sc_radiographs__radiograph">
-                                    <div class="is_sc_title">Radiographs<span>*</span></div>
+                                    <div class="is_sc_title">Radiographs</div>
                                     <div class="is_sc_radiographs__content">
                                         <div class="is_sc_image__grid">
                                             <div class="ap_align_section__item">
                                                 <div class="is_sc_image__card">
-                                                    <div class="is_sc_image_card__title">OPG<span>*</span></div>
-                                                    <div class="is_sc_image_card__content"></div>
+                                                    <div class="is_sc_image_card__title" id="is_sc_radiographs_opg">OPG
+                                                        <span class="ap_required ap_text_danger">*</span>
+                                                    </div>
+                                                    <div class="is_sc_image_card__content dropzone" id="uf_radiographs_opg">
+                                                        <div class="dz-message">
+                                                            <img src="{{'1.png' | file_img_url }}">
+                                                            <p>Drop files here to upload</p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="ap_align_section__item">
                                                 <div class="is_sc_image__card">
                                                     <div class="is_sc_image_card__title">Lateral Cephalogram</div>
-                                                    <div class="is_sc_image_card__content"></div>
+                                                    <div class="is_sc_image_card__content dropzone" id="uf_radiographs_lateral_ceph">
+                                                        <div class="dz-message">
+                                                            <img src="{{'2.png' | file_img_url }}">
+                                                            <p>Drop files here to upload</p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1460,13 +1519,13 @@
                                                     Upload Any other records (CBCT,etc)
                                                     <small>(Max. 10 files are allowed to Upload)</small>
                                                 </div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone multiple" id="uf_radiograps_other_records"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="is_sc_stl-files ap_mt_5">
+                            <div class="is_sc_stl-files ap_mt_5" id="is_sc_stl_files" style="display: none;">
                                 <div class="is_sc_stlfiles__files">
                                     <div class="is_sc_title">STL Files</div>
                                     <div class="is_sc_stlfiles__content">
@@ -1475,13 +1534,13 @@
                                                 <div class="is_sc_image_card__title">
                                                     <small>(Max. 10 files are allowed to Upload)</small>
                                                 </div>
-                                                <div class="is_sc_image_card__content"></div>
+                                                <div class="is_sc_image_card__content dropzone multiple" id="uf_stl_files"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="is_sc_information">
+                            <div class="is_sc_information" id="is_sc_information">
                                 <div class="is_sc_information__note">
                                     <div class="is_sc_in__icon"><strong>NOTE</strong></div>
                                     <div class="is_sc_in_description">
@@ -1517,7 +1576,7 @@
                                 <div class="ap_align_section ap_case-response">
                                     <div class="ap_cr__logo">
                                         <div class="ap_cr_logo__image">
-                                            <img src="{{'logo.jpg' | file_img_url }}" alt="">
+                                            <img src="{{'logo.2.png' | file_img_url }}" alt="">
                                         </div>
                                         <div class="ap_text_center ap_mt_1">
                                             <a href="mailto:support@dentalree.com" 
@@ -1585,6 +1644,66 @@
             </section>
         
         </div>
+
+        <button id="btnAlignerResume">Resume</button>
+        <!-- Modales-->
+        <div class="f_modal" id="modalAlignerResume">
+            <div class="f_modal__content medium">
+                <div class="f_modal__header" style="text-align: center">
+                    <span class="f_modal__title">Case Preview</span>
+                    <button type="button" class="f_modal__close" data-dismis="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="f_modal__body">
+                    <div class="aligner-resume">
+                        <div>
+                            <div class="ar_content">
+                                <p>Office: <strong></strong></p>
+                                <p>Case Type: <strong></strong></p>
+                                <p>Doctor: <strong></strong></p>
+                                <p>Plan Type: <strong></strong></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ar_title">Patient Details</div>
+                            <div class="ar_content">
+                                <p>First Name: <strong></strong></p>
+                                <p>Last Name: <strong></strong></p>
+                                <p>Gender: <strong></strong></p>
+                                <p>Age: <strong></strong></p>
+                                <p>Patient Type: <strong></strong></p>
+                                <p>Out Station Date: <strong></strong></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ar_title">Case Preview</div>
+                            <div class="ar_content">
+                                <p>Arch To Be Treated: <strong></strong></p>
+                                <p>Arch Correction: <strong></strong></p>
+                                <p>Over Jet: <strong></strong></p>
+                                <p>Over Bite: <strong></strong></p>
+                                <p>Middle: <strong></strong></p>
+                                <p>Cannine Relation: <strong></strong></p>
+                                <p>Molar Relation: <strong></strong></p>
+                                <p>Space Alternations: <strong></strong></p>
+                                <p>space Gaining Preference: <strong></strong></p>
+                                <p>Upper: <strong></strong> | Lower: <strong></strong></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ar_title">Selected Tooth</div>
+                            <div class="ar_content"></div>
+                        </div>
+                        <div class="ar_fotter">
+                            <button class="f_button f_button--primary">Print</button>
+                            <button class="f_button f_button--primary" disabled style="background-color: gray;">Cancel</button>
+                            <button class="f_button f_button--primary">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     {{ "ap_theme.js" | asset_url | script_tag }}
@@ -1604,6 +1723,70 @@
             btnShow: "btnISCaseReference",
             modal: "modalISCaseReference"
         });
+
+        f_modal.init({
+            btnShow: "btnAlignerResume",
+            modal: "modalAlignerResume",
+            backdrop: "static"
+        });
+
+
+        Dropzone.autoDiscover = false;
+        window.onload = function () {
+            
+            function ap_dropzone(idDropzone, _maxFiles = 1){
+                var oDropzone = new Dropzone(idDropzone, {
+                    url: "/",
+                    autoQueue: false,
+                    addRemoveLinks: true,
+                    maxFiles: _maxFiles,
+                    clickable: true,
+                    acceptedFiles: "image/png,image/jpeg",
+                    init: function () {
+                        if(_maxFiles == 1){
+                            this.on("maxfilesexceeded", function (file) {
+                                this.removeAllFiles();
+                                this.addFile(file);
+                            });
+                        }else{
+                            this.on("maxfilesexceeded", function (file) {
+                                this.removeFile(file);
+                                f_alert.init({type: "danger", message: "maximum limit reached!"});
+                            });
+                        }
+                    }
+                });
+
+                return oDropzone;
+            }
+
+            /* New Case */
+            var oD_f_io_left_occlusion = ap_dropzone("#uf_io_left_occlusion");
+            var oD_uf_io_front_occlusion = ap_dropzone("#uf_io_front_occlusion");
+            var oD_uf_io_right_occlusion = ap_dropzone("#uf_io_right_occlusion");
+            var oD_uf_io_maxillary_occlusal = ap_dropzone("#uf_io_maxillary_occlusal");
+            var oD_uf_io_madibular_occlusal = ap_dropzone("#uf_io_madibular_occlusal");
+
+            var oD_uf_eo_profile = ap_dropzone("#uf_eo_profile");
+            var oD_uf_eo_frontal = ap_dropzone("#uf_eo_frontal");
+            var oD_uf_eo_frontal_dynamic = ap_dropzone("#uf_eo_frontal_dynamic");
+
+            var oD_uf_radiographs_opg = ap_dropzone("#uf_radiographs_opg");
+            var oD_uf_radiographs_lateral_ceph = ap_dropzone("#uf_radiographs_lateral_ceph");
+            var oD_uf_radiograps_other_records = ap_dropzone("#uf_radiograps_other_records", 10);
+
+            var oD_uf_stl_files = ap_dropzone("#uf_stl_files", 10);
+
+            /* Retainer Only */
+            var oD_uf_retainer_only = ap_dropzone("#files_retainer_only", 10);
+
+            /* Midcourse Correction */
+            var oD_uf_midcourse_correction = ap_dropzone("#files_midcourse_correction", 10);
+
+            /* Refinements */
+            var oD_uf_refinements = ap_dropzone("#files_refinements", 10);
+
+        }
         
     </script>
 
