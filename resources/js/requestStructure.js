@@ -1,13 +1,13 @@
 export var createCase = {
-    branchid: "",
-    doctorid: "",
+    branchid: "Melbourne Dentist Clinic",
+    doctorid: "Tennant M",
     casetype: "",
-    plantype: "",
-    customercode: ""
+    plantype: null,
+    customercode: 31376
 };
 
 
-export var caseDetails = `{
+export var caseDetails_new = `{
     "orderid": "",
     "PlanTypeName": "",
     "CaseTypeName": "",

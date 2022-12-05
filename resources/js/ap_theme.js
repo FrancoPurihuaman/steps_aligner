@@ -6,7 +6,7 @@ import f_modal from "./franco/components/modal";
 import f_alert from "./franco/components/alert";
 import MultistepsForm from "./libraries/multistepsForm";
 import formSerialize from "./libraries/formSerialize";
-import { createCase, caseDetails, correctRequestName } from "./requestStructure";
+
 
 /**
  * Add modal to window
@@ -35,6 +35,35 @@ import { createCase, caseDetails, correctRequestName } from "./requestStructure"
         init: _init
     }
 })(window);
+
+/**==========================================================================================
+ * Init vars
+ ============================================================================================*/
+
+var objRequestPayload = {
+    caseType : null,
+    plantType : null,
+    patientDetails : null,
+
+    dataRetainerOnly : {
+        detailsCase : null,
+        uploadFiles : []
+    },
+    dataNewCase : {
+        casePreferences : null,
+        selectTooth : null,
+        uploadFiles : [],
+        specialInstructions : ''
+    },
+    dataMidcourseCorrection : {
+        detailsCase : null,
+        uploadFiles : []
+    },
+    dataRefinements : {
+        detailsCase : null,
+        uploadFiles : []
+    }
+}
 
 
 /**==========================================================================================
@@ -113,7 +142,7 @@ caseTypeBtn.addEventListener("click", function(event){
     var formData = formSerialize(caseTypeForm, {hash: true});
 
     if(caseTypeValidation(formData)){
-        createCase.casetype = formData.casetype;
+        objRequestPayload.caseType = formData.casetype;
 
         switch(formData.casetype){
             case "1":
@@ -161,7 +190,7 @@ planTypeBtn.addEventListener("click", function(event){
     var formData = formSerialize(planTypeForm, {hash: true});
 
     if(planTypeValidation(formData)){
-        createCase.plantype = formData.plantype;console.log(createCase);
+        objRequestPayload.plantType = formData.plantype;
 
         switch(formData.plantype){
             case "1":
@@ -212,13 +241,42 @@ retainerOnlyBtn.addEventListener("click", function(event){
     var formData = formSerialize(retainerOnlyForm, {hash: true});
 
     if(retainerOnlyValidation(formData)){
-        stepsAlignOptions.nextPanel(event);
+        objRequestPayload.dataRetainerOnly.detailsCase = formData;
+        objRequestPayload.dataRetainerOnly.uploadFiles = window.oD_uf_retainer_only;
+
+        var modal = document.querySelector("#modalRetainerOnlyResume");
+        if(modal){
+            modal.querySelector('[data-ret-only-resume="Office"]').innerHTML = '';
+            modal.querySelector('[data-ret-only-resume="doctor"]').innerHTML = '';
+            modal.querySelector('[data-ret-only-resume="caseType"]').innerHTML = objRequestPayload.caseType;
+            modal.querySelector('[data-ret-only-resume="planType"]').innerHTML = objRequestPayload.plantType;
+            modal.querySelector('[data-ret-only-resume="firstName"]').innerHTML = '';
+            modal.querySelector('[data-ret-only-resume="lastName"]').innerHTML = '';
+            modal.querySelector('[data-ret-only-resume="archToBeTreated"]').innerHTML = formData.ro_d_arch;
+            modal.querySelector('[data-ret-only-resume="deliveryDate"]').innerHTML = formData.ro_d_delivery_date;
+            modal.querySelector('[data-ret-only-resume="impression"]').innerHTML = formData.ro_d_impression_type;
+            modal.querySelector('[data-ret-only-resume="jobDesign"]').innerHTML = formData.ro_d_location;
+            modal.querySelector('[data-ret-only-resume="upperRetainer"]').innerHTML = formData.ro_d_re_upper_from + " To " + formData.ro_d_re_upper_to;
+            modal.querySelector('[data-ret-only-resume="lowerRetainer"]').innerHTML = formData.ro_d_re_lower_from + " To " + formData.ro_d_re_lower_to;
+            modal.querySelector('[data-ret-only-resume="reason"]').innerHTML = formData.ro_d_instructions;
+            var roFiles = modal.querySelector('[data-ret-only-resume="files"]');
+            roFiles.innerHTML = '';
+            for (var i = 0; i < window.oD_uf_retainer_only.files.length; i++) {
+                var newElement = document.createElement("p");
+                newElement.innerHTML = window.oD_uf_retainer_only.files[i].name;
+                roFiles.appendChild(newElement);
+            }
+
+            modal.style.display = "block";
+            
+
+        }else{console.error("modal not found: resume retainer only");}
     }
 });
 
 
 function retainerOnlyValidation(formData){
-    var success = true; console.log(formData);
+    var success = true;
     
     if(formData != null){
         if(formData.ro_d_arch == -1){
@@ -242,8 +300,11 @@ function retainerOnlyValidation(formData){
         }if(success && !formData.ro_d_re_lower_to){
             success = false;
             f_alert.generate({type: "danger", message: "Retainer extent is required!"});
+        }if(success && window.oD_uf_retainer_only.files.length == 0){
+            success = false;
+            f_alert.generate({type: "danger", message: "Atleast one file is required"});
         }
-    }
+    }else{success = false;}
 
     return success;
 }
@@ -264,7 +325,8 @@ midcourseCorrectionBtn.addEventListener("click", function(event){
     var formData = formSerialize(midcourseCorrectionForm, {hash: true});
     
     if(midcourseCorrectionValidation(formData)){
-        stepsAlignOptions.nextPanel(event);
+        objRequestPayload.dataMidcourseCorrection.detailsCase = formData;
+        objRequestPayload.dataMidcourseCorrection.uploadFiles = window.oD_uf_midcourse_correction;
     }
 });
 
@@ -280,7 +342,7 @@ function midcourseCorrectionValidation(formData){
             success = false;
             f_alert.generate({type: "danger", message: "Imprssion Type is required!"});
         }
-    }
+    }else{success = false;}
 
     return success;
 }
@@ -301,7 +363,8 @@ refinementsBtn.addEventListener("click", function(event){
     var formData = formSerialize(refinementsForm, {hash: true});
     
     if(refinementsValidation(formData)){
-        stepsAlignOptions.nextPanel(event);
+        objRequestPayload.dataRefinements.detailsCase = formData;
+        objRequestPayload.dataRefinements.uploadFiles = window.oD_uf_refinements;
     }
 });
 
@@ -317,7 +380,7 @@ function refinementsValidation(formData){
             success = false;
             f_alert.generate({type: "danger", message: "Imprssion Type is required!"});
         }
-    }
+    }else{success = false;}
 
     return success;
 }
@@ -338,6 +401,7 @@ casePreferencesBtn.addEventListener("click", function(event){
     var formData = formSerialize(casePreferencesForm, {hash: true});
     
     if(casePreferencesValidation(formData)){
+        objRequestPayload.dataNewCase.casePreferences = formData;
         stepsAlignOptions.nextPanel(event);
     }
 });
@@ -380,7 +444,7 @@ function casePreferencesValidation(formData){
             success = false;
             f_alert.generate({type: "danger", message: "Please select values for both Upper and Lower"});
         }
-    }
+    }else{success = false;}
 
     return success;
 }
@@ -471,6 +535,7 @@ selectToohBtn.addEventListener("click", function(event){
     var formData = formSerialize(selectToohForm, {hash: true});
     
     if(selectToohValidation(formData)){
+        objRequestPayload.dataNewCase.selectTooth = formData;
         stepsAlignOptions.nextPanel(event);
     }
 });
@@ -486,7 +551,7 @@ function selectToohValidation(formData){
             success = false;
             f_alert.generate({type: "danger", message: "Imprssion Type is required!"});
         }
-    }
+    }else{success = false;}
 
     return success;
 }
@@ -539,6 +604,18 @@ uploadFilesBtn.addEventListener("click", function(event){
     var formData = formSerialize(uploadFilesForm, {hash: true});
     
     if(uploadFilesValidation(formData)){
+        objRequestPayload.dataNewCase.uploadFiles[0] = window.oD_uf_io_left_occlusion;
+        objRequestPayload.dataNewCase.uploadFiles[1] = window.oD_uf_io_front_occlusion;
+        objRequestPayload.dataNewCase.uploadFiles[2] = window.oD_uf_io_right_occlusion;
+        objRequestPayload.dataNewCase.uploadFiles[3] = window.oD_uf_io_maxillary_occlusal;
+        objRequestPayload.dataNewCase.uploadFiles[4] = window.oD_uf_io_madibular_occlusal;
+        objRequestPayload.dataNewCase.uploadFiles[5] = window.oD_uf_eo_profile;
+        objRequestPayload.dataNewCase.uploadFiles[6] = window.oD_uf_eo_frontal;
+        objRequestPayload.dataNewCase.uploadFiles[7] = window.oD_uf_eo_frontal_dynamic;
+        objRequestPayload.dataNewCase.uploadFiles[8] = window.oD_uf_radiographs_opg;
+        objRequestPayload.dataNewCase.uploadFiles[9] = window.oD_uf_radiographs_lateral_ceph;
+        objRequestPayload.dataNewCase.uploadFiles[10] = window.oD_uf_radiograps_other_records;
+        objRequestPayload.dataNewCase.uploadFiles[11] = window.oD_uf_stl_files;
         stepsAlignOptions.nextPanel(event);
     }
 });
@@ -547,12 +624,28 @@ uploadFilesBtn.addEventListener("click", function(event){
  * Function for validation form upload files
  */
 function uploadFilesValidation(formData){
-    var success = false;
+    var success = true;
     
     if(formData != null){
-        console.log(formData);
-        success = true;
-    }
+        if(formData.is_photos_options == "now"){
+            if(window.oD_uf_io_left_occlusion.files.length == 0){success = false;}
+            if(window.oD_uf_io_front_occlusion.files.length == 0){success = false;}
+            if(window.oD_uf_io_right_occlusion.files.length == 0){success = false;}
+            if(window.oD_uf_io_maxillary_occlusal.files.length == 0){success = false;}
+            if(window.oD_uf_io_madibular_occlusal.files.length == 0){success = false;}
+
+            if(window.oD_uf_eo_profile.files.length == 0){success = false;}
+            if(window.oD_uf_eo_frontal.files.length == 0){success = false;}
+            if(window.oD_uf_eo_frontal_dynamic.files.length == 0){success = false;}
+
+            if(!success){f_alert.generate({type: "danger", message: "Please Select All Required Values"});}
+
+        }if(success && formData.is_radiographs_options == "now"){
+            if(window.oD_uf_radiographs_opg.files.length == 0){success = false;}
+
+            if(!success){f_alert.generate({type: "danger", message: "Please Select All Required Values"});}
+        }
+    }else{success = false;}
 
     return success;
 }
@@ -614,17 +707,16 @@ specialInstructionsBtn.addEventListener("click", function(event){
     var formData = formSerialize(specialInstructionsForm, {hash: true});
     
     if(specialInstructionsValidation(formData)){
-        console.log("exit");
+        objRequestPayload.dataNewCase.specialInstructions = formData.si_instructions;
     }
 });
 
 
 function specialInstructionsValidation(formData){
-    var success = false;
+    var success = true;
     
-    if(formData != null){
-        console.log(formData);
-        success = true;
+    if(formData == null){
+        success = false;
     }
 
     return success;

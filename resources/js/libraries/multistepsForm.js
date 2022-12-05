@@ -52,22 +52,22 @@
         /**
          * Add click event to tabs
          */
-        if(this.existIndicationTabs){
-            this.configuraions.tabsContainer.addEventListener('click', e => {
-                const eventTarget = e.target;
+        // if(this.existIndicationTabs){
+        //     this.configuraions.tabsContainer.addEventListener('click', e => {
+        //         const eventTarget = e.target;
                 
-                if(eventTarget.classList.contains(`${this.configuraions.classForTabLabelClicked}`) ||
-                    eventTarget.classList.contains(`${this.configuraions.classForTabNumberClicked}`))
-                {
-                    const tab = this.findParent(eventTarget, this.configuraions.classForTab);
-                    const indexStepClicked = Array.from(this.configuraions.tabs).indexOf(tab);
-                    this.setActiveTab(indexStepClicked);
-                    this.setActivePanel(indexStepClicked);
+        //         if(eventTarget.classList.contains(`${this.configuraions.classForTabLabelClicked}`) ||
+        //             eventTarget.classList.contains(`${this.configuraions.classForTabNumberClicked}`))
+        //         {
+        //             const tab = this.findParent(eventTarget, this.configuraions.classForTab);
+        //             const indexStepClicked = Array.from(this.configuraions.tabs).indexOf(tab);
+        //             this.setActiveTab(indexStepClicked);
+        //             this.setActivePanel(indexStepClicked);
 
-                    window.scrollTo(0, 0);
-                }else{return;}
-            });
-        }
+        //             window.scrollTo(0, 0);
+        //         }else{return;}
+        //     });
+        // }
     }
 
 

@@ -709,9 +709,18 @@ input.ap_reset, textarea.ap_reset, select.ap_reset {
         flex-wrap: wrap;
 
         > p {
-            width: 50%;
+            width: 100%;
             margin-bottom: .5rem;
+
+            @include from(md){
+                width: 50%;
+            }
         }
+
+        &.files > p {
+            width: 100% !important;
+        }
+        
     }
 
     .ar_fotter {
@@ -730,6 +739,10 @@ input.ap_reset, textarea.ap_reset, select.ap_reset {
 
 
 /* Dropzone*/
+
+.dropzone .dz-preview .dz-progress {
+    top: 70%;
+}
 
 .dropzone:not(.multiple) {
     text-align: center;

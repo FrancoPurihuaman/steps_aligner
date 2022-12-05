@@ -12,8 +12,8 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, './public/'),
     open: true,
-    port: 9005
-    //host: '192.168.187.100'
+    port: 9005,
+    //host: '192.168.231.100'
   },
   module:{
     rules: [
