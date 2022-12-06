@@ -6,6 +6,7 @@ import f_modal from "./franco/components/modal";
 import f_alert from "./franco/components/alert";
 import MultistepsForm from "./libraries/multistepsForm";
 import formSerialize from "./libraries/formSerialize";
+import * as aFields from "./ap_aligner_fields";
 
 
 /**
@@ -45,21 +46,21 @@ var objRequestPayload = {
     plantType : null,
     patientDetails : null,
 
-    dataRetainerOnly : {
+    retainerOnly : {
         detailsCase : null,
         uploadFiles : []
     },
-    dataNewCase : {
+    newCase : {
         casePreferences : null,
         selectTooth : null,
         uploadFiles : [],
         specialInstructions : ''
     },
-    dataMidcourseCorrection : {
+    midcourseCorrection : {
         detailsCase : null,
         uploadFiles : []
     },
-    dataRefinements : {
+    refinements : {
         detailsCase : null,
         uploadFiles : []
     }
@@ -241,36 +242,9 @@ retainerOnlyBtn.addEventListener("click", function(event){
     var formData = formSerialize(retainerOnlyForm, {hash: true});
 
     if(retainerOnlyValidation(formData)){
-        objRequestPayload.dataRetainerOnly.detailsCase = formData;
-        objRequestPayload.dataRetainerOnly.uploadFiles = window.oD_uf_retainer_only;
-
-        var modal = document.querySelector("#modalRetainerOnlyResume");
-        if(modal){
-            modal.querySelector('[data-ret-only-resume="Office"]').innerHTML = '';
-            modal.querySelector('[data-ret-only-resume="doctor"]').innerHTML = '';
-            modal.querySelector('[data-ret-only-resume="caseType"]').innerHTML = objRequestPayload.caseType;
-            modal.querySelector('[data-ret-only-resume="planType"]').innerHTML = objRequestPayload.plantType;
-            modal.querySelector('[data-ret-only-resume="firstName"]').innerHTML = '';
-            modal.querySelector('[data-ret-only-resume="lastName"]').innerHTML = '';
-            modal.querySelector('[data-ret-only-resume="archToBeTreated"]').innerHTML = formData.ro_d_arch;
-            modal.querySelector('[data-ret-only-resume="deliveryDate"]').innerHTML = formData.ro_d_delivery_date;
-            modal.querySelector('[data-ret-only-resume="impression"]').innerHTML = formData.ro_d_impression_type;
-            modal.querySelector('[data-ret-only-resume="jobDesign"]').innerHTML = formData.ro_d_location;
-            modal.querySelector('[data-ret-only-resume="upperRetainer"]').innerHTML = formData.ro_d_re_upper_from + " To " + formData.ro_d_re_upper_to;
-            modal.querySelector('[data-ret-only-resume="lowerRetainer"]').innerHTML = formData.ro_d_re_lower_from + " To " + formData.ro_d_re_lower_to;
-            modal.querySelector('[data-ret-only-resume="reason"]').innerHTML = formData.ro_d_instructions;
-            var roFiles = modal.querySelector('[data-ret-only-resume="files"]');
-            roFiles.innerHTML = '';
-            for (var i = 0; i < window.oD_uf_retainer_only.files.length; i++) {
-                var newElement = document.createElement("p");
-                newElement.innerHTML = window.oD_uf_retainer_only.files[i].name;
-                roFiles.appendChild(newElement);
-            }
-
-            modal.style.display = "block";
-            
-
-        }else{console.error("modal not found: resume retainer only");}
+        objRequestPayload.retainerOnly.detailsCase = formData;
+        objRequestPayload.retainerOnly.uploadFiles = window.oD_uf_retainer_only;
+        fillResumeRetainerOnly(formData);
     }
 });
 
@@ -310,6 +284,37 @@ function retainerOnlyValidation(formData){
 }
 
 
+function fillResumeRetainerOnly(formData){
+    var modal = document.querySelector("#modalRetainerOnlyResume");
+    if(modal){
+        modal.querySelector('[data-ret-only-resume="Office"]').innerHTML = '';
+        modal.querySelector('[data-ret-only-resume="doctor"]').innerHTML = '';
+        modal.querySelector('[data-ret-only-resume="caseType"]').innerHTML = aFields.getCaseType(objRequestPayload.caseType);
+        modal.querySelector('[data-ret-only-resume="planType"]').innerHTML = aFields.getPlanType(objRequestPayload.plantType);
+        modal.querySelector('[data-ret-only-resume="firstName"]').innerHTML = '';
+        modal.querySelector('[data-ret-only-resume="lastName"]').innerHTML = '';
+        modal.querySelector('[data-ret-only-resume="archToBeTreated"]').innerHTML = aFields.getArchToBeTreated(formData.ro_d_arch);
+        modal.querySelector('[data-ret-only-resume="deliveryDate"]').innerHTML = aFields.convertDateFormat(formData.ro_d_delivery_date);
+        modal.querySelector('[data-ret-only-resume="impression"]').innerHTML = aFields.getImpressionType(formData.ro_d_impression_type);
+        modal.querySelector('[data-ret-only-resume="jobDesign"]').innerHTML = aFields.getImpressionLocation(formData.ro_d_location);
+        modal.querySelector('[data-ret-only-resume="upperRetainer"]').innerHTML = formData.ro_d_re_upper_from + " To " + formData.ro_d_re_upper_to;
+        modal.querySelector('[data-ret-only-resume="lowerRetainer"]').innerHTML = formData.ro_d_re_lower_from + " To " + formData.ro_d_re_lower_to;
+        modal.querySelector('[data-ret-only-resume="reason"]').innerHTML = formData.ro_d_instructions;
+        var roFiles = modal.querySelector('[data-ret-only-resume="files"]');
+        roFiles.innerHTML = '';
+        for (var i = 0; i < window.oD_uf_retainer_only.files.length; i++) {
+            var newElement = document.createElement("p");
+            newElement.innerHTML = window.oD_uf_retainer_only.files[i].name;
+            roFiles.appendChild(newElement);
+        }
+
+        modal.style.display = "block";
+        
+
+    }else{console.error("modal not found: resume retainer only");}
+}
+
+
 /**==========================================================================================
  * Configuration step - midcourse correction
  ============================================================================================*/
@@ -325,8 +330,8 @@ midcourseCorrectionBtn.addEventListener("click", function(event){
     var formData = formSerialize(midcourseCorrectionForm, {hash: true});
     
     if(midcourseCorrectionValidation(formData)){
-        objRequestPayload.dataMidcourseCorrection.detailsCase = formData;
-        objRequestPayload.dataMidcourseCorrection.uploadFiles = window.oD_uf_midcourse_correction;
+        objRequestPayload.midcourseCorrection.detailsCase = formData;
+        objRequestPayload.midcourseCorrection.uploadFiles = window.oD_uf_midcourse_correction;
     }
 });
 
@@ -363,8 +368,8 @@ refinementsBtn.addEventListener("click", function(event){
     var formData = formSerialize(refinementsForm, {hash: true});
     
     if(refinementsValidation(formData)){
-        objRequestPayload.dataRefinements.detailsCase = formData;
-        objRequestPayload.dataRefinements.uploadFiles = window.oD_uf_refinements;
+        objRequestPayload.refinements.detailsCase = formData;
+        objRequestPayload.refinements.uploadFiles = window.oD_uf_refinements;
     }
 });
 
@@ -401,7 +406,7 @@ casePreferencesBtn.addEventListener("click", function(event){
     var formData = formSerialize(casePreferencesForm, {hash: true});
     
     if(casePreferencesValidation(formData)){
-        objRequestPayload.dataNewCase.casePreferences = formData;
+        objRequestPayload.newCase.casePreferences = formData;
         stepsAlignOptions.nextPanel(event);
     }
 });
@@ -535,7 +540,7 @@ selectToohBtn.addEventListener("click", function(event){
     var formData = formSerialize(selectToohForm, {hash: true});
     
     if(selectToohValidation(formData)){
-        objRequestPayload.dataNewCase.selectTooth = formData;
+        objRequestPayload.newCase.selectTooth = formData;
         stepsAlignOptions.nextPanel(event);
     }
 });
@@ -604,18 +609,18 @@ uploadFilesBtn.addEventListener("click", function(event){
     var formData = formSerialize(uploadFilesForm, {hash: true});
     
     if(uploadFilesValidation(formData)){
-        objRequestPayload.dataNewCase.uploadFiles[0] = window.oD_uf_io_left_occlusion;
-        objRequestPayload.dataNewCase.uploadFiles[1] = window.oD_uf_io_front_occlusion;
-        objRequestPayload.dataNewCase.uploadFiles[2] = window.oD_uf_io_right_occlusion;
-        objRequestPayload.dataNewCase.uploadFiles[3] = window.oD_uf_io_maxillary_occlusal;
-        objRequestPayload.dataNewCase.uploadFiles[4] = window.oD_uf_io_madibular_occlusal;
-        objRequestPayload.dataNewCase.uploadFiles[5] = window.oD_uf_eo_profile;
-        objRequestPayload.dataNewCase.uploadFiles[6] = window.oD_uf_eo_frontal;
-        objRequestPayload.dataNewCase.uploadFiles[7] = window.oD_uf_eo_frontal_dynamic;
-        objRequestPayload.dataNewCase.uploadFiles[8] = window.oD_uf_radiographs_opg;
-        objRequestPayload.dataNewCase.uploadFiles[9] = window.oD_uf_radiographs_lateral_ceph;
-        objRequestPayload.dataNewCase.uploadFiles[10] = window.oD_uf_radiograps_other_records;
-        objRequestPayload.dataNewCase.uploadFiles[11] = window.oD_uf_stl_files;
+        objRequestPayload.newCase.uploadFiles[0] = window.oD_uf_io_left_occlusion;
+        objRequestPayload.newCase.uploadFiles[1] = window.oD_uf_io_front_occlusion;
+        objRequestPayload.newCase.uploadFiles[2] = window.oD_uf_io_right_occlusion;
+        objRequestPayload.newCase.uploadFiles[3] = window.oD_uf_io_maxillary_occlusal;
+        objRequestPayload.newCase.uploadFiles[4] = window.oD_uf_io_madibular_occlusal;
+        objRequestPayload.newCase.uploadFiles[5] = window.oD_uf_eo_profile;
+        objRequestPayload.newCase.uploadFiles[6] = window.oD_uf_eo_frontal;
+        objRequestPayload.newCase.uploadFiles[7] = window.oD_uf_eo_frontal_dynamic;
+        objRequestPayload.newCase.uploadFiles[8] = window.oD_uf_radiographs_opg;
+        objRequestPayload.newCase.uploadFiles[9] = window.oD_uf_radiographs_lateral_ceph;
+        objRequestPayload.newCase.uploadFiles[10] = window.oD_uf_radiograps_other_records;
+        objRequestPayload.newCase.uploadFiles[11] = window.oD_uf_stl_files;
         stepsAlignOptions.nextPanel(event);
     }
 });
@@ -707,7 +712,7 @@ specialInstructionsBtn.addEventListener("click", function(event){
     var formData = formSerialize(specialInstructionsForm, {hash: true});
     
     if(specialInstructionsValidation(formData)){
-        objRequestPayload.dataNewCase.specialInstructions = formData.si_instructions;
+        objRequestPayload.newCase.specialInstructions = formData.si_instructions;
     }
 });
 
