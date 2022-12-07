@@ -239,7 +239,7 @@ retainerOnlyForm.addEventListener("submit", function(event){event.preventDefault
 
 var retainerOnlyBtn = retainerOnlyForm.querySelector(".ap_step__btn_next");
 retainerOnlyBtn.addEventListener("click", function(event){
-    var formData = formSerialize(retainerOnlyForm, {hash: true});
+    var formData = formSerialize(retainerOnlyForm, {hash: true, empty: true});
 
     if(retainerOnlyValidation(formData)){
         objRequestPayload.retainerOnly.detailsCase = formData;
@@ -262,16 +262,16 @@ function retainerOnlyValidation(formData){
         }if(success && formData.ro_d_impression_type == -1){
             success = false;
             f_alert.generate({type: "danger", message: "Impression Type is required!"});
-        }if(success && !formData.ro_d_re_upper_from){
+        }if(success && (formData.ro_d_arch == 1 || formData.ro_d_arch == 3) && !formData.ro_d_re_upper_from){
             success = false;
             f_alert.generate({type: "danger", message: "Retainer extent is required!"});
-        }if(success && !formData.ro_d_re_upper_to){
+        }if(success && (formData.ro_d_arch == 1 || formData.ro_d_arch == 3) && !formData.ro_d_re_upper_to){
             success = false;
             f_alert.generate({type: "danger", message: "Retainer extent is required!"});
-        }if(success && !formData.ro_d_re_lower_from){
+        }if(success && (formData.ro_d_arch == 2 || formData.ro_d_arch == 3) && !formData.ro_d_re_lower_from){
             success = false;
             f_alert.generate({type: "danger", message: "Retainer extent is required!"});
-        }if(success && !formData.ro_d_re_lower_to){
+        }if(success && (formData.ro_d_arch == 2 || formData.ro_d_arch == 3) && !formData.ro_d_re_lower_to){
             success = false;
             f_alert.generate({type: "danger", message: "Retainer extent is required!"});
         }if(success && window.oD_uf_retainer_only.files.length == 0){
@@ -297,9 +297,9 @@ function fillResumeRetainerOnly(formData){
         modal.querySelector('[data-ret-only-resume="deliveryDate"]').innerHTML = aFields.convertDateFormat(formData.ro_d_delivery_date);
         modal.querySelector('[data-ret-only-resume="impression"]').innerHTML = aFields.getImpressionType(formData.ro_d_impression_type);
         modal.querySelector('[data-ret-only-resume="jobDesign"]').innerHTML = aFields.getImpressionLocation(formData.ro_d_location);
-        modal.querySelector('[data-ret-only-resume="upperRetainer"]').innerHTML = formData.ro_d_re_upper_from + " To " + formData.ro_d_re_upper_to;
-        modal.querySelector('[data-ret-only-resume="lowerRetainer"]').innerHTML = formData.ro_d_re_lower_from + " To " + formData.ro_d_re_lower_to;
-        modal.querySelector('[data-ret-only-resume="reason"]').innerHTML = formData.ro_d_instructions;
+        modal.querySelector('[data-ret-only-resume="upperRetainer"]').innerHTML = aFields.showFiled(formData.ro_d_re_upper_from) + " To " + aFields.showFiled(formData.ro_d_re_upper_to);
+        modal.querySelector('[data-ret-only-resume="lowerRetainer"]').innerHTML = aFields.showFiled(formData.ro_d_re_lower_from) + " To " + aFields.showFiled(formData.ro_d_re_lower_to);
+        modal.querySelector('[data-ret-only-resume="reason"]').innerHTML = aFields.showFiled(formData.ro_d_instructions);
         var roFiles = modal.querySelector('[data-ret-only-resume="files"]');
         roFiles.innerHTML = '';
         for (var i = 0; i < window.oD_uf_retainer_only.files.length; i++) {
@@ -315,6 +315,31 @@ function fillResumeRetainerOnly(formData){
 }
 
 
+/**
+ * Event change arch to be treated 
+ */
+document.querySelector('#ro_d_arch').addEventListener("change", function(event){
+
+    if(event.target.value == 1){
+        document.querySelector('#ro_d_re_upper_form').disabled = false;
+        document.querySelector('#ro_d_re_upper_to').disabled = false;
+        document.querySelector('#ro_d_re_lower_form').disabled = true;
+        document.querySelector('#ro_d_re_lower_to').disabled = true;
+    }else if(event.target.value == 2){
+        document.querySelector('#ro_d_re_upper_form').disabled = true;
+        document.querySelector('#ro_d_re_upper_to').disabled = true;
+        document.querySelector('#ro_d_re_lower_form').disabled = false;
+        document.querySelector('#ro_d_re_lower_to').disabled = false;
+    }else if(event.target.value == 3){
+        document.querySelector('#ro_d_re_upper_form').disabled = false;
+        document.querySelector('#ro_d_re_upper_to').disabled = false;
+        document.querySelector('#ro_d_re_lower_form').disabled = false;
+        document.querySelector('#ro_d_re_lower_to').disabled = false;
+    }
+})
+
+
+
 /**==========================================================================================
  * Configuration step - midcourse correction
  ============================================================================================*/
@@ -327,11 +352,12 @@ midcourseCorrectionForm.addEventListener("submit", function(event){event.prevent
 
 var midcourseCorrectionBtn = midcourseCorrectionForm.querySelector(".ap_step__btn_next");
 midcourseCorrectionBtn.addEventListener("click", function(event){
-    var formData = formSerialize(midcourseCorrectionForm, {hash: true});
+    var formData = formSerialize(midcourseCorrectionForm, {hash: true, empty: true});
     
     if(midcourseCorrectionValidation(formData)){
         objRequestPayload.midcourseCorrection.detailsCase = formData;
         objRequestPayload.midcourseCorrection.uploadFiles = window.oD_uf_midcourse_correction;
+        fillResumeMidcourseCorrections(formData)
     }
 });
 
@@ -346,10 +372,43 @@ function midcourseCorrectionValidation(formData){
         }if(success && formData.dmc_d_impression_type == -1){
             success = false;
             f_alert.generate({type: "danger", message: "Imprssion Type is required!"});
+        }if(success && formData.dr_d_instructions == ''){
+            success = false;
+            f_alert.generate({type: "danger", message: "Reason for Correction is required!"});
+        }if(success && window.oD_uf_midcourse_correction.files.length == 0){
+            success = false;
+            f_alert.generate({type: "danger", message: "Atleast one file is required"});
         }
     }else{success = false;}
-
+    
     return success;
+}
+
+
+function fillResumeMidcourseCorrections(formData){
+    var modal = document.querySelector("#modalMidcourseCorrectionsResume");
+    if(modal){
+        modal.querySelector('[data-mid-co-resume="Office"]').innerHTML = '';
+        modal.querySelector('[data-mid-co-resume="doctor"]').innerHTML = '';
+        modal.querySelector('[data-mid-co-resume="caseType"]').innerHTML = aFields.getCaseType(objRequestPayload.caseType);
+        modal.querySelector('[data-mid-co-resume="planType"]').innerHTML = aFields.getPlanType(objRequestPayload.plantType);
+        modal.querySelector('[data-mid-co-resume="patientNo"]').innerHTML = '';
+        modal.querySelector('[data-mid-co-resume="archToBeTreated"]').innerHTML = aFields.getArchToBeTreated(formData.dmc_d_arch);
+        modal.querySelector('[data-mid-co-resume="impression"]').innerHTML = aFields.getImpressionType(formData.dmc_d_impression_type);
+        modal.querySelector('[data-mid-co-resume="jobDesign"]').innerHTML = aFields.getImpressionLocation(formData.dmc_d_location);
+        modal.querySelector('[data-mid-co-resume="reason"]').innerHTML = formData.dr_d_instructions;
+        var mcFiles = modal.querySelector('[data-mid-co-resume="files"]');
+        mcFiles.innerHTML = '';
+        for (var i = 0; i < window.oD_uf_midcourse_correction.files.length; i++) {
+            var newElement = document.createElement("p");
+            newElement.innerHTML = window.oD_uf_midcourse_correction.files[i].name;
+            mcFiles.appendChild(newElement);
+        }
+
+        modal.style.display = "block";
+        
+
+    }else{console.error("modal not found: resume retainer only");}
 }
 
 

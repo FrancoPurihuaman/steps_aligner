@@ -216,7 +216,7 @@
                                     <div class="ap_label ap_label--small">Arch to be treated 
                                         <span class="ap_text_danger">*</span>
                                     </div>
-                                    <select name="ro_d_arch" class="f_input-box--flat" style="margin-top: 5px;">
+                                    <select name="ro_d_arch" id="ro_d_arch" class="f_input-box--flat" style="margin-top: 5px;">
                                         <option value="-1" style="display:none">Select Arch to be treated</option>
                                         <option value="1">Upper</option>
                                         <option value="2">Lower</option>
@@ -279,9 +279,9 @@
                                     </div>
                                 </div>
                                 <div class="ro_d__textarea">
-                                    <div class="ap_label ap_label--small">Instructions <span> (max. 500 characters)</span></div>
+                                    <div class="ap_label ap_label--small">Any specifications</div>
                                     <textarea name="ro_d_instructions" id="" cols="30" rows="5" style="padding: .2rem"
-                                        placeholder="Enter your Reason for Correction"
+                                        placeholder="Enter your Reason for Refinements"
                                         class="ap_reset f_input-box--flat"></textarea>
                                 </div>
                             </div>
@@ -340,22 +340,22 @@
                                 <div class="dmc_d__options-radio">
                                     <div class="ap_radio_button dmc_d_or__radio">
                                         <label for="dmc_d_or__upper">
-                                            <input type="radio" name="dmc_d_or_upper" id="dmc_d_or__upper">Upper
+                                            <input type="radio" name="dmc_d_location" id="dmc_d_or__upper" value="U">Upper
                                         </label>
                                     </div>
                                     <div class="ap_radio_button dmc_d_or__radio">
                                         <label for="dmc_d_or__lower">
-                                            <input type="radio" name="dmc_d_or_radio" id="dmc_d_or__lower">Lower
+                                            <input type="radio" name="dmc_d_location" id="dmc_d_or__lower" value="L">Lower
                                         </label>
                                     </div>
                                     <div class="ap_radio_button dmc_d_or__radio">
                                         <label for="dmc_d_or__both">
-                                            <input type="radio" name="dmc_d_or_radio" id="dmc_d_or__both">Upper & Lower
+                                            <input type="radio" name="dmc_d_location" id="dmc_d_or__both" value="B">Upper & Lower
                                         </label>
                                     </div>
                                 </div>
                                 <div class="dmc_d__textarea">
-                                    <div class="ap_label ap_label--small">Instructions <span> (max. 500 characters)</span></div>
+                                    <div class="ap_label ap_label--small">Reason<span class="ap_text_danger">*</span></div>
                                     <textarea name="dr_d_instructions" id="" cols="30" rows="5" style="padding: .2rem"
                                         placeholder="Enter your Reason for Correction"
                                         class="ap_reset f_input-box--flat"></textarea>
@@ -1690,6 +1690,51 @@
             </div>
         </div>
 
+        <!-- Modal - Midcourse Corrections - Resume-->
+        <div class="f_modal" id="modalMidcourseCorrectionsResume">
+            <div class="f_modal__content medium">
+                <div class="f_modal__header" style="text-align: center">
+                    <span class="f_modal__title">Case Preview</span>
+                    <button type="button" class="f_modal__close no-print" data-dismis="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="f_modal__body">
+                    <div class="aligner-resume">
+                        <div>
+                            <div class="ar_content">
+                                <p>Office: <strong data-mid-co-resume="Office"></strong></p>
+                                <p>Doctor: <strong data-mid-co-resume="doctor"></strong></p>
+                                <p>Case Type: <strong data-mid-co-resume="caseType"></strong></p>
+                                <p>Plan Type: <strong data-mid-co-resume="planType"></strong></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ar_title">Patient Details</div>
+                            <div class="ar_content">
+                                <p>Patient No: <strong data-mid-co-resume="patientNo"></strong></p>
+                                <p>Arch to be treated: <strong data-mid-co-resume="archToBeTreated"></strong></p>
+                                <p>Impression: <strong data-mid-co-resume="impression"></strong></p>
+                                <p>Job Design: <strong data-mid-co-resume="jobDesign"></strong></p>
+                                <p>Reason: <strong data-mid-co-resume="reason"></strong></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ar_title">Files Details</div>
+                            <div class="ar_content files" data-mid-co-resume="files">
+                                
+                            </div>
+                        </div>
+                        <div class="ar_fotter no-print">
+                            <button class="f_button f_button--primary" id="btnPrint">Print</button>
+                            <button class="f_button f_button--primary" style="background-color: gray;" data-dismis="close">Cancel</button>
+                            <button class="f_button f_button--primary">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Modal - New Case - Resume-->
         <div class="f_modal" id="modalNewCaseResume">
             <div class="f_modal__content medium">
@@ -1770,6 +1815,11 @@ f_modal.init({
 
         f_modal.init({
             modal: "modalRetainerOnlyResume",
+            backdrop: 'static'
+        });
+
+        f_modal.init({
+            modal: "modalMidcourseCorrectionsResume",
             backdrop: 'static'
         });
 

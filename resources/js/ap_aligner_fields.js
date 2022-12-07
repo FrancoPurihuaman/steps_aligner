@@ -219,3 +219,8 @@ export function convertDateFormat(_date) {
     var _date = _date.split('-').reverse().join('-');
     return _date;
 }
+
+
+export function showFiled(value) {
+    return (value) ? value : '-';
+}
