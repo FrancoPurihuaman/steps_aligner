@@ -118,6 +118,20 @@ export function getMolarRelation(value){
     }
 }
 
+export function getSpaceAlterations(value){
+    switch(value){
+        case 'close-all-spaces':
+            return 'Close all spaces';
+        case 'create-space-to':
+            return 'Create space to';
+        case 'leave-space-distal-to':
+            return 'Leave space distal to';
+        case 'none':
+            return 'None';
+        default:
+            return '-';
+    }
+}
 
 export function getSpaceGainPreference(value){
     switch(value){

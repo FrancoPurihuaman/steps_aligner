@@ -104,6 +104,18 @@ input.ap_reset, textarea.ap_reset, select.ap_reset {
     color: inherit;
     line-height: 1.6;
 }
+
+/* Modals */
+
+.f_modal__footer {
+    button.f_button.f_button--primary {
+        background-color: $ap_color_theme;
+
+        &:hover {
+            background-color: darken($ap_color_theme, 10%);
+        } 
+    }
+}
   
   
 /* section_align */
@@ -567,12 +579,12 @@ input.ap_reset, textarea.ap_reset, select.ap_reset {
     }
 
     .is_sc_information {
-        color: red;
         margin-top: 2rem;
         font-size: .95rem;
         font-style: italic;
 
         .is_sc_information__note {
+            color: red;
             display: flex;
         }
 

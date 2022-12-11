@@ -287,7 +287,7 @@ function retainerOnlyValidation(formData){
 function fillResumeRetainerOnly(formData){
     var modal = document.querySelector("#modalRetainerOnlyResume");
     if(modal){
-        modal.querySelector('[data-ret-only-resume="Office"]').innerHTML = '';
+        modal.querySelector('[data-ret-only-resume="office"]').innerHTML = '';
         modal.querySelector('[data-ret-only-resume="doctor"]').innerHTML = '';
         modal.querySelector('[data-ret-only-resume="caseType"]').innerHTML = aFields.getCaseType(objRequestPayload.caseType);
         modal.querySelector('[data-ret-only-resume="planType"]').innerHTML = aFields.getPlanType(objRequestPayload.plantType);
@@ -357,7 +357,7 @@ midcourseCorrectionBtn.addEventListener("click", function(event){
     if(midcourseCorrectionValidation(formData)){
         objRequestPayload.midcourseCorrection.detailsCase = formData;
         objRequestPayload.midcourseCorrection.uploadFiles = window.oD_uf_midcourse_correction;
-        fillResumeMidcourseCorrections(formData)
+        fillResumeMidcourseCorrections(formData);
     }
 });
 
@@ -374,7 +374,7 @@ function midcourseCorrectionValidation(formData){
             f_alert.generate({type: "danger", message: "Imprssion Type is required!"});
         }if(success && formData.dr_d_instructions == ''){
             success = false;
-            f_alert.generate({type: "danger", message: "Reason for Correction is required!"});
+            f_alert.generate({type: "danger", message: "Reason is required!"});
         }if(success && window.oD_uf_midcourse_correction.files.length == 0){
             success = false;
             f_alert.generate({type: "danger", message: "Atleast one file is required"});
@@ -388,7 +388,7 @@ function midcourseCorrectionValidation(formData){
 function fillResumeMidcourseCorrections(formData){
     var modal = document.querySelector("#modalMidcourseCorrectionsResume");
     if(modal){
-        modal.querySelector('[data-mid-co-resume="Office"]').innerHTML = '';
+        modal.querySelector('[data-mid-co-resume="office"]').innerHTML = '';
         modal.querySelector('[data-mid-co-resume="doctor"]').innerHTML = '';
         modal.querySelector('[data-mid-co-resume="caseType"]').innerHTML = aFields.getCaseType(objRequestPayload.caseType);
         modal.querySelector('[data-mid-co-resume="planType"]').innerHTML = aFields.getPlanType(objRequestPayload.plantType);
@@ -408,7 +408,7 @@ function fillResumeMidcourseCorrections(formData){
         modal.style.display = "block";
         
 
-    }else{console.error("modal not found: resume retainer only");}
+    }else{console.error("modal not found: resume midcourse correction");}
 }
 
 
@@ -424,11 +424,12 @@ refinementsForm.addEventListener("submit", function(event){event.preventDefault(
 
 var refinementsBtn = refinementsForm.querySelector(".ap_step__btn_next");
 refinementsBtn.addEventListener("click", function(event){
-    var formData = formSerialize(refinementsForm, {hash: true});
+    var formData = formSerialize(refinementsForm, {hash: true, empty: true});
     
     if(refinementsValidation(formData)){
         objRequestPayload.refinements.detailsCase = formData;
         objRequestPayload.refinements.uploadFiles = window.oD_uf_refinements;
+        fillResumeRefinements(formData);
     }
 });
 
@@ -443,10 +444,43 @@ function refinementsValidation(formData){
         }if(success && formData.dr_d_impression_type == -1){
             success = false;
             f_alert.generate({type: "danger", message: "Imprssion Type is required!"});
+        }if(success && formData.dr_d_instructions == ''){
+            success = false;
+            f_alert.generate({type: "danger", message: "Reason is required!"});
+        }if(success && window.oD_uf_refinements.files.length == 0){
+            success = false;
+            f_alert.generate({type: "danger", message: "Atleast one file is required"});
         }
     }else{success = false;}
 
     return success;
+}
+
+
+function fillResumeRefinements(formData){
+    var modal = document.querySelector("#modalRefinementsResume");
+    if(modal){
+        modal.querySelector('[data-ref-resume="office"]').innerHTML = '';
+        modal.querySelector('[data-ref-resume="doctor"]').innerHTML = '';
+        modal.querySelector('[data-ref-resume="caseType"]').innerHTML = aFields.getCaseType(objRequestPayload.caseType);
+        modal.querySelector('[data-ref-resume="planType"]').innerHTML = aFields.getPlanType(objRequestPayload.plantType);
+        modal.querySelector('[data-ref-resume="patientNo"]').innerHTML = '';
+        modal.querySelector('[data-ref-resume="archToBeTreated"]').innerHTML = aFields.getArchToBeTreated(formData.dr_d_arch);
+        modal.querySelector('[data-ref-resume="impression"]').innerHTML = aFields.getImpressionType(formData.dr_d_impression_type);
+        modal.querySelector('[data-ref-resume="jobDesign"]').innerHTML = aFields.getImpressionLocation(formData.dr_d_location);
+        modal.querySelector('[data-ref-resume="reason"]').innerHTML = formData.dr_d_instructions;
+        var refFiles = modal.querySelector('[data-ref-resume="files"]');
+        refFiles.innerHTML = '';
+        for (var i = 0; i < window.oD_uf_refinements.files.length; i++) {
+            var newElement = document.createElement("p");
+            newElement.innerHTML = window.oD_uf_refinements.files[i].name;
+            refFiles.appendChild(newElement);
+        }
+
+        modal.style.display = "block";
+        
+
+    }else{console.error("modal not found: resume refinements");}
 }
 
 
@@ -489,9 +523,9 @@ function casePreferencesValidation(formData){
         }if(success && !(formData.cp_overbite)){
             success = false;
             f_alert.generate({type: "danger", message: "Overbite is required!"});
-        }if(success && !(formData.cp_medline)){
+        }if(success && !(formData.cp_midline)){
             success = false;
-            f_alert.generate({type: "danger", message: "Medline is required!"});
+            f_alert.generate({type: "danger", message: "Midline is required!"});
         }if(success && (formData.cp_space_alteration == "create-space-to" && !formData.cp_create_space_to)){
             success = false;
             f_alert.generate({type: "danger", message: "Pleace Provide Create space for"});
@@ -596,7 +630,7 @@ selectToohForm.addEventListener("submit", function(event){event.preventDefault()
 
 var selectToohBtn = selectToohForm.querySelector(".ap_step__btn_next");
 selectToohBtn.addEventListener("click", function(event){
-    var formData = formSerialize(selectToohForm, {hash: true});
+    var formData = formSerialize(selectToohForm, {hash: true, empty: true});
     
     if(selectToohValidation(formData)){
         objRequestPayload.newCase.selectTooth = formData;
@@ -719,7 +753,7 @@ function uploadFilesValidation(formData){
  */
 var impressionTypeST = document.querySelector('#selectTooth select[name="st_impression_type"]');
 impressionTypeST.addEventListener("change", function(event){
-    if(impressionTypeST.value == "digital_scan"){
+    if(impressionTypeST.value == "P"){
         document.querySelector('#is_sc_stl_files').style.display = "none";
         document.querySelector('#is_sc_information').style.display = "block";
     }else{
@@ -772,6 +806,7 @@ specialInstructionsBtn.addEventListener("click", function(event){
     
     if(specialInstructionsValidation(formData)){
         objRequestPayload.newCase.specialInstructions = formData.si_instructions;
+        fillResumeNewCase();
     }
 });
 
@@ -784,4 +819,37 @@ function specialInstructionsValidation(formData){
     }
 
     return success;
+}
+
+
+function fillResumeNewCase(){
+    var modal = document.querySelector("#modalNewCaseResume");
+    if(modal){
+        modal.querySelector('[data-new-resume="office"]').innerHTML = '';
+        modal.querySelector('[data-new-resume="caseType"]').innerHTML = aFields.getCaseType(objRequestPayload.caseType);
+        modal.querySelector('[data-new-resume="doctor"]').innerHTML = '';
+        modal.querySelector('[data-new-resume="plantType"]').innerHTML = aFields.getPlanType(objRequestPayload.plantType);
+        modal.querySelector('[data-new-resume="firstName"]').innerHTML = '';
+        modal.querySelector('[data-new-resume="lastName"]').innerHTML = '';
+        modal.querySelector('[data-new-resume="gender"]').innerHTML = '';
+        modal.querySelector('[data-new-resume="age"]').innerHTML = '';
+        modal.querySelector('[data-new-resume="patientType"]').innerHTML = '';
+        modal.querySelector('[data-new-resume="outStationDate"]').innerHTML = '';
+        modal.querySelector('[data-new-resume="archToBeTreated"]').innerHTML = aFields.getArchToBeTreated(objRequestPayload.newCase.casePreferences.cp_arch_treated);
+        modal.querySelector('[data-new-resume="archCorrection"]').innerHTML = aFields.getArchCorrection(objRequestPayload.newCase.casePreferences.cp_arch_correction);
+        modal.querySelector('[data-new-resume="overJet"]').innerHTML = aFields.getOverjet(objRequestPayload.newCase.casePreferences.cp_overject);
+        modal.querySelector('[data-new-resume="overBite"]').innerHTML = aFields.getOverbite(objRequestPayload.newCase.casePreferences.cp_overbite);
+        modal.querySelector('[data-new-resume="midline"]').innerHTML = aFields.getMidline(objRequestPayload.newCase.casePreferences.cp_midline);
+        modal.querySelector('[data-new-resume="cannineRelation"]').innerHTML = aFields.getCanineRelation(objRequestPayload.newCase.casePreferences.cp_canine_relation);
+        modal.querySelector('[data-new-resume="molarRelation"]').innerHTML = aFields.getMolarRelation(objRequestPayload.newCase.casePreferences.cp_molar_relation);
+        modal.querySelector('[data-new-resume="spaceAlternations"]').innerHTML = aFields.getSpaceAlterations(objRequestPayload.newCase.casePreferences.cp_space_alteration);
+        modal.querySelector('[data-new-resume="spaceGainingPreference"]').innerHTML = aFields.getSpaceGainPreference(objRequestPayload.newCase.casePreferences.cp_sgp);
+        modal.querySelector('[data-new-resume="upper"]').innerHTML = aFields.getUpper(objRequestPayload.newCase.casePreferences.cp_location_upper);
+        modal.querySelector('[data-new-resume="lower"]').innerHTML = aFields.getLower(objRequestPayload.newCase.casePreferences.cp_location_lower);
+        
+
+        modal.style.display = "block";
+        
+
+    }else{console.error("modal not found: resume new case");}
 }

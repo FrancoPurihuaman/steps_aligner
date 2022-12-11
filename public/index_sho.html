@@ -414,22 +414,22 @@
                                 <div class="dr_d__options-radio">
                                     <div class="ap_radio_button dr_d_or__radio">
                                         <label for="dr_d_or__upper">
-                                            <input type="radio" name="dr_d_or__radio" id="dr_d_or__upper">Upper
+                                            <input type="radio" name="dr_d_location" id="dr_d_or__upper" value="U">Upper
                                         </label>
                                     </div>
                                     <div class="ap_radio_button dr_d_or__radio">
                                         <label for="dr_d_or__lower">
-                                            <input type="radio" name="dr_d_or__radio" id="dr_d_or__lower">Lower
+                                            <input type="radio" name="dr_d_location" id="dr_d_or__lower" value="L">Lower
                                         </label>
                                     </div>
                                     <div class="ap_radio_button dr_d_or__radio">
                                         <label for="dr_d_or__both">
-                                            <input type="radio" name="dr_d_or__radio" id="dr_d_or__both">Upper & Lower
+                                            <input type="radio" name="dr_d_location" id="dr_d_or__both" value="B">Upper & Lower
                                         </label>
                                     </div>
                                 </div>
                                 <div class="dr_d__textarea">
-                                    <div class="ap_label ap_label--small">Instructions <span> (max. 500 characters)</span></div>
+                                    <div class="ap_label ap_label--small">Reason<span class="ap_text_danger">*</span></div>
                                     <textarea name="dr_d_instructions" id="" cols="30" rows="5" style="padding: .2rem"
                                         placeholder="Enter your Reason for Refinements"
                                         class="ap_reset f_input-box--flat"></textarea>
@@ -549,17 +549,17 @@
                                             </td>
                                         </tr>
                                         <tr class="tb_row_required">
-                                            <td><strong>Medline<span class="ap_required"> *</span></strong></td>
+                                            <td><strong>Midline<span class="ap_required"> *</span></strong></td>
                                             <td>
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_midline_maintain">
-                                                            <input type="radio" name="cp_medline" id="cp_midline_maintain" value="1">Maintain
+                                                            <input type="radio" name="cp_midline" id="cp_midline_maintain" value="1">Maintain
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_midline_improve">
-                                                            <input type="radio" name="cp_medline" id="cp_midline_improve" value="2">Improve
+                                                            <input type="radio" name="cp_midline" id="cp_midline_improve" value="2">Improve
                                                         </label>
                                                     </div>
                                                 </div>
@@ -615,7 +615,7 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_closeallspaces">
-                                                            <input type="radio" name="cp_space_alteration" id="cp_sa_closeallspaces" value="close-all-apaces">
+                                                            <input type="radio" name="cp_space_alteration" id="cp_sa_closeallspaces" value="close-all-spaces">
                                                             Close all spaces
                                                         </label>
                                                     </div>
@@ -639,7 +639,7 @@
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_sa_none">
-                                                            <input type="radio" name="cp_space_alteration" id="cp_sa_none" value="___">None
+                                                            <input type="radio" name="cp_space_alteration" id="cp_sa_none" value="none">None
                                                         </label>
                                                     </div>
                                                 </div>
@@ -678,12 +678,12 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_upper_anterior">
-                                                            <input type="radio" name="cp_location_upper" id="cp_upper_anterior" value="0">Anterior
+                                                            <input type="radio" name="cp_location_upper" id="cp_upper_anterior" value="1">Anterior
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_upper_posterior">
-                                                            <input type="radio" name="cp_location_upper" id="cp_upper_posterior" value="1">Posterior
+                                                            <input type="radio" name="cp_location_upper" id="cp_upper_posterior" value="2">Posterior
                                                         </label>
                                                     </div>
                                                 </div>
@@ -695,12 +695,12 @@
                                                 <div class="tb_as_items-radio">
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_lower_anterior">
-                                                            <input type="radio" name="cp_location_lower" id="cp_lower_anterior" value="0">Anterior
+                                                            <input type="radio" name="cp_location_lower" id="cp_lower_anterior" value="1">Anterior
                                                         </label>
                                                     </div>
                                                     <div class="ap_radio_button tb_as__radio">
                                                         <label for="cp_lower_posterior">
-                                                            <input type="radio" name="cp_location_lower" id="cp_lower_posterior" value="1">Posterior
+                                                            <input type="radio" name="cp_location_lower" id="cp_lower_posterior" value="2">Posterior
                                                         </label>
                                                     </div>
                                                 </div>
@@ -752,7 +752,7 @@
                                     </div>
                                 </div>
                                 <div class="st_impression_type__textarea">
-                                    <div class="ap_label ap_label--small">Instructions <span> (max. 500 characters)</span></div>
+                                    <div class="ap_label ap_label--small">Impression instructions</div>
                                     <textarea name="st_impression_instructions" id="" cols="30" rows="5" style="padding: .2rem"
                                         placeholder="Enter your Impression Instructions"
                                         class="ap_reset f_input-box--flat"></textarea>
@@ -1535,12 +1535,14 @@
                                 </div>
                             </div>
                             <div class="is_sc_information" id="is_sc_information">
+                                <div style="font-size:1rem;font-weight:600;">Shipping address for the physical Impressions</div>
+                                <div style="margin-top: .5rem;margin-bottom: 1.5rem;">88 Park Ave Ste 1-A, Nutley, NJ 07110</div>
                                 <div class="is_sc_information__note">
                                     <div class="is_sc_in__icon"><strong>NOTE</strong></div>
                                     <div class="is_sc_in_description">
                                         <div class="is_sc_in__note-title"><strong>IMPORTANT</strong></div>
                                         <div class="is_sc_in__note-description">
-                                            <span id="btnISCaseReference">
+                                            <span id="btnISCaseReference" style="cursor:pointer;">
                                                 Click/print <br/>
                                                 to be shipped with the impressions
                                             </span>
@@ -1561,7 +1563,7 @@
                     <div class="f_modal__content medium">
                         <div class="f_modal__header">
                             <span class="f_modal__title">Note</span>
-                            <button type="button" class="f_modal__close" data-dismis="close">
+                            <button type="button" class="f_modal__close no-print" data-dismis="close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -1610,6 +1612,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="f_modal__footer no-print" style="text-align: center;">
+                            <button data-dismis="close" class="f_button f_button--primary" style="background-color: gray;" >Cancel</button>
+                            <button id="btnPrintISCaseReference" class="f_button f_button--primary">Print</button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1652,7 +1658,7 @@
                     <div class="aligner-resume">
                         <div>
                             <div class="ar_content">
-                                <p>Office: <strong data-ret-only-resume="Office"></strong></p>
+                                <p>Office: <strong data-ret-only-resume="office"></strong></p>
                                 <p>Doctor: <strong data-ret-only-resume="doctor"></strong></p>
                                 <p>Case Type: <strong data-ret-only-resume="caseType"></strong></p>
                                 <p>Plan Type: <strong data-ret-only-resume="planType"></strong></p>
@@ -1681,7 +1687,7 @@
                             </div>
                         </div>
                         <div class="ar_fotter no-print">
-                            <button class="f_button f_button--primary" id="btnPrint">Print</button>
+                            <button class="f_button f_button--primary" id="btnPrintRetainer">Print</button>
                             <button class="f_button f_button--primary" style="background-color: gray;" data-dismis="close">Cancel</button>
                             <button class="f_button f_button--primary">Confirm</button>
                         </div>
@@ -1703,7 +1709,7 @@
                     <div class="aligner-resume">
                         <div>
                             <div class="ar_content">
-                                <p>Office: <strong data-mid-co-resume="Office"></strong></p>
+                                <p>Office: <strong data-mid-co-resume="office"></strong></p>
                                 <p>Doctor: <strong data-mid-co-resume="doctor"></strong></p>
                                 <p>Case Type: <strong data-mid-co-resume="caseType"></strong></p>
                                 <p>Plan Type: <strong data-mid-co-resume="planType"></strong></p>
@@ -1727,6 +1733,51 @@
                         </div>
                         <div class="ar_fotter no-print">
                             <button class="f_button f_button--primary" id="btnPrint">Print</button>
+                            <button class="f_button f_button--primary" style="background-color: gray;" data-dismis="close">Cancel</button>
+                            <button class="f_button f_button--primary">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal - Refinements - Resume-->
+        <div class="f_modal" id="modalRefinementsResume">
+            <div class="f_modal__content medium">
+                <div class="f_modal__header" style="text-align: center">
+                    <span class="f_modal__title">Case Preview</span>
+                    <button type="button" class="f_modal__close no-print" data-dismis="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="f_modal__body">
+                    <div class="aligner-resume">
+                        <div>
+                            <div class="ar_content">
+                                <p>Office: <strong data-mid-co-resume="office"></strong></p>
+                                <p>Doctor: <strong data-mid-co-resume="doctor"></strong></p>
+                                <p>Case Type: <strong data-mid-co-resume="caseType"></strong></p>
+                                <p>Plan Type: <strong data-mid-co-resume="planType"></strong></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ar_title">Patient Details</div>
+                            <div class="ar_content">
+                                <p>Patient No: <strong data-mid-co-resume="patientNo"></strong></p>
+                                <p>Arch to be treated: <strong data-mid-co-resume="archToBeTreated"></strong></p>
+                                <p>Impression: <strong data-mid-co-resume="impression"></strong></p>
+                                <p>Job Design: <strong data-mid-co-resume="jobDesign"></strong></p>
+                                <p>Reason: <strong data-mid-co-resume="reason"></strong></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ar_title">Files Details</div>
+                            <div class="ar_content files" data-mid-co-resume="files">
+                                
+                            </div>
+                        </div>
+                        <div class="ar_fotter no-print">
+                            <button class="f_button f_button--primary" id="btnPrintRefinements">Print</button>
                             <button class="f_button f_button--primary" style="background-color: gray;" data-dismis="close">Cancel</button>
                             <button class="f_button f_button--primary">Confirm</button>
                         </div>
@@ -1798,7 +1849,7 @@
     {{ "ap_theme.js" | asset_url | script_tag }}
     <script>
 
-f_modal.init({
+        f_modal.init({
             btnShow: "btnMidcourseCorrectionInfo",
             modal: "modalMidcourseCorrectionInfo"
         });
@@ -1820,6 +1871,16 @@ f_modal.init({
 
         f_modal.init({
             modal: "modalMidcourseCorrectionsResume",
+            backdrop: 'static'
+        });
+
+        f_modal.init({
+            modal: "modalRefinementsResume",
+            backdrop: 'static'
+        });
+
+        f_modal.init({
+            modal: "modalNewCaseResume",
             backdrop: 'static'
         });
 
@@ -1881,9 +1942,6 @@ f_modal.init({
 
         }
 
-        var btnPrint= document.getElementById("btnPrint");
-        btnPrint.addEventListener("click", function(){printCaseSummary('modalRetainerOnlyResume');});
-
         function printCaseSummary(idResume){
             idResume = "#"+idResume;
             $(idResume).print({
@@ -1896,6 +1954,18 @@ f_modal.init({
                 prepend : null
             });
         }
+
+        var btnPrintRetainer = document.getElementById("btnPrintRetainer");
+        btnPrintRetainer.addEventListener("click", function(){printCaseSummary('modalRetainerOnlyResume');});
+
+        var btnPrintMidcourse = document.getElementById("btnPrintMidcourse");
+        btnPrintMidcourse.addEventListener("click", function(){printCaseSummary('modalMidcourseCorrectionsResume');});
+
+        var btnPrintRefinements = document.getElementById("btnPrintRefinements");
+        btnPrintRefinements.addEventListener("click", function(){printCaseSummary('modalRefinementsResume');});
+
+        var btnPrintISCaseReference = document.getElementById("btnPrintISCaseReference");
+        btnPrintISCaseReference.addEventListener("click", function(){printCaseSummary('modalISCaseReference');});
         
     </script>
 
