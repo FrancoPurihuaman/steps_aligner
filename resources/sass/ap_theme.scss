@@ -756,6 +756,10 @@ input.ap_reset, textarea.ap_reset, select.ap_reset {
     top: 70%;
 }
 
+.dropzone .dz-preview .dz-error-message {
+    top: 150px;
+}
+
 .dropzone:not(.multiple) {
     text-align: center;
 

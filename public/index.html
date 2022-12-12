@@ -1895,7 +1895,9 @@
             
             function ap_dropzone(idDropzone, _acceptedFiles = null, _maxFiles = 1){
                 var oDropzone = new Dropzone(idDropzone, {
+                    //url: "http://localhost/app/public/upload_files.php",
                     url: "/",
+                    name: "file",
                     autoQueue: false,
                     addRemoveLinks: true,
                     maxFiles: _maxFiles,
@@ -1913,6 +1915,9 @@
                                 f_alert.init({type: "danger", message: "maximum limit reached!"});
                             });
                         }
+                    },
+                    success: function(file, response){
+                        //console.log(response);
                     }
                 });
 
