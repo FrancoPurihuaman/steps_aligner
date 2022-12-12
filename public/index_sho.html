@@ -1,7 +1,5 @@
-
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
     {{ "ap_theme.css" | asset_url | stylesheet_tag }}
     
     
@@ -13,7 +11,7 @@
     <div class="ap_container" id="ap_main_container" style="margin-bottom: 2rem;">
 
         <div class="ap_mt_3">
-            <ul class="ap_steps_indicator ap_steps_3" data-steps="main-indicators">
+            <ul class="ap_steps_indicator ap_steps_2" data-steps="main-indicators">
                 <li class="ap_step__tab ap_current_step" data-step-include="new-c ret-only mid-co refi">
                     <a>
                         <div class="ap_step__label">CASE TYPE</div>
@@ -1572,7 +1570,7 @@
                                 <div class="ap_align_section ap_case-response">
                                     <div class="ap_cr__logo">
                                         <div class="ap_cr_logo__image">
-                                            <img src="{{'logo.2.png' | file_img_url }}" alt="">
+                                            <img src="{{'logo.png' | file_img_url }}" alt="">
                                         </div>
                                         <div class="ap_text_center ap_mt_1">
                                             <a href="mailto:support@dentalree.com" 
@@ -1631,7 +1629,7 @@
                         <div class="ap_align_section__content">
                             <span> (max. 2000 characters allowed) </span>
                             <div class="ap_mt_1">
-                                <textarea name="" id="" cols="30" rows="8" class="ap_reset f_input-box--flat"
+                                <textarea name="si_instructions" id="" cols="30" rows="8" class="ap_reset f_input-box--flat"
                                     placeholder="Enter your Special Instructions"></textarea>
                             </div>
                         </div>
@@ -1644,6 +1642,8 @@
             </section>
         
         </div>
+
+        
 
         <!-- Modal - Retainer Only - Resume-->
         <div class="f_modal" id="modalRetainerOnlyResume">
@@ -1732,7 +1732,7 @@
                             </div>
                         </div>
                         <div class="ar_fotter no-print">
-                            <button class="f_button f_button--primary" id="btnPrint">Print</button>
+                            <button class="f_button f_button--primary" id="btnPrintMidcourse">Print</button>
                             <button class="f_button f_button--primary" style="background-color: gray;" data-dismis="close">Cancel</button>
                             <button class="f_button f_button--primary">Confirm</button>
                         </div>
@@ -1754,25 +1754,25 @@
                     <div class="aligner-resume">
                         <div>
                             <div class="ar_content">
-                                <p>Office: <strong data-mid-co-resume="office"></strong></p>
-                                <p>Doctor: <strong data-mid-co-resume="doctor"></strong></p>
-                                <p>Case Type: <strong data-mid-co-resume="caseType"></strong></p>
-                                <p>Plan Type: <strong data-mid-co-resume="planType"></strong></p>
+                                <p>Office: <strong data-ref-resume="office"></strong></p>
+                                <p>Doctor: <strong data-ref-resume="doctor"></strong></p>
+                                <p>Case Type: <strong data-ref-resume="caseType"></strong></p>
+                                <p>Plan Type: <strong data-ref-resume="planType"></strong></p>
                             </div>
                         </div>
                         <div>
                             <div class="ar_title">Patient Details</div>
                             <div class="ar_content">
-                                <p>Patient No: <strong data-mid-co-resume="patientNo"></strong></p>
-                                <p>Arch to be treated: <strong data-mid-co-resume="archToBeTreated"></strong></p>
-                                <p>Impression: <strong data-mid-co-resume="impression"></strong></p>
-                                <p>Job Design: <strong data-mid-co-resume="jobDesign"></strong></p>
-                                <p>Reason: <strong data-mid-co-resume="reason"></strong></p>
+                                <p>Patient No: <strong data-ref-resume="patientNo"></strong></p>
+                                <p>Arch to be treated: <strong data-ref-resume="archToBeTreated"></strong></p>
+                                <p>Impression: <strong data-ref-resume="impression"></strong></p>
+                                <p>Job Design: <strong data-ref-resume="jobDesign"></strong></p>
+                                <p>Reason: <strong data-ref-resume="reason"></strong></p>
                             </div>
                         </div>
                         <div>
                             <div class="ar_title">Files Details</div>
-                            <div class="ar_content files" data-mid-co-resume="files">
+                            <div class="ar_content files" data-ref-resume="files">
                                 
                             </div>
                         </div>
@@ -1799,36 +1799,36 @@
                     <div class="aligner-resume">
                         <div>
                             <div class="ar_content">
-                                <p>Office: <strong></strong></p>
-                                <p>Case Type: <strong></strong></p>
-                                <p>Doctor: <strong></strong></p>
-                                <p>Plan Type: <strong></strong></p>
+                                <p>Office: <strong data-new-resume="office"></strong></p>
+                                <p>Case Type: <strong data-new-resume="caseType"></strong></p>
+                                <p>Doctor: <strong data-new-resume="doctor"></strong></p>
+                                <p>Plan Type: <strong data-new-resume="plantType"></strong></p>
                             </div>
                         </div>
                         <div>
                             <div class="ar_title">Patient Details</div>
                             <div class="ar_content">
-                                <p>First Name: <strong></strong></p>
-                                <p>Last Name: <strong></strong></p>
-                                <p>Gender: <strong></strong></p>
-                                <p>Age: <strong></strong></p>
-                                <p>Patient Type: <strong></strong></p>
-                                <p>Out Station Date: <strong></strong></p>
+                                <p>First Name: <strong data-new-resume="firstName"></strong></p>
+                                <p>Last Name: <strong data-new-resume="lastName"></strong></p>
+                                <p>Gender: <strong data-new-resume="gender"></strong></p>
+                                <p>Age: <strong data-new-resume="age"></strong></p>
+                                <p>Patient Type: <strong data-new-resume="patientType"></strong></p>
+                                <p>Out Station Date: <strong data-new-resume="outStationDate"></strong></p>
                             </div>
                         </div>
                         <div>
                             <div class="ar_title">Case Preview</div>
                             <div class="ar_content">
-                                <p>Arch To Be Treated: <strong></strong></p>
-                                <p>Arch Correction: <strong></strong></p>
-                                <p>Over Jet: <strong></strong></p>
-                                <p>Over Bite: <strong></strong></p>
-                                <p>Middle: <strong></strong></p>
-                                <p>Cannine Relation: <strong></strong></p>
-                                <p>Molar Relation: <strong></strong></p>
-                                <p>Space Alternations: <strong></strong></p>
-                                <p>space Gaining Preference: <strong></strong></p>
-                                <p>Upper: <strong></strong> | Lower: <strong></strong></p>
+                                <p>Arch To Be Treated: <strong data-new-resume="archToBeTreated"></strong></p>
+                                <p>Arch Correction: <strong data-new-resume="archCorrection"></strong></p>
+                                <p>Over Jet: <strong data-new-resume="overJet"></strong></p>
+                                <p>Over Bite: <strong data-new-resume="overBite"></strong></p>
+                                <p>Midline: <strong data-new-resume="midline"></strong></p>
+                                <p>Cannine Relation: <strong data-new-resume="cannineRelation"></strong></p>
+                                <p>Molar Relation: <strong data-new-resume="molarRelation"></strong></p>
+                                <p>Space Alternations: <strong data-new-resume="spaceAlternations"></strong></p>
+                                <p>space Gaining Preference: <strong data-new-resume="spaceGainingPreference"></strong></p>
+                                <p>Upper: <strong data-new-resume="upper"></strong> | Lower: <strong data-new-resume="lower"></strong></p>
                             </div>
                         </div>
                         <div>
@@ -1836,8 +1836,8 @@
                             <div class="ar_content"></div>
                         </div>
                         <div class="ar_fotter no-print">
-                            <button class="f_button f_button--primary">Print</button>
-                            <button class="f_button f_button--primary" disabled style="background-color: gray;">Cancel</button>
+                            <button class="f_button f_button--primary" id="btnPrintNewCase">Print</button>
+                            <button class="f_button f_button--primary" style="background-color: gray;" data-dismis="close">Cancel</button>
                             <button class="f_button f_button--primary">Confirm</button>
                         </div>
                     </div>
@@ -1846,6 +1846,9 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.6.2/jQuery.print.min.js"></script>
     {{ "ap_theme.js" | asset_url | script_tag }}
     <script>
 
@@ -1946,12 +1949,13 @@
             window.oD_uf_refinements = ap_dropzone("#files_refinements", null, 10);
 
         }
+    
 
         function printCaseSummary(idResume){
             idResume = "#"+idResume;
             $(idResume).print({
                 addGlobalStyles : true,
-                stylesheet : null,
+                stylesheet : "{{ 'ap_print.css' | asset_url }}",
                 rejectWindow : true,
                 noPrintSelector : ".no-print",
                 iframe : true,
@@ -1968,6 +1972,9 @@
 
         var btnPrintRefinements = document.getElementById("btnPrintRefinements");
         btnPrintRefinements.addEventListener("click", function(){printCaseSummary('modalRefinementsResume');});
+
+        var btnPrintNewCase = document.getElementById("btnPrintNewCase");
+        btnPrintNewCase.addEventListener("click", function(){printCaseSummary('modalNewCaseResume');});
 
         var btnPrintISCaseReference = document.getElementById("btnPrintISCaseReference");
         btnPrintISCaseReference.addEventListener("click", function(){printCaseSummary('modalISCaseReference');});
